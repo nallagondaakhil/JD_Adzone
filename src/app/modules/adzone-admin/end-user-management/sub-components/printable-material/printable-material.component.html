@@ -1,0 +1,419 @@
+
+<div class="container w-100 mt-3">
+    <div class="row">  
+        <div class="d-flex justify-content-between w-100 row">
+            <div class="col-24 col-lg-8 col-xl-8">
+                <h1 class="text-green"><strong>Shopping Cart</strong></h1>
+            </div>
+            <div class="headerFnSection col-24 col-lg-16 col-xl-16">
+                <div class="custom-control custom-checkbox mt-2">
+                    <input type="checkbox" class="custom-control-input" id="customCheckAll" (change)="selectAllFields($event)" [checked]='isCheckAll ? true : false'>
+                    <label class="custom-control-label pt-1 pr-3 mb-3" for="customCheckAll" >Select All</label>
+                    <a href="/master/wish-list" class="btn btn-primary">
+                        <strong>Add more from Wishlist</strong>
+                    </a>
+                    <button class="btn btn-primary" (click)="moveToCart()" type="button">
+                        Move to Wishlist
+                    </button>
+                    <button class="btn btn-secondary" type="button" (click)="MultipleRemoveFromCart()">
+                        Remove from Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <ul class="nav nav-tabs uxf-nav-tabs mt-3" id="myTab" role="tablist">
+        <li role="presentation" class="nav-item">
+            <a class="nav-link " id="home-tab" data-toggle="tab" routerLink="/master/shopping-cart" role="tab" aria-controls="home" aria-selected="false">Documents</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a class="nav-link active" id="profile-tab" data-toggle="tab" routerLink="/master/printable-material" role="tab" aria-controls="profile" aria-selected="true">Printable Material</a>
+        </li>
+    </ul> -->
+    <div class="row mt-4">
+        <div class="col-24 col-lg-17 col-xl-17">
+            <div class="uxf-accordion" id="accordion-1">
+            <div class="card mb-3 addressSection">
+                <div class="card-header p-0" id="headingTwo-1">
+                    <h5 class="uxf-accordion-item mb-0">
+                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo-1" aria-expanded="false" aria-controls="collapseTwo-1">
+                            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg>
+                            <span class="uxf-accordion-title">
+                                Delivery Address
+                            </span>
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo-1" class="collapse" aria-labelledby="headingTwo-1" data-parent="#accordion-1">
+                    <div class="card-body">
+                       <div class="addressList mt-3 row" *ngFor="let item of viewModels;let i = index">
+                            <div class="col-2 col-md-2">
+                                <div class="custom-control custom-control-inline custom-radio">
+                                    <input type="radio" id="customRadio{{i}}" name="customRadioForm1" class="custom-control-input" (change)="setAddress(item.addressId)"><label class="custom-control-label" for="customRadio{{i}}"></label>
+                                </div>
+                            </div>
+                            <div class="col-18 col-md-15" *ngIf="!isDealer">
+                                <div class="addName">{{item.name}}</div>
+                                <div class="addDetails">
+                                    {{item.streetAddress}} , {{item.city}} , {{item.state}} , {{item.marketId[0].name}} , {{item.pincode}}.
+                                    <p>Phone number: {{item.contactNumber}}</p>
+                                    <p>Email ID: {{item.email}}</p>
+                                    <!-- Borivali (W) – Link Rd, Yogi Nagar, MHB Colony, Vazira Naka, Gorai Rd Mumbai - 400091, Maharashtra. -->
+                                </div>
+                            </div>
+                            <div class="col-18 col-md-15" *ngIf="isDealer">
+                                <!-- <div class="addName">{{item.name}}</div> -->
+                                <div class="addDetails">
+                                    {{item.formattedAddress}}
+                                </div>
+                            </div>
+                            <div class="col-17 col-md-3 editBtn p-0" (click)="onEdit(item)" *ngIf="!isDealer">
+                               Edit
+                            </div>
+                            <div class="col-7 col-md-4 removeBtn" (click)="onRemoveAddress(item.addressId)" *ngIf="!isDealer">
+                                Remove
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="uxf-accordion" id="accordion-2" *ngIf="!isDealer">
+            <div class="card mb-3 addAddressSection">
+                <div class="card-header p-0" id="headingTwo-2">
+                    <h5 class="uxf-accordion-item mb-0">
+                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo-2" aria-expanded="false" aria-controls="collapseTwo-2">
+                            <svg focusable="false" aria-hidden="true" fill="#666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M0 0h24v24H0z" fill="none"></path><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+                            <span class="uxf-accordion-title">
+                                Add a new address
+                            </span>
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo-2" class="collapse"
+                class="collapse" aria-labelledby="headingTwo-2" data-parent="#accordion-2">
+                    <div class="card-body">
+                        <form novalidate="novalidate" #addressForm="ngForm">
+                            <div>
+                                <div class="row mt-4 pt-2" >
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'Name'" #name="ngModel" [(ngModel)]="addressModel.name"  name="name"  [control]="name.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'Contact Number'"  name="contactNumber" #contactNumber="ngModel" [(ngModel)]="addressModel.contactNumber"  [control]="contactNumber.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'Email ID'"  name="email" #email="ngModel" [(ngModel)]="addressModel.email" [type]="'email'" email [control]="email.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'Street'"  name="street" #streetAddress="ngModel" [(ngModel)]="addressModel.streetAddress" [control]="streetAddress.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'City'"  name="city" #city="ngModel" [(ngModel)]="addressModel.city" [control]="city.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'State'"  name="state" #state="ngModel" [(ngModel)]="addressModel.state" [control]="state.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <jd-select-list #market="ngModel" [label]="'Country / Market'"  name="market" [itemSource]="countryOptions" [(ngModel)]="addressModel.marketId" 
+                                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" [control]="market.control" [markAsRequired]="true" required>
+                                        </jd-select-list>
+                                    </div>
+                                    <div class="col-12">
+                                        <jd-text-box [label]="'Zip Code'"  name="pincode" #pincode="ngModel" [(ngModel)]="addressModel.pincode" [control]="pincode.control" [markAsRequired]="true" required>
+                                        </jd-text-box>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col text-left mt-3 mb-3 addressFooter pl-0">
+                                <button type="button" class="btn btn-primary mr-2 extend" (click)="onSave()">Save Address</button>
+                                <button type="button" class="btn btn-secondary extend" (click)="onCancel()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="shoppingContainer">
+                <div class="productRow row" *ngFor="let item of listModel;let i = index">
+                    <div class="col-24 col-g-8 col-xl-8 docThumbnail">
+                        <img src="{{item.thumbnailUrl}}" alt="" *ngIf="item.extensionType === 'image'" class="width-custom card-img-top" height="140px">
+                        <img class="width-custom card-img-top" *ngIf="item.extensionType === 'audio'" src="../../../../assets/icons/audio.svg" height="140px" alt="Document Image">
+                        <img class="width-custom card-img-top" *ngIf="item.extensionType === 'ai'" src="../../../../assets/icons/ai.png" height="140px" alt="Document Image">
+                        <img class="width-custom card-img-top" *ngIf="item.extensionType === 'psd'" src="../../../../assets/icons/ps.png" height="140px" alt="Document Image">
+                        <img class="width-custom card-img-top" *ngIf="item.extensionType === 'cdr'" src="../../../../assets/icons/cdr.png" height="140px" alt="Document Image">
+                        <video  controls *ngIf="item.extensionType === 'video'" height="140px" width="190px">
+                            <source [src]="item.thumbnailUrl" type="video/mp4">
+                                Your browser does not support HTML video.
+                        </video>
+                        <div class="custom-control custom-checkbox mt-2">
+                            <input type="checkbox" class="custom-control-input" [checked]='item.isChecked ? true : false' id="{{i}}" (change)="onSelectChange(item.documentFileId, $event.target.checked)">
+                            <label class="custom-control-label pt-1" for="{{i}}" ></label>
+                        
+                        </div>
+                        <div class="quantitySection mt-3" *ngIf="item.isChecked">
+                            <div class="decrement" id="decr-{{item.userCartId}}" (click) ="handleDecrease(item)"><img class="wishlist-icon" src="../../../../assets/icons/minus.svg" height="20px" alt="Card image cap"></div>
+                            <input type="text" class="value" [(ngModel)]="item.count">
+                            <div class="increment" id="inr-{{item.userCartId}}" (click) ="handleIncrease(item)"><img class="wishlist-icon" src="../../../../assets/icons/plus.svg" height="20px" alt="Card image cap"></div>
+                        </div>
+                    </div>
+                    <div class="col-20 col-lg-12 col-xl-12 docDescription mt-2">
+                        <div class="descSection">
+                            <div class="description" (click)="goToDetailedScreen(item)">{{item.documentName}}</div>
+                            <div class="details">{{item.documentFileType}}, {{item.documentFileSize}}</div>
+                            <div class="details">Released Date: {{item.createdDate}}</div>
+                        </div>
+                        <div class="btnSection web-view">
+                            <span (click)="singleMovetoCart(item)">Move to Wishlist</span>
+                            <span class="ml-3" (click)="removeFromCart(item.documentId,item.userCartId)">Remove</span>
+                        </div>
+                    </div>
+                    <div class="col-4 col-lg-4 col-xl-4   col-4 wishListSection">
+                        <div class="heartIcon">
+                            <svg *ngIf="!item.wishList" class="wishlist-icon" (click)="addWishlist(item.documentId,item.wishList,item.documentFileId,1)" focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                            <svg *ngIf="item.wishList" class="wishlist-icon" (click)="addWishlist(item.wishlistId,item.wishList,item.documentFileId,1)" focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                        </div>
+                        <div class="priceSection mt-3 web-view">
+                            {{item.currency}} {{item.price}}
+                        </div>
+                    </div>
+                    <div class="mob-view col-24">
+                        <div class="btnSection">
+                            <span (click)="singleMovetoCart(item)">Move to Wishlist</span>
+                            <span class="ml-3" (click)="removeFromCart(item.documentId,item.userCartId)">Remove</span>
+                            <span class="priceSection mt-3">
+                                {{item.currency}} {{item.price}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="listModel.length == 0">
+                    <div class="col-24  text-center mt-5">
+                        <img src="../../../../assets/icons/tractor_ag.svg" class="img-fluid">
+                        <p class="nodata_found mt-4">No Data Found</p>
+                    </div>
+                  </div>
+            </div>
+           
+        </div>
+        <div class="col-24 col-lg-7 col-xl-7">
+            <div class="priceSplitUp">
+                <div class="header">
+                    Price Details
+                </div>
+                <div class="body">
+                    <div class="row">
+                        <div class="col-16 description">
+                            Price 
+                        </div>
+                        <div class="col-8 price">
+                            {{orderTotal}}
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-16 description">
+                            Delivery Charges
+                        </div>
+                        <div class="col-8 price">
+                            0
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-16">
+                            Total Amount
+                        </div>
+                        <div class="col-8 text-right">
+                            {{orderTotal}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="placeOrderBtn">
+                <button class="btn" (click)="placeOrder();">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container w-100 mt-4 d-none">
+    <div class="row">  
+        <div class="d-flex justify-content-between w-100">
+            <div>
+                <h1 class="text-green"><strong>Shopping Cart</strong></h1>
+            </div>
+            <div class="headerFnSection">
+                <div class="custom-control custom-checkbox mt-2">
+                    <input type="checkbox" class="custom-control-input" id="customCheckAll" (change)="selectAllFields($event)">
+                    <label class="custom-control-label pt-1" for="customCheckAll" >Select All</label>
+                    <button class="btn btn-primary" type="button">
+                        Add more from Wishlist
+                    </button>
+                    <button class="btn btn-primary" (click)="moveToCart()" type="button">
+                        Move to Wishlist
+                    </button>
+                    <button class="btn btn-secondary" type="button">
+                        Remove from Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-17">
+    <div class="card mt-4">
+        <div class="uxf-accordion" id="accordion-1">
+            <div class="card">
+                <div class="card-header" id="headingOne-1">
+                    <h5 class="uxf-accordion-item">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne-1" aria-expanded="false" aria-controls="collapseOne-1">
+                            <svg focusable="false" aria-hidden="true" class="uxf-accordion-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg><span class="uxf-accordion-title">Delivery Address</span>
+                        </button>
+                    </h5>
+                </div>
+    
+                <div id="collapseOne-1" class="collapse" aria-labelledby="headingOne-1" data-parent="#accordion-1">
+                    <div class="card-body">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo-1">
+                    <h5 class="uxf-accordion-item">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo-1" aria-expanded="false" aria-controls="collapseTwo-1">
+                            <svg focusable="false" aria-hidden="true" class="uxf-accordion-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg><span class="uxf-accordion-title">Add a new address</span>
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo-1" class="collapse" aria-labelledby="headingTwo-1" data-parent="#accordion-1">
+                    <div class="card-body">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree-1">
+                    <h5 class="uxf-accordion-item">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree-1" aria-expanded="false" aria-controls="collapseThree-1">
+                            <svg focusable="false" aria-hidden="true" class="uxf-accordion-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg><span class="uxf-accordion-title">Order Summary</span>
+                            <!-- <span class="uxf-accordion-summary">Summary</span> -->
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree-1" class="collapse" aria-labelledby="headingThree-1" data-parent="#accordion-1">
+                    <div class="card-body">
+                        <div class="row mt-2">
+                            <div class="col-24">
+                                <div class="shoppingContainer">
+                                    <div class="productRow row" *ngFor="let item of listModel;let i = index">
+                                        <div class="col-8 docThumbnail">
+                                            <img src="{{item.thumbnailUrl}}" alt="" width="170" height="150">
+                                            <div class="custom-control custom-checkbox mt-2">
+                                                <input type="checkbox" class="custom-control-input" [checked]='item.isChecked ? true : false' id="{{i}}" (change)="onSelectChange(item.documentId, $event.target.checked)">
+                                                <label class="custom-control-label pt-1" for="{{i}}" ></label>
+                                            
+                                            </div>
+                                            <div class="quantitySection mt-3 d-none">
+                                                <div class="decrement"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"></path></svg></div>
+                                                <input type="text" class="value" value="1">
+                                                <div class="increment"><svg focusable="false" aria-hidden="true" fill="#666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 docDescription mt-2">
+                                            <div class="descSection">
+                                                <!-- <div class="docId">{{item.documentId}}</div> -->
+                                                <div class="description" (click)="goToDetailedScreen(item)">{{item.documentName}}</div>
+                                                <div class="details">{{item.documentFileType}}, {{item.documentFileSize}}</div>
+                                                <div class="details">Released Date: {{item.documentCreatedDate}}</div>
+                                            </div>
+                                            <div class="btnSection">
+                                                <span (click)="singleMovetoCart(item.userCartId)">Move to Wishlist</span>
+                                                <span class="ml-3" (click)="removeFromCart(item.documentId,item.userCartId)">Remove</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 wishListSection">
+                                            <div class="heartIcon">
+                                                <img class="wishlist-icon" src="../../../../assets/icons/wishlistblack.svg" height="20px" alt="Card image cap" (click)="addWishlist(item.documentId,item.documentFileId,1)">
+                                            </div>
+                                            <div class="priceSection mt-3">
+                                                Rs.389
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-7">
+        <div class="priceSplitUp">
+            <div class="header">
+                Price Details
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-16 description">
+                        Price 
+                    </div>
+                    <div class="col-8 price">
+                        0
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-16 description">
+                        Delivery Charges
+                    </div>
+                    <div class="col-8 price">
+                        0
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="row">
+                    <div class="col-16">
+                        Total Amount
+                    </div>
+                    <div class="col-8 text-right">
+                        0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="placeOrderBtn">
+            <button class="btn">Place Order</button>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+</div>
+
+
+

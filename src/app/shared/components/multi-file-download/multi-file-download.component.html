@@ -1,0 +1,36 @@
+<div class="form-group">
+  <label for="file-upload" class="uxf-label">{{ label }}
+  </label>
+  <button [disabled]="disabled" class="btn btn-{{type}} w-100" type="button" (click)="downloadClick()">
+    {{title}}
+  </button>
+</div>
+
+<div *ngIf="showDownloadModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="editRole">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Click to Download Documents</h5>
+        <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close" (click)="onClose()">
+          <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewbox="0 0 24 24">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+            </path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let item of files" class="row my-2">
+          <a class="btn btn-link btn-ellipsis" (click)="downloadFile(item.fileUrl, item.fileName)">{{item.fileName}}</a>
+        </div>
+        <div *ngIf="!files?.length" class="m-2">
+          <span>
+            No Documents Available!
+          </span>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

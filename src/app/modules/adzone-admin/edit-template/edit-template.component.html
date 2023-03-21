@@ -1,0 +1,145 @@
+
+<div *ngIf="!showEditPopUp && !showCollagePopUp" class="container  mt-2 pb-4">
+  <!-- <div class="row">
+
+    <div class="col-24">
+      <div class="row mt-4">
+        <p class="text-green end-title mb-0 col-24"><strong>Template 1</strong></p>
+      </div>
+
+      <div class="row">
+        <div class="col-8 pt-3" >
+          <div class="card card-hover" >
+            <img class="card-img-top" src="../../../../assets/icons/F142824142.png" height="140px" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text text-green"></p>
+              <div class="row p-2">
+                <div class="my-component-wrapper">
+                  <app-my-component [counter]="counter" (componentClick)="handleOnClick($event)"></app-my-component>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="row">
+
+    <div class="col-6" style=" min-width: 280px !important;">
+ <div class="row mt-4">
+          <p class="text-green end-title mb-0 col-24"><strong>Template 1 </strong></p>
+        </div>
+
+      <div class="row"  >
+
+        <div class="col-24 pt-3" *ngFor="let item of imageList;let i = index" >
+          <div class="card card-hover d-flex justify-content-center"  >
+          <div class="image-iteam">
+            <img  class=" image-round cover"   src={{item?.sorce}} height="250px"   alt="Card image cap">
+            <div class="edit"><a (click)="redirectToImage(item?.sorce)" ><svg fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg></a></div>
+          </div>
+            <!-- <div class="card-body" *ngIf="isJDUser || dealerView"> -->
+              <div class="card-body" >
+              <!-- <p class="card-text text-green"></p> -->
+              <div class="row pl-2 pr-2 justify-content-between">
+                <button class="btn btn-primary " type="button" (click)="editButtonClick(item)">
+                  Edit Template
+              </button>
+              <button class="btn btn-outline-info " type="button" (click)="downloadTemplate(item)">
+                Download
+            </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6" style=" min-width: 280px !important;"  >
+      <div class="row mt-4">
+               <p class="text-green end-title mb-0 col-24"><strong>Template 2 </strong></p>
+             </div>
+
+           <div class="row"  >
+
+             <div class="col-24 pt-3" *ngFor="let item of imageListTemplate2;let i = index" >
+               <div class="card card-hover" >
+                <div class="image-iteam">
+                 <img class=" image-round cover"   (click)="redirectToImage(item?.sorce)" src={{item?.sorce}} height="250px"  alt="Card image cap">
+                 <div class="edit"><a (click)="redirectToImage(item?.sorce)" ><svg fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg></a></div>
+                 </div>
+                 <!-- <div class="card-body" *ngIf="isJDUser || dealerView"> -->
+                   <div class="card-body"  >
+                   <!-- <p class="card-text text-green"></p> -->
+                   <div class="row pl-2 pr-2 justify-content-between">
+                     <button class="btn btn-primary " type="button" (click)="editButtonClick(item)">
+                       Edit Template
+                   </button>
+                   <button class="btn btn-outline-info ml-2 " type="button" (click)="downloadTemplate(item)">
+                     Download
+                 </button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+    <div class="col-6"  style=" min-width: 280px !important;">
+      <div class="row mt-4">
+               <p class="text-green end-title mb-0 col-24"><strong>Collage 1</strong></p>
+             </div>
+
+           <div class="row"  >
+
+             <div class="col-24 pt-3" *ngFor="let item of imageList2;let i = index" >
+               <div class="card card-hover" >
+                <div class="image-iteam">
+                 <img class=" image-round cover"  (click)="redirectToImage(item?.sorce)" src={{item?.sorce}} height="250px" width="200px" alt="Card image cap">
+                 <div class="edit"><a (click)="redirectToImage(item?.sorce)" ><img src='data:image/svg+xml;base64,PHN2ZyBpZD0idmlzaWJpbGl0eV9vbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgPHBhdGggaWQ9IlBhdGhfMjU4IiBkYXRhLW5hbWU9IlBhdGggMjU4IiBkPSJNMCwwSDI0VjI0SDBaIiBmaWxsPSJub25lIi8+CiAgPHBhdGggaWQ9IlBhdGhfMjU5IiBkYXRhLW5hbWU9IlBhdGggMjU5IiBkPSJNMTIsNC41QTExLjgyNywxMS44MjcsMCwwLDAsMSwxMmExMS44MTcsMTEuODE3LDAsMCwwLDIyLDBBMTEuODI3LDExLjgyNywwLDAsMCwxMiw0LjVaTTEyLDE3YTUsNSwwLDEsMSw1LTVBNSw1LDAsMCwxLDEyLDE3Wm0wLThhMywzLDAsMSwwLDMsM0EzLDMsMCwwLDAsMTIsOVoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg=='/></a></div>
+                 </div>
+                 <div class="card-body"   >
+
+                   <div class="row pl-2 pr-2 justify-content-between">
+                     <button class="btn btn-primary " type="button" (click)="editCollageClick(item,1)">
+                      Get Started
+                   </button>
+
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-6"  style=" min-width: 280px !important;">
+          <div class="row mt-4">
+                   <p class="text-green end-title mb-0 col-24"><strong>Collage 2</strong></p>
+                 </div>
+
+               <div class="row"  >
+
+                 <div class="col-24 pt-3" *ngFor="let item of imageList3;let i = index" >
+                   <div class="card card-hover" >
+                    <div class="image-iteam">
+                     <img class=" image-round cover"  (click)="redirectToImage(item?.sorce)" src={{item?.sorce}} height="250px" width="200px" alt="Card image cap">
+                     <div class="edit"><a (click)="redirectToImage(item?.sorce)" ><img src='data:image/svg+xml;base64,PHN2ZyBpZD0idmlzaWJpbGl0eV9vbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgPHBhdGggaWQ9IlBhdGhfMjU4IiBkYXRhLW5hbWU9IlBhdGggMjU4IiBkPSJNMCwwSDI0VjI0SDBaIiBmaWxsPSJub25lIi8+CiAgPHBhdGggaWQ9IlBhdGhfMjU5IiBkYXRhLW5hbWU9IlBhdGggMjU5IiBkPSJNMTIsNC41QTExLjgyNywxMS44MjcsMCwwLDAsMSwxMmExMS44MTcsMTEuODE3LDAsMCwwLDIyLDBBMTEuODI3LDExLjgyNywwLDAsMCwxMiw0LjVaTTEyLDE3YTUsNSwwLDEsMSw1LTVBNSw1LDAsMCwxLDEyLDE3Wm0wLThhMywzLDAsMSwwLDMsM0EzLDMsMCwwLDAsMTIsOVoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg=='/></a></div>
+                     </div>
+                     <div class="card-body"   >
+
+                       <div class="row pl-2 pr-2 justify-content-between">
+                         <button class="btn btn-primary " type="button" (click)="editCollageClick(item,2)">
+                          Get Started
+                       </button>
+
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+  </div>
+</div>
+
+<!-- <jd-edit-page *ngIf="showEditPopUp"  (closed)="closeEditTemplate()" [sorce]="image"></jd-edit-page> -->
+<jd-edit-image *ngIf="showEditPopUp" [dimention]=" image?.dimention"   (closed)="closeEditTemplate()"  ></jd-edit-image>
+<!-- <jd-collage-image *ngIf="showCollagePopUp"  ></jd-collage-image> -->
+<jd-edit-image-collages *ngIf="showCollagePopUp" [typeSelectedMain]="collageType"  (closed)="closeEditCollage()"  ></jd-edit-image-collages>

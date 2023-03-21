@@ -1,0 +1,22 @@
+jd-cms-status,jd-sync-master,jd-claims-workflow-management {
+    .table tbody {
+        tr.status-new {
+            background-color: #d9e7f4;
+        }
+        tr.status-progress {
+            background-color: #d9e7f4;
+        }
+        tr.status-success {
+            background-color: #d6e5d3;
+        }
+        tr.status-failure {
+            background-color: #f6dbde;
+        }
+    }
+    .table{
+      border-spacing: 0 8px !important;
+      tbody td {
+        padding: .5rem .75rem;
+      }
+    }
+}

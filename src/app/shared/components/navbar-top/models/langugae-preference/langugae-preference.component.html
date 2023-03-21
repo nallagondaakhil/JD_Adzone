@@ -1,0 +1,55 @@
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="addeditdoccategory" *ngIf="chooselang">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">{{"HOME.CHOOSELANGUAGE" | translate}}</h6>
+          <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close" (click)="onClose()">
+            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewbox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+              </path>
+              <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+          </button>
+        </div>
+  
+        <form action="" novalidate="novalidate" #addeditdoccat="">
+          <div class="modal-body">
+            <div class="">
+              <div class="radio-btn">
+                  <div class="pad-10" *ngFor="let data of languageData">
+                 <span *ngIf="data.languageId == 2 || data.languageId == 3">
+                  <input type="radio" name="options1" id="option1" autocomplete="off" [checked]="data.checked"
+                    (click)="changePreference(data)"> 
+                    <span class="radio-left">
+                      <span *ngIf="data.languageName == 'Chinese'">天鹅座</span>
+                      <span *ngIf="data.languageName == 'English'">English</span>
+                      <!-- {{data.languageName}} -->
+                      <span *ngIf="data.languageIsoCode !=null">
+                        <span *ngIf="appliedLang == data.languageIsoCode && data.checked == false">(Applied)</span>
+                        <span *ngIf="(preferredLang == data.languageIsoCode && data.checked == true) || data.checked == true">(Preferred)</span>
+                      </span>
+                    </span>
+                 </span>
+                    
+                </div>
+                
+              </div>
+            </div> 
+          </div>
+  
+          <div class="modal-footer d-flex justify-content-right ">
+            <div class="text-center">
+              <button type="button" class="btn btn-success ml-3 btn-apply" (click)="onApply()">{{"HOME.APPLY" | translate}}</button>
+              <button class="btn btn-primary ml-3 mr-1 btn-savepreference" (click)="onsave()">{{"HOME.SAVEPREFERENCE" | translate}}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <jd-apply *ngIf="apply"  (closedApply)="onCloseApply($event)">
+</jd-apply>
+<jd-save-preference *ngIf="savepreference"  (closedSave)="onCloseSave($event)">
+</jd-save-preference>

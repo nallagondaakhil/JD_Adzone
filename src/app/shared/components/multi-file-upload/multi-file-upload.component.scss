@@ -1,0 +1,18 @@
+.modal-content {
+    max-height: 500px;
+}
+.text-truncate {
+    // width: 70%;
+    width: 400px;
+}
+.uxf-label{
+    font-size: .95rem;
+}
+button{
+    font-size: .8rem;
+}
+@media (min-width: 576px) {
+    .modal .modal-title {
+        font-size: .99rem !important;
+    }
+  }

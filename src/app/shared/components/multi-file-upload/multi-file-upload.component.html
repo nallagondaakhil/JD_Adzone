@@ -1,0 +1,149 @@
+<div class="form-group " *ngIf="!onlyPopup">
+  <label for="file-upload" class="uxf-label">{{ label }}
+    <span *ngIf="markAsRequired" aria-label="required field" class="uxf-is-required">*</span>
+  </label>
+  <button type="button" class="form-control btn btn-secondary text-left" (click)="openModal()">
+    <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      viewBox="0 0 24 24">
+      <path
+        d="M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5a2.5 2.5 0 0 1 0-5H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z">
+      </path>
+      <path fill="none" d="M0 0h24v24H0V0z"></path>
+    </svg>
+    {{buttonLabel}}
+  </button>
+</div>
+<div class="modal" *ngIf="showModal" tabindex="-1" role="dialog" aria-labelledby="fileUpload">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title "> File Upload </h5>
+        <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close" (click)="onClose()">
+          <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewbox="0 0 24 24">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+            </path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-auto col-sm mb-3">
+            <div class="d-flex justify-content-center">
+              <div class="">
+                <input type="file" [multiple]="multiple" [disabled]="!multiple && (selectedFiles?.length || files?.length)" (change)="onSelectFiles($event)" class="custom-file-input "
+                  id="file-input-uxf2" [accept]="acceptTypes" />
+                <label *ngIf="multiple || !(selectedFiles?.length || files?.length)" fileDragDrop (filesChangeEmiter)="onFileChange($event)"
+                  class="btn btn-secondary uxf-file-input justify-content-center" for="file-input-uxf2">
+                  <svg focusable="false" aria-hidden="true" fill="#666666" height="50" width="50"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mt-3">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"></path>
+                  </svg>
+                  <small class="ml-3 text-muted"><br> Drag files to upload or Choose file<br></small>
+                  <small *ngIf="!allowAllType && !isBanner">(Supported files are xlsx, xls, doc,
+                    docx, pdf, jpg, jpeg, png)<br>(Max size: 5MB)</small>
+                    <small *ngIf="isBanner">(Supported files are  jpg, jpeg, png. Please ensure all images are in the dimensions 1197 X 335.)<br>(Max size: 5MB)</small>
+                </label>
+                <label *ngIf="!multiple && (selectedFiles?.length || files?.length)"
+                  class="btn btn-secondary uxf-file-input justify-content-center" for="file-input-uxf2">
+                  <svg focusable="false" aria-hidden="true" fill="#666666" height="50" width="50"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mt-3">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"></path>
+                  </svg>
+                  <small class="ml-3 text-muted" *ngIf="!isBanner"><br> Drag files to upload or Choose file<br>(Supported files are xlsx, xls, doc,
+                    docx, pdf, jpg, jpeg, png)<br>(Max size: 5MB)</small>
+                  <small class="ml-3 text-muted" *ngIf="isBanner"><br> Drag files to upload or Choose file<br>(Supported files are jpg, jpeg, png). Please ensure all images are in the dimensions 1197 X 335.)<br>(Max size: 5MB)</small>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col col-sm">
+            <ng-container *ngIf="files?.length">
+              <div *ngFor="let item of files" class="mb-2">
+                <div class="d-flex ">
+                  <div class="pr-3">
+                    <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+                      width="40" height="40" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div style="width: calc(100% - 56px);">
+                    <div class="d-flex justify-content-between">
+                      <div class="text-truncate" *ngIf="!showDownload">{{item.fileName }} </div>
+                      <a href="javascript:void(0);" (click)="downloadDocument(item)"><div class="text-truncate" *ngIf="showDownload">{{item.fileName }} </div></a>
+                      <svg (click)="onRemoveOldFile(item)" focusable="false" aria-hidden="true" fill="#666666"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                        </path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <div *ngFor="let item of selectedFiles" class="mb-2">
+              <div class="d-flex ">
+                <div class="pr-3">
+                  <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="40"
+                    height="40" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z">
+                    </path>
+                  </svg>
+                </div>
+                <div style="width: calc(100% - 56px);">
+                  <div class="d-flex justify-content-between">
+                    <div class="text-truncate">{{item.name }} </div>
+                    <div>
+                    <span class="pl-2">{{ item.size }}</span>
+                    <svg [class.disabled]="item.uploadStatus === 'inprogress'" (click)="onRemoveFile(item)"
+                      focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24">
+                      <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                      </path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  </div>
+                  </div>
+                  <div class="progress progress-sm" style="height: 5px;">
+                    <div class="progress-bar bg-success" role="progressbar" attr.aria-valuenow="{{ item.progress }}"
+                      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: item.progress + '%' }"
+                      [ngClass]="{'bg-success': item.uploadStatus === 'inprogress' || item.uploadStatus === 'completed', 'bg-danger': item.uploadStatus === 'failed'}">
+                      {{ item.progress }}% done
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center py-3">
+          <button class="btn btn-info" [disabled]="processing" (click)="onCloseSave()">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" *ngIf="errMsg" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">File uploading is in progress. Do not refresh the page or click back button</h4>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,23 @@
+<form novalidate="novalidate" #documentTypeUpload="ngForm">
+    <div *ngIf="model">
+        <div class="row ml-3 pt-2">
+            <!-- <div class="col-7">
+                <jd-multi-file-upload [label]="'Thumbnail Image'" [markAsRequired]="true" required [files]="thumbnailFile" [fileTypes]="fileUplodExtention" [uploadFunctionWithParam]="docthumb" [param]="model" [multiple]="false" [showDownload]="true" 
+                    (onComplete)="onthumbUpload($event)" [showDownload]="true" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+                </jd-multi-file-upload>
+                <label class="error " *ngIf="isNotFile1">
+                    File is required.
+                </label>
+            </div> -->
+            
+            <div class="col-7">
+                <jd-multi-file-upload [label]="'Upload File'" [markAsRequired]="true" required [files]="uploadedFile" [fileTypes]="fileUplodExtention" [uploadFunctionWithParam]="docFn" [param]="model" [showDownload]="true" 
+                    (onComplete)="onUpload($event)" [showDownload]="true" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+                </jd-multi-file-upload>
+                <label class="error " *ngIf="isNotFile">
+                    File is required.
+                </label>
+            </div>
+        </div>
+    </div>
+</form>

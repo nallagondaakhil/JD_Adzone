@@ -1,0 +1,12 @@
+<ng-container *ngIf="type == 2">
+    <div *ngFor="let error of errors">
+      <div *ngIf="
+          control &&
+          control.invalid &&
+          (control.dirty || control.touched) &&
+          control.hasError(error.key)
+        ">
+        <label class="error"> {{ error.message }} </label>
+    </div>
+    </div>
+  </ng-container>

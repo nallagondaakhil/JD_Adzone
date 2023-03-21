@@ -1,0 +1,22 @@
+::placeholder {
+    color: #837c7c ;
+    font-size: .8rem !important;
+    
+  }
+  .button-min-width{
+    min-width: 3em;
+  }
+  .heder-font{
+    font-size: 1.2rem !important;
+  }
+  .sub-heder-font{
+    font-size: .99rem !important;
+  }
+  
+  .sub-condent-fornt{
+    font-size: .95 rem!important;
+  }
+  ::ng-deep .btn-secondary,::ng-deep .btn-primary,::ng-deep .btn-outline-primary,::ng-deep .btn-info,::ng-deep .btn-outline-info,::ng-deep .btn-success,::ng-deep .btn-danger,::ng-deep .btn-outline-primary{
+    font-size: .975rem;
+    padding: .275rem .725rem ;
+  }

@@ -1,0 +1,50 @@
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="addeditbanner" *ngIf="uploadPopup">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="banner">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Upload Banner Images</b></h5>
+                <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close"
+                    (click)="onClose()">
+                    <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewbox="0 0 24 24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                        </path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <form action="" novalidate="novalidate" #addeditbannerimage="ngForm">
+                <div class="modal-body" *ngIf="model">
+                    <div class="">
+                        <div class="row" *ngFor="let item of listModel;let i = index">
+                            <jd-multi-file-upload class="col-22" [files]="bannerDocs[i]"  [uploadFunctionWithParam]="bannerDocFn" [param]="(i+1)" [fileTypes]="fileUplodeExtention" [multiple]="false"
+                                [label]="'Attach Banner '+(i+1)" (onComplete)="onUpload($event, 'banner',i+1)" [isBanner]="true" [deleteBanner]="true" [bannerId]="model.bannerId" [showDownload]="true">
+                            </jd-multi-file-upload>
+                            <div class="col-2 d-flex align-items-center pl-0" (click)="changeStatus(item)" *ngIf="item.activeFlag == 1 && item?.fileName?.length > 0">
+                                <span class="active-change mt-2" title="Active"><svg focusable="false" aria-hidden="true" fill="#367c2b" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span>
+                            </div> 
+                            <div class="col-2 d-flex align-items-center pl-0"  (click)="changeStatus(item)" *ngIf="item.activeFlag == 0 && item?.fileName?.length > 0">
+                                <span class="active-change mt-2" title="Inactive"><svg focusable="false" aria-hidden="true" fill="#c21020" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span>
+                            </div>                       
+                        </div>
+                        <!-- <div class="row"  *ngFor="let number of remainingCount;let i = index">
+                            <jd-multi-file-upload class="col-22" [files]="bannerDocs[number]"  [uploadFunctionWithParam]="bannerDocFn" [param]="number" [fileTypes]="fileUplodeExtention" [multiple]="false"
+                                [label]="'Attach Banner '+number" (onComplete)="onUpload($event, 'banner',number)" [isBanner]="true " >
+                            </jd-multi-file-upload>                         
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-end ">
+                    <div class="text-center">
+                        <button class="btn btn-primary ml-3" (click)="onPreview()">Preview</button>
+                        <button type="button" class="btn btn-secondary ml-3" (click)="onClose()">Cancel</button>
+                        <button class="btn btn-primary ml-3" (click)="onClose()">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<jd-preview-banner *ngIf="showPreview" [category_Id]="category_Id"></jd-preview-banner>

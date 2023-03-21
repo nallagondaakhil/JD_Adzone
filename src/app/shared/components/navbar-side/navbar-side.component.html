@@ -1,0 +1,996 @@
+<nav class="uxf-side-nav uxf-side-nav-collapsed">
+  <ul class="nav card flex-column uxf-side-nav-collapsed pointer ml-4" *ngIf="dealerViewEnable != 'true'">
+    <li *ngFor="let menu of menuItems" class="nav-item cursor-pointer" routerLinkActive="active-parent" [routerLinkActiveOptions]="{exact: true}"
+      >
+      <!-- {{menu | json}} -->
+      <a class="nav-link" [routerLink]=menu.link (click)="onMenuItemClick(menu)" *ngIf="menu.name!='Dashboard'" oncontextmenu="return false;">
+        {{menu.name}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      
+      <!-- <div ><p *ngFor="let subchildMenu of subchildMenuItem" >{{subchildMenu.name}}</p></div> -->
+      
+      <ng-container [ngTemplateOutlet]="subMenuItem" [ngTemplateOutletContext]="{'childMenu': subMenuItem}">
+      </ng-container>
+      <!-- <ng-container [ngTemplateOutlet]="subchildMenuFourthItem" [ngTemplateOutletContext]="{'childFourthMenu': subchildMenuFourthItem}">
+      </ng-container> -->
+     
+      <!-- <ul class="nav flex-column" *ngIf="subMenuItem && subMenuItem.length">
+        <li *ngFor="let subMenu of subMenuItem" class="nav-item cursor-pointer">
+          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+            (click)="onMenuItemClick(subMenu)">
+            {{subMenu.name}}
+          </a>
+        </li>
+      </ul> -->
+    </li>
+  </ul>
+  <ul class="nav card flex-column uxf-side-nav-collapsed pointer ml-4" *ngIf="dealerViewEnable == 'true'">
+    <div class="" *ngIf="langMang == false">
+      <li *ngFor="let menu of menuItems" class="nav-item cursor-pointer"
+      [ngClass]="{'active-parent': (subchildMenuItem && menu.isActive)}">
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Brochures'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.BROUCHERS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Advertisment'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.ADVERTISMENT" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Social and Online promotion'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.SOCIALANDNLINEPROMOTION" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Point of Sale'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.POINTOFSALE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Campaign material'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.CAMPAIGNMATERIAL" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Photographs'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.PHOTOGRAPHS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Videos'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.VIDEOS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Others'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.OTHERS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Documents'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.DOCUMENTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Audios'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AUDIOS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Ag Parts'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AGPARTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Turf Parts'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.TURFPARTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Maintenance Parts & Accessories'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.ACCMAINTANCE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'market1'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.MARKET1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'test'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.SMALLTEST" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'UnsupportedType'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.UNSUPPORTTYPE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Sublime editor'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.SUBLIMEEDITOR" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'aaaa'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AAAA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'aa'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Service'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.SERVICES" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'NewService'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.NEWSERVICE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Agritech'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AGRITECH" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Sample'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.SAMEPLE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Marketing materials'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.MARKETINGMATERIALS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Check'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.CHECK" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'New'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.NEWMENU" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Testing'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.TESTING" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Java'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.JAVA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'C++'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.C++" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Asia pacific'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.ASIAPACIFIC" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'AME1'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AME1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Upload Testing data'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.UPLOADTESTINGDATA1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'china'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.CHINA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Sub Uploads'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.SUBUPLOAD" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'AME'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AME" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'AP1'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AP1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'ame'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AMES" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'aaaaa'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.AAAAA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'bbbb'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.BBBB" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Vehicle'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.VEHICLE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Accounts'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.ACCOUNTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Demo Test P1'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.DEMOTESTP1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'banking Sector'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.BANKINGSECTOR" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Bank'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.BANK" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Test'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.TEST" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'check'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.CHECK" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Contact Us'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.CONTACTUSLABEL" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Wishlist'" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{"HOME.WISHLISTLABEL" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+  
+      
+      <!-- <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{menu.name}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a> -->
+      
+      <!-- <div ><p *ngFor="let subchildMenu of subchildMenuItem" >{{subchildMenu.name}}</p></div> -->
+      
+      <ng-container [ngTemplateOutlet]="subMenuItem" [ngTemplateOutletContext]="{'childMenu': subMenuItem}">
+      </ng-container>
+      <!-- <ul class="nav flex-column" *ngIf="subMenuItem && subMenuItem.length">
+        <li *ngFor="let subMenu of subMenuItem" class="nav-item cursor-pointer">
+          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+            (click)="onMenuItemClick(subMenu)">
+            {{subMenu.name}}
+          </a>
+        </li>
+      </ul> -->
+      </li>
+    </div>
+    <div class="" *ngIf="langMang == true">
+      <li *ngFor="let menu of menuItems" class="nav-item cursor-pointer"
+      [ngClass]="{'active-parent': (subchildMenuItem && menu.isActive)}">
+      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" (click)="onMenuItemClick(menu)" oncontextmenu="return false;">
+        {{menu.name}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <ng-container [ngTemplateOutlet]="subMenuItem" [ngTemplateOutletContext]="{'childMenu': subMenuItem}">
+      </ng-container>
+      </li>
+     
+    </div>
+    
+  </ul>
+  
+    <div *ngIf="endservice.showMenu && endservice.showFilter" >
+      <div class="" *ngIf="filterData">
+      <div class="card sidebar-card mt-5 ml-4">
+        <div class="card-body" *ngIf="model" >
+          <h5 class="card-title"><span class="sidebar-lefttext">{{"HOME.FILTERS" | translate}}</span>
+            <span class="sidebar-righttext" (click)="onClearAll()">{{"HOME.CLEARALL" | translate}}</span></h5>
+          <form novalidate="novalidate" #filterOption="ngForm">  
+          <div class="mt-3">
+            <jd-select-list #languageType="ngModel" name="languageType" [label]="'HOME.LANGUAGE' | translate" [multiple]="false" [itemSource]="languageoptions"  [(ngModel)]="model.languageId" (ngModelChange)="languageChange($event)" [displayProperty]="'name'" [control]="languageType.control" [valueProperty]="'id'">
+            </jd-select-list>
+          </div>
+          <div class="mt-3">
+            <jd-select-list #documentFileType="ngModel" name="documentFileType" [label]="'HOME.FILETYPE' | translate" [multiple]="false" [itemSource]="documentfileoptions"  [(ngModel)]="model.documentFileType" (ngModelChange)="typeChange($event)" [displayProperty]="'documentTypeName'" [control]="documentFileType.control" [valueProperty]="'documentTypeId'"> 
+            </jd-select-list>
+          </div>
+          <div class="mt-3" *ngIf="lang == true">
+            <jd-select-list #documentSortName="ngModel"  name="documentSortName"  [label]="'HOME.SORTBY' | translate"  
+            [itemSource]="sortOptions" [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+                [multiple]="false" [displayProperty]="'sortName'" [control]="documentSortName.control" [valueProperty]="'sortId'" ></jd-select-list>
+            <!-- <jd-select-list   name="documentSortName"  [label]="'Sort By'"   [itemSource]="sortOptions"  [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+                  [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" ></jd-select-list> -->
+          </div>
+          <div class="mt-3" *ngIf="lang == false">
+            <jd-select-list #documentSortName="ngModel"  name="documentSortName"  [label]="'HOME.SORTBY' | translate"  
+            [itemSource]="sortOptionsLang" [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+                [multiple]="false" [displayProperty]="'sortName'" [control]="documentSortName.control" [valueProperty]="'sortId'" ></jd-select-list>
+            <!-- <jd-select-list   name="documentSortName"  [label]="'Sort By'"   [itemSource]="sortOptions"  [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+                  [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" ></jd-select-list> -->
+          </div>
+          </form> 
+          <!-- <div class="mt-3">
+            <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderChanged($event)"></ngx-slider>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  
+      <div class="card sidebar-card mt-3 ml-4 d-none">
+        <div class="card-body">
+          <h5 class="card-title user-text">You are logged in a user <span class="user-textid">{{currRACFID}}</span> </h5>
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-primary mr-5 btn-padding" (click)="onLogout()">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card sidebar-card mt-3 ml-4 d-none">
+        <div class="card-body">
+          <div class="d-none">
+            <p class="contact-support">Technical and content support:
+              <a class="contact-textid"> SupportAdzone@johndeere.com</a>
+            </p>
+          </div>
+          <div class="mt-3">
+            <p class="contact-support">Support Brochure Orders:
+              <a class="contact-textid"> johndeere@arvato.com </a>
+            </p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+ 
+  <div *ngIf="showOrderFilter && endservice.downloadFilter" class="order_filter">
+    <div class="card sidebar-card mt-3 ml-4">
+      <div class="card-body">
+        <h5 class="card-title"><span class="sidebar-lefttext">{{"HOME.FILTERS" | translate}}</span>
+          <span class="sidebar-righttext" (click)="myorderClear();">
+          {{"HOME.CLEARALL" | translate}}</span>
+        </h5>
+
+        <div class="mt-4">
+          <form novalidate="novalidate" #orderFilterOption="ngForm">  
+            <!-- <div class="filter_label">Order Status</div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" value="Delivered" id="checkbox1" (click)="deliveredOrder($event);">
+              <label class="custom-control-label pt-2" for="checkbox1">Delivered</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" value="Cancelled" id="checkbox2" (click)="deliveredOrder($event);">
+              <label class="custom-control-label pt-2" for="checkbox2">Cancelled</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" value="Processed" id="checkbox3" (click)="deliveredOrder($event);">
+              <label class="custom-control-label pt-2" for="checkbox3">Processed</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" value="Pending" id="checkbox4" (click)="deliveredOrder($event);">
+              <label class="custom-control-label pt-2" for="checkbox4">Pending</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" value="On-hold" id="checkbox8" (click)="deliveredOrder($event);">
+              <label class="custom-control-label pt-2" for="checkbox8">On-hold</label>
+            </div> -->
+            <div class="filter_label mt-4">{{"HOME.ORDERTIME" | translate}}</div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" id="checkbox5" value="60" (click)="last60days($event);">
+              <label class="custom-control-label pt-2" for="checkbox5">{{"HOME.LAST60DAYS" | translate}}</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" id="checkbox6" value="30" (click)="last30days($event);">
+              <label class="custom-control-label pt-2" for="checkbox6">{{"HOME.LAST30DAYS" | translate}}</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input myordercheckbox" id="checkbox7" value="0" (click)="older($event);">
+              <label class="custom-control-label pt-2" for="checkbox7">{{"HOME.ALL" | translate}}</label>
+            </div>
+            <!-- <div class="mt-3">
+              <jd-select-list #products="ngModel"  name="products"  [label]="'Order Type'"  [itemSource]="documentOptions" [(ngModel)]="orderModel.productFlag" (ngModelChange)="productChange($event)" 
+                  [multiple]="false" [displayProperty]="'name'" [control]="products.control" [valueProperty]="'id'" ></jd-select-list>
+             
+            </div> -->
+        </form> 
+        </div>
+        <!-- <div class="mt-3">
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderChanged($event)"></ngx-slider>
+        </div> -->
+      </div>
+    </div>
+    <!-- <div class="card sidebar-card mt-3 ml-4 ">
+      <div class="card-body">
+        <h5 class="card-title"><span class="sidebar-lefttext">Sort by price</span>
+          
+        </h5>
+        <div class="mt-4">
+          <form novalidate="novalidate" #orderFilterOption="ngForm">  
+            <div class="mt-3 custom-slider">
+              <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderChanged(minValue,maxValue)"></ngx-slider>
+            </div>
+          </form> 
+        </div>
+        
+      </div>
+    </div> -->
+  </div>
+</nav>
+<ng-template #subMenuItem let-childMenu=childMenu>
+  <ul class="nav flex-column">
+    <div class="" *ngIf="langMang == false">
+      <li *ngFor="let subMenu of subChildMenu" class="nav-item cursor-pointer"
+      [ngClass]="{'active-parent': (fouthchildmenu && subMenu.isActive)}">
+        <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 1'">
+        {{"HOME.TEST1" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+        <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Test 1'">
+        {{"HOME.TEST1" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 2'">
+        {{"HOME.TEST2" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Test1'">
+        {{"HOME.TEST1" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Test2'">
+        {{"HOME.TEST2" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Testing'">
+        {{"HOME.TESTING" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'img'">
+        {{"HOME.IMG" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'exe'">
+        {{"HOME.EXE" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'bbbb'">
+        {{"HOME.BBBB" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'ccccc'">
+        {{"HOME.CCCCC" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'dddd'">
+        {{"HOME.DDDD" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Warranty Service'">
+        {{"HOME.WARRANTYSERVICE" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Non-Warranty Service'">
+        {{"HOME.NON-WARRANTYSERVICE" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Service'">
+        {{"HOME.SERVICES" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Agritech'">
+        {{"HOME.AGRITECH" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample1'">
+        {{"HOME.SAMEPLE" | translate}}1
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample2'">
+        {{"HOME.SAMEPLE" | translate}}2
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample3'">
+        {{"HOME.SAMEPLE" | translate}}3
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'sample4'">
+        {{"HOME.SAMEPLE" | translate}}4
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Tractor'">
+        {{"HOME.TRACTOR" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Harvester'">
+        {{"HOME.HARVESTER" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'implements'">
+        {{"HOME.IMPLEMENTS" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'spare parts'">
+        {{"HOME.SPAREPARTS" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Check'">
+        {{"HOME.CHECK" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'New'">
+        {{"HOME.NEWMENU" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Java'">
+        {{"HOME.JAVA" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'C++'">
+        {{"HOME.C++" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sublime editor'">
+        {{"HOME.SUBLIMEEDITOR" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'upload test'">
+        {{"HOME.UPLOADTEST" | translate}} 
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'upload data'">
+  
+        {{"HOME.UPLOADDATA" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'AME2'">
+  
+        {{"HOME.AME2" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample A'">
+  
+        {{"HOME.SAMPLEA" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample B'">
+  
+        {{"HOME.SAMPLEB" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample C'">
+  
+        {{"HOME.SAMPLEC" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'AP2'">
+  
+        {{"HOME.AP2" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'aaaaa'">
+  
+        {{"HOME.AAAAA" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'ame'">
+  
+        {{"HOME.AMES" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Car 1'">
+        {{"HOME.CAR1" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Creditor'">
+        {{"HOME.CREDITOR" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Debitor'">
+        {{"HOME.DEBITOR" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Loan'">
+        {{"HOME.LOAN" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Eroo'">
+        {{"HOME.EROO" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Bank 1'">
+        {{"HOME.BANK1" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+      <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Bank'">
+        {{"HOME.BANK" | translate}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+      </a>
+        <!-- <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+          (click)="onsubMenuItemClick(subMenu)" style="max-width:11rem;" oncontextmenu="return false;">
+          {{subMenu.documentChildName}}
+        </a> -->
+        <!-- <ng-container [ngTemplateOutlet]="subMenuItem" [ngTemplateOutletContext]="{'childMenu': subMenu.children}">
+        </ng-container> -->
+        <ng-container [ngTemplateOutlet]="subchildMenuFourthItem" [ngTemplateOutletContext]="{'childFourthMenu': subchildMenuFourthItem}">
+        </ng-container>
+      </li>
+    </div>
+    <div class="" *ngIf="langMang == true">
+     
+      <li *ngFor="let subMenu of subChildMenu" class="nav-item cursor-pointer"
+      [ngClass]="{'active-parent': (fouthchildmenu && subMenu.isActive)}">
+        <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubchildMenuItemClick(subMenu)" >
+        {{subMenu.documentChildName}}
+        <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+  
+      </a>
+      <ng-container [ngTemplateOutlet]="subchildMenuFourthItem" [ngTemplateOutletContext]="{'childFourthMenu': subchildMenuFourthItem}">
+      </ng-container>
+      </li>
+    </div>
+   
+  </ul>
+</ng-template>
+
+<ng-template #subchildMenuFourthItem let-childFourthMenu=childFourthMenu>
+  <ul class="nav flex-column">
+    <!-- <p>{{fouthchildmenu}}</p> -->
+  <div class="" *ngIf="langMang == false">
+    <li *ngFor="let subChildMenu of fouthchildmenu" class="nav-item cursor-pointer">
+      <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload test 1'">
+      {{"HOME.UPLOADDATATEST1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload test 2'">
+      {{"HOME.UPLOADDATATEST2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload data 1'">
+      {{"HOME.UPLAODDATA1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload data with 7'">
+      {{"HOME.UPLOADDATA7" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'aaaaa'">
+      {{"HOME.AAAA" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'ame'">
+      {{"HOME.AMES" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample A1'">
+      {{"HOME.SAMPLEA1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'SampleA4'">
+      {{"HOME.SAMPLEA4" | translate}}
+    </a>
+    
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample B1'">
+      {{"HOME.SAMPLEB1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample c1'">
+      {{"HOME.SAMPLEC1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample c2'">
+      {{"HOME.SAMPLEC2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample c3'">
+      {{"HOME.SAMPLEC3" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'aaaaaa'">
+      {{"HOME.AAAAAA" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 2'">
+      {{"HOME.CAR2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 3'">
+      {{"HOME.CAR3" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 4'">
+      {{"HOME.CAR4" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 5'">
+      {{"HOME.CAR5" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 6'">
+      {{"HOME.CAR6" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 7'">
+      {{"HOME.CAR7" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 8'">
+      {{"HOME.CAR8" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 9'">
+      {{"HOME.CAR9" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 10'">
+      {{"HOME.CAR10" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 11'">
+      {{"HOME.CAR11" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 12'">
+      {{"HOME.CAR12" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Creditor one'">
+      {{"HOME.CREDITOR1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Creditor two'">
+      {{"HOME.CREDITOR2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Creditor three'">
+      {{"HOME.CREDITOR3" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Debitor one'">
+      {{"HOME.DEBITOR1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Debitor two'">
+      {{"HOME.DEBITOR2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Loan 1'">
+      {{"HOME.LOAN1" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Ero 2'">
+      {{"HOME.ERO2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Bank 2'">
+      {{"HOME.BANK2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Bank'">
+      {{"HOME.BANK" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Test 2'">
+      {{"HOME.TEST2" | translate}}
+    </a>
+    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'tes1'">
+      {{"HOME.TES1" | translate}}
+    </a>
+    
+  
+    
+      <!-- <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+        (click)="onsubMenuItemClick(subMenu)" style="max-width:11rem;" oncontextmenu="return false;">
+        {{subMenu.documentChildName}}
+      </a> -->
+      <!-- <ng-container [ngTemplateOutlet]="subMenuItem" [ngTemplateOutletContext]="{'childMenu': subMenu.children}">
+      </ng-container> -->
+    </li>
+  </div>
+  <div class="" *ngIf="langMang == true">
+    <li *ngFor="let subChildMenu of fouthchildmenu" class="nav-item cursor-pointer">
+      <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+      (click)="onsubMenuItemClick(subChildMenu)">
+      {{subChildMenu.nameChildmenu}}
+    </a>
+    </li>
+  </div>
+ 
+  </ul>
+</ng-template>
+
+<!-- Mobile responsive filter -->
+<div *ngIf="endservice.showMenu && endservice.showFilter">
+  <div class="filter-btn " (click)="filterOptionVisible()">
+    <p>{{"HOME.FILTERS" | translate}}</p>
+  </div>
+  <div *ngIf="filterMobileView" class="MyOrdercard" >
+    <div class="card sidebar-card mt-5 ml-4">
+      <div class="card-body" >
+        <h5 class="card-title"><span class="sidebar-lefttext">{{"HOME.FILTERS" | translate}}</span>
+          <span class="sidebar-righttext" (click)="onClearAll()">{{"HOME.CLEARALL" | translate}}</span></h5>
+      <form novalidate="novalidate" #filterOption="ngForm">  
+        <div class="mt-3">
+          <jd-select-list #languageType="ngModel" name="languageType" [label]="'HOME.LANGUAGE' | translate" [multiple]="false" [itemSource]="languageoptions" [(ngModel)]="model.languageId" 
+          (ngModelChange)="languageChange($event)" [displayProperty]="'name'" [control]="languageType.control" [valueProperty]="'id'">
+          </jd-select-list>
+        </div>
+        <div class="mt-3">
+          <jd-select-list #documentFileType="ngModel" name="documentFileType" [label]="'HOME.FILETYPE' | translate" [multiple]="false" 
+          [itemSource]="documentfileoptions" [(ngModel)]="model.documentFileType" (ngModelChange)="typeChange($event)" 
+          [displayProperty]="'documentTypeName'" [control]="documentFileType.control" [valueProperty]="'documentTypeId'"> 
+          </jd-select-list>
+        </div>
+        <div class="mt-3" *ngIf="lang == true">
+          <jd-select-list #documentSortName="ngModel"  name="documentSortName"  [label]="'HOME.SORTBY' | translate"  
+          [itemSource]="sortOptions" [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+              [multiple]="false" [displayProperty]="'sortName'" [control]="documentSortName.control" [valueProperty]="'sortId'" ></jd-select-list>
+          <!-- <jd-select-list   name="documentSortName"  [label]="'Sort By'"   [itemSource]="sortOptions"  [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" ></jd-select-list> -->
+        </div>
+        <div class="mt-3" *ngIf="lang == false">
+          <jd-select-list #documentSortName="ngModel"  name="documentSortName"  [label]="'HOME.SORTBY' | translate"  
+          [itemSource]="sortOptionsLang" [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+              [multiple]="false" [displayProperty]="'sortName'" [control]="documentSortName.control" [valueProperty]="'sortId'" ></jd-select-list>
+          <!-- <jd-select-list   name="documentSortName"  [label]="'Sort By'"   [itemSource]="sortOptions"  [(ngModel)]="model.documentSortName" (ngModelChange)="sortChange($event)" 
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" ></jd-select-list> -->
+        </div>
+        
+      </form> 
+        <!-- <div class="mt-3">
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderChanged($event)"></ngx-slider>
+        </div> -->
+        <!-- <div class="col-24 div-menu-filter-btn d-flex justify-content-between">
+          <div class="col-1" ></div>
+          <div class="col-10">          
+            <button class="btn apply-btn" type="submit" (click)="filterBack()">Apply Filter</button>
+          </div>
+        </div> -->
+  
+        <div class="row justify-content-center" >
+          <div class="col-3 div-btn">
+            <button class="btn btn-secondary cancel-btn"   (click)="filterBack()">{{"HOME.CANCEL" | translate}}</button>
+            </div><div class="col-3 div-btn">
+            <button class="btn apply-btn" type="submit" (click)="Applyfilter()">{{"HOME.APPLYFILTER" | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+</div>
+
+ <!-- Mobile responsive My order -->
+ <div class="container-fluid" *ngIf="showOrderFilter && endservice.downloadFilter">
+   <div *ngIf="myOrderMobileFilter" class="MyOrdercard card sidebar-card mt-3 ml-4">
+
+    <div class="card-body">
+      <h5 class="card-title"><span class="sidebar-lefttext">{{"HOME.FILTERS" | translate}}</span>
+        <span class="sidebar-righttext" (click)="myorderClear();">{{"HOME.CLEARALL" | translate}}</span>
+      </h5>
+
+
+      <div class="mt-4">
+        <form novalidate="novalidate" #orderFilterOption="ngForm">  
+
+        <div class="d-none" *ngIf="statusOrderContainer">
+        <div class="filter_label" *ngIf="orderStatusHead"(click)="orderStatusDrop()"><label style="width: 90%;">Order Status</label>
+          <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg>
+        </div>
+
+        <div class="order-status-dropdown" *ngIf="orderStatusDropdown">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckbox" value="Delivered" id="checkbox11" (click)="deliveredOrderMV($event);">
+            <label class="custom-control-label filter_label pt-2" for="checkbox11">Delivered</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckbox" value="Cancelled" id="checkbox12" (click)="deliveredOrderMV($event);">
+            <label class="custom-control-label filter_label pt-2" for="checkbox12">Cancelled</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckbox" value="Processed" id="checkbox13" (click)="deliveredOrderMV($event);">
+            <label class="custom-control-label filter_label pt-2" for="checkbox13">Processed</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckbox" value="Pending" id="checkbox14" (click)="deliveredOrderMV($event);">
+            <label class="custom-control-label filter_label pt-2" for="checkbox14">Pending</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckbox" value="On-hold" id="checkbox18" (click)="deliveredOrderMV($event);">
+            <label class="custom-control-label filter_label pt-2" for="checkbox18">On-hold</label>
+          </div>
+          <div class="row justify-content-center" >
+            <div class="col-3 div-btn">
+              <button class="btn btn-secondary cancel-btn"   (click)="cancelFilter()">Cancel</button>
+              </div><div class="col-3 div-btn">
+              <button class="btn apply-btn" type="submit" (click)="mobileFilterSub($event)">Apply Filter</button>
+            </div>
+          </div> 
+        
+        </div>
+      </div>
+
+
+      <div *ngIf="orderTimeContainer">
+        <div class="filter_label mt-4" *ngIf="orderTimeHead" (click)="orderTimeDrop()"><label style="width: 90%;">{{"HOME.ORDERTIME" | translate}}</label>
+          <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg>
+        </div>
+        
+        <div class="oder-time-dropdown" *ngIf="orderTimeDropdown">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckboxMV" id="checkbox15" value="60" (click)="Days60Uncheck($event);" >
+            <label class="custom-control-label filter_label pt-2" for="checkbox15">{{"HOME.LAST60DAYS" | translate}}</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckboxMV" id="checkbox16" value="30" (click)="Days30Uncheck($event);" >
+            <label class="custom-control-label filter_label pt-2" for="checkbox16">{{"HOME.LAST30DAYS" | translate}}</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input myordercheckboxMV" id="checkbox17" value="0" (click)="Days0Uncheck($event);" >
+            <label class="custom-control-label filter_label pt-2" for="checkbox17">{{"HOME.ALL" | translate}}</label>
+          </div>
+          <div class="row justify-content-center" >
+            <div class="col-3 div-btn"  >
+              <button class="btn btn-secondary cancel-btn"   (click)="cancelFilter()">{{"HOME.CANCEL" | translate}}</button>
+              </div><div class="col-3 div-btn" >
+              <button class="btn apply-btn" type="submit" (click)="mobileOrderTime($event)">{{"HOME.APPLYFILTER" | translate}}</button>
+            </div>
+          </div> 
+        </div>
+      </div>
+          <!-- <div class="mt-3" *ngIf="orderTypeContainer">
+            <div class="filter_label mt-4" *ngIf="orderTypeHead" (click)="orderTypeDrop()"><label style="width: 90%;">Order Type</label>
+              <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg>           
+            </div>
+
+            <div class="orderTypeContainer" *ngIf="orderTypeDropdown" >
+              <jd-select-list #products="ngModel"  name="products"  [label]="'Order Type'"  [itemSource]="documentOptions" [(ngModel)]="orderModel.productFlag" (ngModelChange)="productChange($event)" 
+              [multiple]="false" [displayProperty]="'name'" [control]="products.control" [valueProperty]="'id'" ></jd-select-list>
+            </div>
+        </div> -->
+        <!--<div class="mt-3" *ngIf="sortByContainer">
+          <div class="filter_label mt-4" *ngIf="sortByHead" (click)="sortBy()"><label style="width: 90%;">Sort By</label>
+            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg>         
+          </div>
+
+            <div  class="sort-by-dropdown mt-3 ml-4 " *ngIf="sortByDropdown">
+              <div class="card-body">
+                <h5 class="card-title"><span class="sidebar-lefttext">Sort by price</span>
+                   <span class="sidebar-righttext">Clear
+                    All</span> -->
+               <!-- </h5>
+                <div class="mt-4">
+                  <form novalidate="novalidate" #orderFilterOption="ngForm">  
+                    <div class="mt-3 custom-slider">
+                      <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderChanged(minValue,maxValue)"></ngx-slider>
+                    </div>
+                  </form> 
+                </div>
+              </div>
+            </div>
+            
+        </div> -->
+        
+      </form> 
+    </div>
+
+      <!-- <div class="mt-3">
+        <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="sliderChanged($event)"></ngx-slider>
+      </div> -->
+    </div>
+  </div>
+  
+
+ </div>
+ 

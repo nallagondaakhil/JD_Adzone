@@ -1,0 +1,30 @@
+<div class="form-group">
+  <label class="uxf-label" *ngIf="!disableLable">{{label}}
+    <span *ngIf="markAsRequired" aria-label="required field" class="uxf-is-required" >*</span>
+  </label>
+  <input [value]="value !== undefined ? value : ''" (input)="changeValue($event)" class="form-control" [disabled]="disabled"
+    [maxLength]="control?.errors?.maxlength?.requiredLength ? control.errors.maxlength.requiredLength : 300"
+    (blur)="markAsTouched()" data-toggle="tooltip" data-placement="right" data-original-title="Enter your name"
+    [ngClass]="{ error: control && control.invalid && (control.dirty || control.touched) , 'cal-icon': showCalendarIcon===true}"
+    (keypress)="isPhoneNum ? keyPress($event) : null" (paste)="onPaste($event)" title="{{toolTip}}" placeholder="{{Placeholder}}"/>
+  <div *ngIf="control && control.invalid && (control.dirty || control.touched)">
+    <label class="error" *ngIf="control.errors.pattern">
+     White space not allowed
+    </label>
+    <label class="error" *ngIf="control.errors.required">
+      {{label}} {{this.requiredData}}.
+    </label>
+    <label class="error" *ngIf="control.errors.invalid">Please enter a valid email address.</label>
+    <label class="error" *ngIf="control.errors.invalidExtension">Only .com and .in extensions supported.</label>
+    <label class="error" *ngIf="control.errors.maxlength">
+      {{label}} should not be {{control.errors.maxlength.requiredLength}} characters long.
+    </label>
+    <label class="error" *ngIf="control.errors.minlength">
+      {{label}} should contain atleast {{control.errors.minlength.requiredLength}} characters.
+    </label>
+    <label class="error" *ngIf="control.errors.jdName">Please enter valid characters.</label>
+    <label class="error" *ngIf="control.errors.jdAlfaNumeric">Please enter valid characters.</label>
+    <label class="error" *ngIf="control.errors.max">Maximum allowed value is {{control.errors.max.max}}.</label>
+    <label class="error" *ngIf="control.errors.min">Minimum allowed value is {{control.errors.min.min}}.</label>
+  </div>
+</div>

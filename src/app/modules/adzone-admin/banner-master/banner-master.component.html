@@ -1,0 +1,28 @@
+<div class="w-100  mt-1" *ngIf="!closeComp">
+    <div class="row">
+     
+      <div class="col-24">
+        <div class="row">
+          <h1 class="text-green end-title mb-0 col-24"><strong>Banner Master</strong></h1>
+        <h6 class="text-green ml-3"><small>(Supported files are jpg, jpeg, png. Please ensure all images are in the dimensions 1197 X 335.)</small></h6>
+        </div>
+       
+        <div class="row">
+          <div class="col-8 pt-3" *ngFor="let item of documents;let i = index">
+            <div class="card card-hover" >
+              <img class="card-img-top" src="../../../../assets/icons/F142824142.png" height="140px" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text text-green">{{item.name}}</p>
+                <div class="row p-2">
+                    <button [disabled]="this.permissionCheck.checked == 0" class="btn btn-primary w-100" type="button" (click)="showUpload(item)">
+                        Upload
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<jd-add-edit-banner *ngIf="showUploadModal" [model]="selectedModel"  (closed)="onCloseUploadModal($event)" (bannerPreview)="showBannerPreview($event)"></jd-add-edit-banner>

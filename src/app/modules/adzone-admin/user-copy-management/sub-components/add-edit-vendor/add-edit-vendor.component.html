@@ -1,0 +1,129 @@
+<div class="w-100  mt-1"  *ngIf="!showUserAccess">
+  <div class="row">
+    <div class="back-section  mt-3">
+      <div class="pointer" (click)="onClose()">
+        <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+        </svg>
+      </div>
+      <h5 class="modal-title ml-3 mt-1"><strong>Back to User Management</strong></h5>
+    </div>
+  </div>
+    <form novalidate="novalidate" #addedituserform="ngForm" *ngIf="model">
+        <div class="row ml-3 pt-2">
+            <div class="col-12">
+              <jd-text-box
+                [label]="'RACF ID'" [disabled]="this.isEdit" [markAsRequired]="true" #racfId="ngModel" class="form-input-control" [control]="racfId.control" (keyup)="onEnterRacId($event)" name="racfId" [(ngModel)]="model.racfId" jdAlfaNumeric required maxlength="7" minlength="7"  ></jd-text-box>
+
+            </div>
+            <!-- <div class="col-2 "> </div> -->
+            <div class="col-12">
+              <jd-text-box
+              #userName="ngModel" [(ngModel)]="model.userName" name="userName" [label]="'User Name'"
+              [control]="userName.control" required  jdName
+                [markAsRequired]="true" class="form-input-control" pattern="^(?!\s*$).+"></jd-text-box>
+
+            </div>
+          <!-- </div>  -->
+          <!-- <div class="row ml-3 pt-2"> -->
+            <div class="col-12 d-none">
+              <jd-text-box
+              #contactNumber1="ngModel" [(ngModel)]="model.phoneNumber" name="phoneNumber"
+              [label]="'Contact Number'" [control]="contactNumber1.control"  [markAsRequired]="false"
+              [isPhoneNum]="true" maxlength="12" ></jd-text-box>
+
+            </div>
+            <!-- <div class="col-2 "></div> -->
+            <div class="col-12">
+              <jd-text-box
+                [label]="'Email ID'" 
+                #emailId="ngModel" [(ngModel)]="model.emailId" name="emailId" 
+                [control]="emailId.control" [type]="'email'" email class="form-input-control" name="emailId" [markAsRequired]="true" [type]="'email'" email required></jd-text-box>
+
+            </div>
+          <!-- </div>  -->
+          <!-- <div class="row ml-3 pt-2"> -->
+            <div class="col-12">
+              <jd-select-list #regionResponseDto="ngModel" name="regionResponseDto" [control]="regionResponseDto.control" [label]="'Region'" [markAsRequired]="true" required [itemSource]="regionOptions" (ngModelChange)="loadSubByRegions($event)" [(ngModel)]="model.regionResponseDto"
+              [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+              </jd-select-list>
+            </div>
+            <!-- <div class="col-2 "></div> -->
+            <div class="col-12">
+              <jd-select-list #subRegionResponseDto="ngModel" name="subRegionResponseDto" [control]="subRegionResponseDto.control" [label]="'Sub Region'" [markAsRequired]="true" required [itemSource]="subRegionOptions" (ngModelChange)="loadDivBySub($event)" [(ngModel)]="model.subRegionResponseDto"
+              [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+          </jd-select-list>
+            </div>
+            
+        <!-- </div> -->
+          <!-- <div class="row ml-3 pt-2"> -->
+            <div class="col-12">
+              <jd-select-list  #divisionResponseDto="ngModel" name="divisionResponseDto" [control]="divisionResponseDto.control" [label]="'Divisions'" [markAsRequired]="true" required [itemSource]="divisionOptions" (ngModelChange)="loadCountryByDiv($event)" [(ngModel)]="model.divisionResponseDto"
+              [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+          </jd-select-list>
+            </div>
+            <!-- <div class="col-2 "></div> -->
+            <div class="col-12">
+                <jd-select-list #marketResponseDto="ngModel" name="marketResponseDto" [control]="marketResponseDto.control" [label]="'Market'" [markAsRequired]="true" required [itemSource]="countryOptions" [(ngModel)]="model.marketResponseDto" (ngModelChange)="loaddealerByMarket($event)"
+                [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'" ></jd-select-list>
+            </div>
+            
+        <!-- </div> -->
+
+        <!-- <div class="row ml-3 pt-2"> -->
+          <div class="col-12 d-none">
+              <jd-select-list [label]="'State'" class="form-input-control"  [disabled]="false"  [markAsRequired]="false" ></jd-select-list>
+          </div>
+          <!-- <div class="col-2 "></div> -->
+          <div class="col-md-12 d-none">
+              <jd-select-list [label]="'City'" class="form-input-control"  [disabled]="false"  [markAsRequired]="false" ></jd-select-list>
+          </div>
+          
+      <!-- </div> -->
+
+      <!-- <div class="row ml-3 pt-2"> -->
+        <div class="col-12">
+            <jd-select-list #roleId="ngModel" [label]="'Role'" class="form-input-control" name="roleId" [control]="roleId.control" [itemSource]="roleOptions" [(ngModel)]="model.roleId" [multiple]="false" [disabled]="false" [markAsRequired]="true" required [displayProperty]="'name'" [valueProperty]="'id'" ></jd-select-list>
+        </div>
+        <!-- <div class="col-2 "></div> -->
+        <div class="col-md-12">
+          <jd-select-list #dealerResponseDto="ngModel" [label]="'Dealership'" name="dealerResponseDto" [control]="dealerResponseDto.control" class="form-input-control" [itemSource]="dealerOptions" [(ngModel)]="model.dealerResponseDto" [multiple]="true"  [disabled]="false" [displayProperty]="'name'" [valueProperty]="'id'"  ></jd-select-list>
+        </div>
+        
+    <!-- </div> -->
+    <!-- <div class="col-md-12" *ngIf="isEdit">
+      <label class="uxf-label w-100">Update Document Access</label>
+      <button class="btn btn-primary " type="button" title="Update Document Access" (click)="uploadDownloadViewAcessControl()">
+        Update Document Access
+      </button>
+    </div> -->
+
+    <!-- <div class="row ml-3 pt-2"> -->
+            <div class="col-12">
+            </div>
+            <!-- <div class="col-2 "></div> -->
+            <div class="col-md-12">
+                <!-- <jd-select-list [label]="'RoleType'" class="form-input-control"  [disabled]="false"  [markAsRequired]="true" ></jd-select-list> -->
+            </div>
+            
+        </div>
+    <div class="">
+      <div class="col-8"></div>
+      <div class="col text-center mt-3 mb-3">
+        <button type="button" class="btn btn-primary mr-5 extend" (click)="onsave()">{{buttonText}}</button>
+        <button *ngIf="isEdit" class="btn docAccess mr-5" type="button" title="Update Document Access" (click)="uploadDownloadViewAcessControl()">
+          Update Document Access
+        </button>
+        <button type="button" class="btn btn-secondary extend" (click)="onClear()">Cancel</button>
+
+      </div>
+      <div class="col-8"></div>
+    </div>
+  </form>
+
+</div>
+
+<jd-user-access-copy-control *ngIf="showUserAccess" [getUserDetails]="model" (closed)="onCloseAcessControl($event)">
+</jd-user-access-copy-control>

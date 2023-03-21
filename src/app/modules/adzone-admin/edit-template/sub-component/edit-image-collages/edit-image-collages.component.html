@@ -1,0 +1,170 @@
+<jd-image-galary *ngIf="showImageGalary" (selected)="selectedImage($event)" (back)="backGalary()"></jd-image-galary>
+<div [ngStyle]="{'display':showImageGalary?'none':'block'}">
+  <div class="row pt-2 pb-1">
+    <div style="display:inline-block !important ;" class="">
+      <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" (click)="close()">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+      </svg>
+    </div>
+    <div class="col-6">
+      <h4 style="display:inline-block !important ;" class="text-green end-title mb-0 col-24"><strong>
+          {{titile}}</strong></h4>
+    </div>
+  </div>
+  <div class="row pt-2 pb-2 mr-5 group-contianter ">
+    <div class="col-lg-17 col-sm-24" style="overflow: auto; max-height: 560px  !important;">
+      <div id="canvasContainer" title="Click and drag to resize" class="jd-Canvas-Container  " resizeDiloag (resize)="myFunction()">
+
+        <canvas #canvas1 id="canvasEditTemplate1" width="800" height="550"></canvas>
+        <div class="triangle" title="Resize">
+          <div  [title]="'Resize'" style="  position: absolute;
+            position: absolute;
+    bottom: -5px;
+    right: 26px;
+    background: black;
+    width: 38px;
+    height: 14px;
+      ">
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col-lg-7 col-sm-24">
+      <div class="card corner-border">
+        <div class="card-body">
+          <div class="custom-item">
+            <div class="uxf-accordion" id="accordion">
+              <form #layerForm="ngForm">
+                <div class="card" (focusout)="selectAll()" (focusin)="selectImage(i)"
+                  *ngFor="let item of ObjectInstanceArray; let i=index;"
+                  [ngStyle]="{'display':item?.type  ? 'block' : 'none' }">
+                  <ng-container *ngIf="item?.type">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="uxf-accordion-item">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                          [attr.data-target]="'#collapseOne'+i" aria-expanded="false" aria-controls="collapseOne0"
+                          style="font-size: 0.8rem;padding:.2rem !important;">
+                          <svg focusable="false" aria-hidden="true" class="uxf-accordion-icon" fill="#666666"
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                            <path fill="none" d="M0 0h24v24H0V0z"></path>
+                          </svg><span class="uxf-accordion-title">{{item?.displayName}}</span>
+                        </button>
+
+                      </h5>
+                    </div>
+
+                    <div [id]="'collapseOne'+i" class="collapse  " aria-labelledby="headingOne"
+                      data-parent="#accordion">
+                      <div class="card-body" style="padding: 0px !important;">
+                        <button *ngIf="item?.type == 'image'" type="button" class="btn uxf-btn-toggle"
+                          data-toggle="button" aria-pressed="false" autocomplete="off" [disabled]="item?.lock"
+                          (click)="chooseImage(i)" style="font-size: .75rem;">Image gallery</button>
+                        <jd-toggle [label]="'Enable Text'" [toggle]="disableText"
+                          (toggleChange)="activationChange($event)" *ngIf="item?.type == 'text'"></jd-toggle>
+                        <fieldset *ngIf="item?.type == 'text'">
+                          <legend>color:</legend>
+
+                          <div style="    padding-left: 24px;">
+                            <label class="John-Deere-Green" *ngFor="let item  of textAllowColor ; let indexid=index ">
+                              <input type="radio" name="color" value=item (change)="handleColorChange($event,item ,i)">
+                              <div class="layer"></div>
+                              <div class="button">
+                                <div style="disply:inline-block" [style.background]="item"
+                                  [ngClass]="{ activeColor:( colorText1==item && i==5)  }"></div>
+                              </div>
+                            </label>
+
+
+                          </div>
+                        </fieldset>
+                        <fieldset *ngIf="item?.type == 'background'">
+                          <legend>color:</legend>
+
+                          <div style="    padding-left: 24px;">
+                            <label class="John-Deere-Green" *ngFor="let item  of textAllowColor ; let indexid=index ">
+                              <input type="radio" name="color" value=item (change)="bgColorChange($event,item ,i)">
+                              <div class="layer"></div>
+                              <div class="button">
+                                <div style="disply:inline-block" [style.background]="item"
+                                  [ngClass]="{ activeColor:( colorText1==item && i==3) ||( colorText2==item && i==4)  }">
+                                </div>
+                              </div>
+                            </label>
+
+                          </div>
+                        </fieldset>
+
+                        <fieldset *ngIf="typeSelectedMain==1 &&  item?.type =='layout'" class=" bg-color-white">
+                          <ng-container *ngFor="let item of typeOneLayoutImages;let ind=index ">
+                            <div class="custom-control custom-control-inline custom-radio">
+                              <input type="radio" [id]="'customRadio'+ind" (change)="onChange(ind)" [value]="ind"
+                                name='customRadioForm' [checked]="typeSelected === ind"
+                                class="custom-control-input"><label class="custom-control-label"
+                                [for]="'customRadio'+ind">
+
+                                <img [src]="item" class="layout-box">
+
+                              </label>
+                            </div>
+
+                          </ng-container>
+
+                        </fieldset>
+                        <fieldset *ngIf="typeSelectedMain==2 &&  item?.type =='layout'" class=" bg-color-white">
+                          <ng-container *ngFor="let item of typeOneLayoutImages2;let ind=index ">
+                            <div class="custom-control custom-control-inline custom-radio">
+                              <input type="radio" [id]="'customRadio'+ind" (change)="onChange(ind)" [value]="ind"
+                                name='customRadioForm' [checked]="typeSelected === ind"
+                                class="custom-control-input"><label class="custom-control-label"
+                                [for]="'customRadio'+ind">
+
+                                <img [src]="item" class="layout-box">
+
+                              </label>
+                            </div>
+
+                          </ng-container>
+
+                        </fieldset>
+                        <div *ngIf="item?.type == 'text'">
+                          <jd-select-list #font="ngModel" [label]="'Font Type'" name="font" [itemSource]="fontOptions"
+                            [(ngModel)]="font_type[0]" [multiple]="false" [displayProperty]="'name'"
+                            (ngModelChange)="fontChange($event,i)" [valueProperty]="'id'" [control]="font.control"
+                            [markAsRequired]="true" required>
+                          </jd-select-list>
+                        </div>
+                        <div *ngIf="item?.type == 'text'">
+                          <!-- <jd-text-box [label]="'Font Size'" (input)="setFontSize($event.target.value,i)"
+                            name="fontTextSize" #fontTextSize="ngModel" [(ngModel)]="fontSize[i]"
+                            [control]="fontTextSize.control" [markAsRequired]="true" required></jd-text-box> -->
+                            <jd-currency-input #fontTextSize="ngModel" [(ngModel)]="fontSize[i]" name="fontTextSize"
+                          [label]="'Font Size'" [control]="fontTextSize.control" [hideCurrencySymbol]="true" [max]="100" [min]="1" [maxLength]="3"
+                          [showPercentSymbol]="false"
+                          [markAsRequired]="true" required (ngModelChange)="setFontSize($event,i)" ></jd-currency-input>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="width: 100%;" class="d-flex justify justify-content-center">
+        <button id="goDown" type="button" class="btn btn-primary mt-3 ml-3" (click)="saveImage()">Download</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<jd-loader *ngIf="loading"></jd-loader>

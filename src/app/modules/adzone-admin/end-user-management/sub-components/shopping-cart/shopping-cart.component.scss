@@ -1,0 +1,288 @@
+
+.headerFnSection{
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: -30px;
+    .custom-control-label:after, .custom-control-label:before{
+        height: 1rem;
+        width: 1rem;
+        top: .375rem;
+    }
+    a{
+        font-size: 12px;
+    }
+    button{
+        font-size: 12px;
+        margin-left: 10px;
+        font-weight: 600;
+    }
+    .custom-control-label{
+        font-weight: 600;
+        margin-top: 14px;
+    }
+}
+.shoppingContainer{
+    box-shadow: 0px 0px 10px #00000014;
+    border-radius: 10px;
+    border: 1px solid #f3f3f3;
+    padding: 25px 40px;
+    margin-bottom: 20px;
+    .productRow{
+        border-bottom: 1px solid #ddd;
+        padding: 25px 0px;
+    }
+    .productRow:first-of-type{
+        padding-top: 0px;
+    }
+    .productRow:last-of-type{
+        border-bottom: none;
+        padding-bottom: 0px;
+    }
+    .docThumbnail{
+        img{
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .custom-control{
+            position: absolute;
+            top: 5px;
+            left: 27px;
+            .custom-control-label:after, .custom-control-label:before{
+                height: 1rem;
+                width: 1rem;
+                top: .375rem;
+            }
+        }
+        .quantitySection{
+            display: flex;
+            justify-content: space-around;
+            .value{
+                border: 1px solid #cccccc;
+                border-radius: 4px;
+                text-align: center;
+                width: 75px;
+            }
+        }
+        
+    }
+    .docDescription{
+        .descSection{
+            height: 150px;
+            margin-left: 15px;
+        }
+        .btnSection{
+            font-size: 14px;
+            color: #070707;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-left: 15px;
+            span{
+                cursor: pointer;
+            }
+        }
+        .docId{
+            color: #666666;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .description{
+            color: #215A18;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .details{
+            color: #333333;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+    .wishListSection{
+        .heartIcon{
+            height: 150px;
+            text-align: right;
+        }
+        .priceSection{
+            color: #215A18;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+}
+.priceSplitUp{
+    background-color: #F9FFF8;
+    border-radius: 10px;
+    padding: 20px;
+    .header{
+        font-size: 14px;
+        color: #666666;
+        padding: 0px 0px 10px 0px;
+        border-bottom: 1px solid #ddd;
+        font-weight: 600;
+    }
+    .body{
+        padding: 20px 0px;
+        font-size: 14px;
+        border-bottom: 1px solid #ddd;
+        .price{
+            font-weight: 600;
+            text-align: right;
+        }
+    }
+    .footer{
+        color: #333333;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 20px 0px 0px 0px;
+    }
+}
+.placeOrderBtn{
+    button{
+        background-color: #367C2B;
+        border-radius: 6px;
+        width: 100%;
+        color: #fff;
+        margin-top: 30px;
+    }
+}
+.nodata_found{
+    color:#333333;
+    font-size:24px;
+    font-weight: bold;
+}
+.uxf-nav-tabs{
+    display: none;
+}
+.d-mob
+{
+    display:none;
+}
+.card-img-top
+{
+    max-width: 100% !important;
+    min-width: 50px !important;
+    width: auto !important;
+}
+@media (max-width: 768px) {
+    .docDescription{
+        height: auto!important;
+        .descSection{
+            height: auto !important;
+        }
+        .btnSection{
+            margin-top:7px;
+        }
+    }
+    .uxf-nav-tabs{
+        display: flex;
+        place-content: center;
+    }
+    .d-web{
+        display:none !important;
+    }
+    .d-mob
+    {
+        display:block;
+    }
+    .headerFnSection{
+        margin-left:15px !important;
+        font-size: 10px !important;
+    }
+    .headerFnSection a,.headerFnSection button{
+        font-size:10px !important;
+    }
+    .docThumbnail{
+        .custom-control{
+            position: absolute;
+            top: 149px!important;
+            left: -19px!important;
+            .custom-control-label:after, .custom-control-label:before{
+                height: 1.25rem;
+                    left: 8px;
+                //     /* top: 26px; */
+                //     /* bottom: 20px; */
+                    top: 0.1875rem;
+                    width: 1.25rem;
+                    margin-top: -2px;
+            }
+        }
+    }
+    // .docThumbnail.custom-control{
+    //     position: absolute;
+    //     top: 149px;
+    //     left: -20px;
+    // }
+    // .custom-control-label:after, .custom-control-label:before {
+    //     height: 1.25rem;
+    //     left: 8px;
+    //     /* top: 26px; */
+    //     /* bottom: 20px; */
+    //     top: 0.1875rem;
+    //     width: 1.25rem;
+    //     margin-top: -2px;
+    // }
+    .headerFnSection{
+       
+        .custom-control-label{
+            font-weight: 600;
+            margin-top: 0px;
+        }
+    }
+
+}
+@media only screen and (max-width: 450px){
+    .text-green, .nodata_found{
+       font-size: 16px;
+    }
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid #367c2b;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-bottom: 4px solid #ffde00;
+    border-left: 4px solid transparent;
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+.endImg1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 140px;
+    align-items: center;
+    background-color: #ccc;
+}
+
+.editable-text {
+    position: absolute;
+    top: 40%;
+    color: #367C2B !important;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #367C2B;
+}

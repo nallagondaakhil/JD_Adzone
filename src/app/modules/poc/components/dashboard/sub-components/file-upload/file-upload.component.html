@@ -1,0 +1,85 @@
+<div class="w-100">
+
+  <h2 class="text-center">File Upload</h2>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+          <th width="50%">Name</th>
+          <th>Size</th>
+          <th>Progress</th>
+          <th>Status</th>
+          <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- <tr *ngFor="let item of uploader.queue">
+          <td><strong>{{ item?.file?.name }}</strong></td>
+          <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+          <td *ngIf="uploader.options.isHTML5">
+              <div class="progress" style="margin-bottom: 0;">
+                  <div class="progress-bar" role="progressbar" >{{item.progress}}%</div>
+              </div>
+          </td>
+          <td class="text-center">
+              <span *ngIf="item.isSuccess"></span>
+              <span *ngIf="item.isCancel"></span>
+              <span *ngIf="item.isError"></span>
+          </td>
+          <td nowrap>
+            <div *ngIf="item.file.type.includes('image')">
+              <input  class="form-check-input" id="flexCheckDefault" type="checkbox" [(ngModel)]="compressImage" />
+              <label for="flexCheckDefault" class="mx-1" >Compress</label>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm mx-1"
+                      (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                   Upload
+              </button>
+              <button type="button" class="btn btn-danger btn-sm mx-1"
+                      (click)="item.remove()">
+                   Remove
+              </button>
+          </td>
+      </tr> -->
+      <tr *ngFor="let item of fileList">
+        <td><strong>{{ item?.file?.name }}</strong></td>
+        <td nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+        <td >
+            <div class="progress" style="margin-bottom: 0;">
+                <div class="progress-bar" role="progressbar" >{{0}}%</div>
+            </div>
+        </td>
+        <td class="text-center">
+            <!-- <span *ngIf="item.isSuccess"></span>
+            <span *ngIf="item.isCancel"></span>
+            <span *ngIf="item.isError"></span> -->
+        </td>
+        <td nowrap>
+          <div *ngIf="item.file?.type.includes('image')">
+            <input  class="form-check-input" id="flexCheckDefault" type="checkbox" [(ngModel)]="compressImage" />
+            <label for="flexCheckDefault" class="mx-1" >Compress</label>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm mx-1"
+                    (click)="onUploadFile(item)" [disabled]="item.loading || item.success">
+                 Upload
+            </button>
+            <button type="button" class="btn btn-danger btn-sm mx-1"
+                    (click)="onRemoveFile(item)">
+                 Remove
+            </button>
+        </td>
+    </tr>
+      </tbody>
+  </table>
+    <div class="col-md-3">
+
+        <!-- <input type="file" ng2FileSelect [uploader]="uploader" multiple/> -->
+        <input type="file" class="file-upload" (change)="onFileSelected($event)"  multiple>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary btn-sm my-4"
+  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length"> Upload All
+</button>
+
+</div>

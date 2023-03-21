@@ -1,0 +1,45 @@
+.card {
+    width: 18rem;
+    height: 15rem;
+}
+
+.card img {
+    height: 25vh;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    max-width: 17rem;
+}
+
+.card-title input {
+    cursor: pointer;
+}
+
+.card-title label {
+    color: #367C2B;
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 20rem;
+        height: 18rem;
+    }
+
+    .card img {
+        height: 25vh;
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-top: 10px;
+    }
+}
+
+button.extend {
+    width: 150px;
+    margin-left: 10px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #367C2B;
+}

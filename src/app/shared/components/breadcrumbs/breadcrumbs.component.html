@@ -1,0 +1,17 @@
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumb">
+    <li
+      class="breadcrumb-item"
+      *ngFor="let item of breadcrumbItems | slice: 0:breadcrumbItems.length - 1"
+    >
+      <a *ngIf="item?.link" class="link pointer" [routerLink]="[item.link]">{{ item.title }}</a>
+      <a *ngIf="!item?.link" class="link pointer" (click)="setValue(item?.title, item?.value)" >{{ item.title }}</a>
+    </li>
+    <li *ngIf="!large" class="breadcrumb-item active" aria-current="page">
+      {{ breadcrumbItems[breadcrumbItems.length - 1].title }}
+    </li>
+    <li *ngIf="large" class="breadcrumb-item active" aria-current="page">
+      <h1>{{ breadcrumbItems[breadcrumbItems.length - 1].title }}</h1>
+    </li>
+  </ol>
+</nav>

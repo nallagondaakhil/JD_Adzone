@@ -1,0 +1,28 @@
+<div class="container-fluid pb-5" *ngIf="uploadedBanners">
+    <div class="row">
+        <div class="col-24 col-md-8 mt-3" *ngFor="let item of bannersData">
+            <div class="card">
+                <img class="previewBanner" loading="lazy" (click)="showLightbox(item)" title="Click to View" [src]="item.imageUrl" alt="Document Image" >
+                <div class="card-body">
+                    <div class="card-title">
+                        <label><b>{{item.imageName}}</b></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col text-center mt-3 mb-3" *ngIf="bannersData">
+        <button type="button" class="btn btn-primary extend" (click)="submitImgs()">Submit</button>
+    </div>
+</div>
+
+<ng-image-fullscreen-view 
+[images]="listImageSelect" 
+[imageIndex]=0 
+[show]="showFlag" 
+*ngIf="showFlag"
+(close)="closeEventHandler()">
+</ng-image-fullscreen-view>
+
+<jd-loader *ngIf="loading"></jd-loader>
+<jd-banner-master *ngIf="showBannerPage"></jd-banner-master>

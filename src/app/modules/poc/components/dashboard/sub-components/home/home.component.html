@@ -1,0 +1,47 @@
+<div class="container w-100">
+    <div >
+        <h2 class="text-center">Cache API Call</h2>
+    </div>
+    <div class="my-1 w-100">
+        <input type="text" [(ngModel)]="apiUrl">
+        <button class="btn btn-sm btn-primary ml-2" (click)="testCall()">Test API Call</button>
+    </div>
+    <div class="my-1 w-100" >
+        
+        <button class="btn btn-sm btn-primary" (click)="callAPI()">Request data</button>
+        <h4>Cached API call result:</h4>
+        <!-- <textarea class="text-area" readonly>{{result}}</textarea> -->
+        <div class="w-100">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of result">
+                    <td>{{item.id}}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div >
+        <h2 class="text-center">Multi Language</h2>
+    </div>
+    <div class="w-100">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group" aria-label="Basic button switch example">
+            <label class="btn uxf-btn-toggle active" (click)="onLanguageChange('en')">
+                <input type="radio" name="prefferedLang" autocomplete="off" [checked]="preferredLang==='en'"> English
+            </label>
+            <label class="btn uxf-btn-toggle" (click)="onLanguageChange('es')">
+                <input type="radio" name="prefferedLang" autocomplete="off" [checked]="preferredLang==='es'"> Spanish
+            </label>
+            <h2>{{'hello world' | translate}}</h2>
+          </div>
+    </div>
+</div>

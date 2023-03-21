@@ -1,0 +1,169 @@
+<div class="container w-100 mt-3">
+    <div class="row">
+        <div class="d-flex justify-content-between w-100 row">
+            <div class="col-24 col-lg-6 col-xl-6">
+                <h1 class="text-green ml-3"><strong>{{"HOME.SHOPPINGCART" | translate}}</strong></h1>
+            </div>
+            <div class="headerFnSection col-24 col-lg-18 col-xl-18 d-web">
+                <div class="custom-control d-flex align-items-center justify-content-end custom-checkbox mt-2">
+                    <input type="checkbox" class="custom-control-input" (change)="onSelectAll($event)" id="customCheckAll" [checked]='isCheckAll ? true : false'>
+                    <label class="custom-control-label pt-1 pr-3 mb-3" for="customCheckAll" >{{"HOME.SELECTALL" | translate}}</label>
+                    <a href="/master/wish-list" class="btn btn-primary">
+                        <strong>{{"HOME.ADDMOREFROMWISHLIST" | translate}}</strong>
+                    </a>
+                    <button class="btn btn-primary" (click)="moveToCart()" type="button">
+                        {{"HOME.MOVETOWISHLIST" | translate}}
+                    </button>
+                    <button class="btn btn-secondary" type="button" (click)="MultipleRemoveFromCart()">
+                        {{"HOME.REMOVEFROMCART" | translate}}
+                    </button>
+                </div>
+            </div>
+            <div class="headerFnSection col-24 col-lg-18 col-xl-18 d-mob ">
+                <div class="custom-control align-items-center justify-content-end custom-checkbox mt-2">
+                    <input type="checkbox" class="custom-control-input" (change)="onSelectAll($event)" id="customCheckAll" [(ngModel)]='selectAllBox' [checked]='isCheckAll ? true : false'>
+                    <label class="custom-control-label pt-1 pr-3 mb-3" for="customCheckAll" >{{"HOME.SELECTALL" | translate}}</label>
+                    <a href="/master/wish-list" class="btn btn-primary">
+                        <strong>{{"HOME.ADDMOREFROMWISHLIST" | translate}}</strong>
+                    </a>
+                    <button class="btn btn-primary" (click)="moveToCart()" type="button">
+                        {{"HOME.MOVETOWISHLIST" | translate}}
+                    </button>
+                    <button class="btn btn-secondary" type="button" (click)="MultipleRemoveFromCart()">
+                        {{"HOME.REMOVEFROMCART" | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <ul class="nav nav-tabs uxf-nav-tabs mt-3" id="myTab" role="tablist">
+        <li role="presentation" class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" routerLink="/master/shopping-cart" role="tab" aria-controls="home" aria-selected="true">Documents</a>
+        </li>
+        <li role="presentation" class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" routerLink="/master/printable-material" role="tab" aria-controls="profile" aria-selected="false">Printable Material</a>
+        </li>
+    </ul> -->
+    <div class="row mt-4">
+        <div class="col-24 col-lg-17 col-xl-17">
+            <div class="shoppingContainer">
+                <div class="productRow row" *ngFor="let item of listModel;let i = index">
+                    <div class="col-24 col-g-8 col-xl-8 docThumbnail">
+                        <div style="width: 50px; height:100px ;position:absolute;" class="pt-4 " *ngIf="item.isLoaded==false && item.extensionType === 'image'" ><span class="loader"></span></div>
+                        <img src="{{item.thumbnailUrl}}" alt="" *ngIf="item.extensionType === 'image'" loading="lazy" title="Click to view" (click)="showLightbox(i)" class="width-custom card-img-top" height="140px" (error)="imageLoded(item)" (load)="imageLoded(item)">
+                        <img class="width-custom card-img-top" *ngIf="item.extensionType === 'audio'" src="../../../../assets/icons/audio.svg" height="140px" alt="Document Image">
+                        <!-- <img class="width-custom card-img-top" *ngIf="item.extensionType === 'ai'" src="../../../../assets/icons/ai.png" height="140px" alt="Document Image"> -->
+                        <!-- <img class="width-custom card-img-top" *ngIf="item.extensionType === 'psd'" src="../../../../assets/icons/ps.png" height="140px" alt="Document Image"> -->
+                        <!-- <img class="width-custom card-img-top" *ngIf="item.extensionType === 'cdr'" src="../../../../assets/icons/cdr.png" height="140px" alt="Document Image"> -->
+                        <video  controls *ngIf="item.extensionType === 'video'" height="140px" width="190px">
+                            <source [src]="item.thumbnailUrl" type="video/mp4">
+                                Your browser does not support HTML video.
+                        </video>
+                        <div class="endImg1"
+                            *ngIf="item.extensionType != 'video' && item.extensionType != 'image' && item.extensionType != 'audio'">
+                            <!-- <p class="text-center align-middle editable-text">Editable File - <b>{{item.extensionType}}</b> </p> -->
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p>
+
+                        </div>
+                        <div class="custom-control custom-checkbox mt-2">
+                            <input type="checkbox" [checked]='item.isChecked ? true : false' (change)="onSelectChange(item.documentFileId,item.checked,item.userCartId, $event.target.checked)" class="custom-control-input" id="{{i}}">
+                            <label class="custom-control-label pt-1" for="{{i}}" ></label>
+
+                        </div>
+                        <div class="quantitySection mt-3 d-none">
+                            <div class="decrement"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"></path></svg></div>
+                            <input type="text" class="value" value="1">
+                            <div class="increment"><svg focusable="false" aria-hidden="true" fill="#666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg></div>
+                        </div>
+                    </div>
+                    <div class="col-20 col-lg-12 col-xl-12 docDescription ml-2">
+                        <div class="descSection">
+                            <!-- <div class="docId">{{item.documentId}}</div> -->
+                            <div class="description" (click)="goToDetailedScreen(item)">{{item.documentName}}</div>
+                            <div class="details">{{item.documentFileType}}, {{item.documentFileSize}}</div>
+                            <div class="details">{{'HOME.RELEADEDDATE' | translate}}: {{item.createdDate}}</div>
+                        </div>
+                        <div class="btnSection">
+                            <span (click)="singleMovetoCart(item)">{{'HOME.MOVETOWISHLIST' | translate}}</span>
+                            <span class="ml-3" (click)="removeFromCart(item.documentId,item.userCartId)">{{'HOME.REMOVE' | translate}}</span>
+                        </div>
+
+                    </div>
+                    <div class="col-2 col-lg-2 col-xl-2 wishListSection mt-2">
+                        <div class="heartIcon">
+                            <svg *ngIf="!item.wishList" class="wishlist-icon" (click)="addWishlist(item.documentId,item.wishList,item.documentFileId,0)" focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                            <svg *ngIf="item.wishList" class="wishlist-icon" (click)="addWishlist(item.wishlistId,item.wishList,item.documentFileId)" focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                        </div>
+                        <!-- <div class="priceSection mt-3">
+                            Rs.0
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row" *ngIf="listModel.length == 0">
+                    <div class="col-24  text-center mt-5">
+                        <img src="../../../../assets/icons/tractor_ag.svg" class="img-fluid">
+                        <p class="nodata_found mt-4">{{"HOME.NODATAFOUND" | translate}}</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-24 col-lg-7 col-xl-7">
+            <div class="priceSplitUp1">
+                <!-- <div class="header">
+                    Price Details
+                </div>
+                <div class="body">
+                    <div class="row">
+                        <div class="col-16 description">
+                            Price (3 Items)
+                        </div>
+                        <div class="col-8 price">
+                            1,876
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-16 description">
+                            Delivery Charges
+                        </div>
+                        <div class="col-8 price">
+                            50
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-16">
+                            Total Amount
+                        </div>
+                        <div class="col-8 text-right">
+                            1,926
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="placeOrderBtn">
+                <button [disabled]="!permissionDownload" class="btn" (click)="downloadDocuments()">{{'HOME.DOWNLOAD' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-image-fullscreen-view
+[images]="listImageSelect"
+[imageIndex]=0
+[show]="showFlag"
+(close)="closeEventHandler()">
+</ng-image-fullscreen-view>
+
+
+<div class="row float-right mt-5" *ngIf="listModel?.length">
+    <ul style="display: none;">
+       <li *ngFor="let item of listModel | paginate: config"></li>
+   </ul>
+   <pagination-controls id="test" 
+   [previousLabel]="'HOME.PREVIOUS' | translate"
+   [nextLabel]="'HOME.NEXT' | translate"
+   (pageChange)="pageChanged($event)" class="my-pagination "></pagination-controls>
+</div>
+<jd-loader *ngIf="loading"></jd-loader>

@@ -1,0 +1,41 @@
+
+.modal .modal-content .modal-body{
+    overflow-y: auto;
+}
+.modal-title{
+    font-size: 15px;
+    color: #333333;
+    font-weight: 600;
+}
+.pad-10{
+    padding: 7px 7px 7px 20px;
+}
+.btn-apply{
+    font-size: 14px;
+    padding: 7px 20px;
+}
+.btn-savepreference{
+    padding: 7px 20px;
+    font-size: 14px;
+}
+.radio-left{
+    margin-left: 12px;
+}
+.modal .modal-header{
+    padding:0.5rem 0.5rem 0.5rem 0.75rem;
+}
+.modal-body{
+    margin-bottom: 9px;
+}
+.lang-content{
+    padding: 25px 20px;
+    font-size: 14px;
+}
+.lang-content p{
+    margin: 0;
+}
+.modal-content{
+    position: relative;
+    bottom: 220px;
+    border-radius: 5px;
+}

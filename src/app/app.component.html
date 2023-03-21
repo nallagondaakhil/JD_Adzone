@@ -1,0 +1,39 @@
+<app-header (actionmobItemEmit)="mobmenuChange($event)" (actionsearchItemEmit) = "newsearchmenuChange($event)" (actionNotificationEmit)="sideNotificationMenu()" [menuItems]="menuItems" [mobmenuItems]="mobmenuItems" (actionMyOrderEmit) = "sidemymenuChange()" (actionTemplateEmit)="sideTemplateMenu()"  (actionMyTemplateEmit)="sideMyTemplateMenu()" (actionItemEmit) = "menuChange($event)" (actionsubchildItemEmit) = "sidesubmenuChange($event)" (actionchildFourthItemEmit) = "sidemenuFourthChange($event)" (actionchildLastItemEmit) = "sidemenuLastChange($event)" (actionchildItemEmit) = "sidemenuChange($event)" ></app-header>
+<jd-alert-list></jd-alert-list>
+
+<jd-modal-dialog *ngIf="modalParams" [params]="modalParams"></jd-modal-dialog>
+<jd-navbar-top (actionsearchItemEmit) = "newsearchmenuChange($event)" (actionItemEmit)="newmenuChange($event)"  (actionCartEmit) = "newcartChange()" (actionWishlistEmit) = "newwishlistChange()" [menuItems]="topMenuItems"></jd-navbar-top>
+<!---bannerpart-->
+<!-- <div class="row ">
+  <div class="col d-flex justify-content-center  banner pt-1 banner-padding">
+    <marquee width="90%" direction="left" >
+      Digitally signed invoice is must. Deadline: Submission of all claims for a Particular month should be completed by the end of the subsequent month
+      </marquee>
+      
+   
+  </div>
+ 
+</div> -->
+
+
+
+<!--End Banner part-->
+<main  class="main-container">
+  <div class="container-fluid bg-uxf-white">
+    <div class="row">
+      <div class="menu-container" *ngIf="showManageFilter">
+        <jd-navbar-side *ngIf="hideSideBar" (actionOrderRangeEmit)="orderRangeChange($event)" (actionOrderdaysEmit)="orderDayFilterChange($event)" (actionProductEmit) = "orderTypeChange($event)" (actionOrderEmit) = "orderFilterChange($event)" (actionchildItemEmit) = "sidesubmenuChange($event)" (actionsubchildItemEmit) = "sidesubmenuChange($event)" (actionchildFourthItemEmit) = "sidemenuFourthChange($event)" (actionFourthchildItemEmit) = "sidesubmenuFourthChange($event)" (actionchildLastItemEmit) = "sidemenuLastChange($event)" (actionTypeItemEmit)="sideTypeMenuChange($event)" (actionLanguageItemEmit)="sideLanguageMenuChange($event)" (actionSortItemEmit)="sideSortMenuChange($event)" (actionItemEmit) = "sidemenuChange($event)"  [menuItems]="menuItems"   [subchildMenuItem]="subchildMenuItem" [subchildMenuFourthItem]="subchildMenuFourthItem"></jd-navbar-side>
+      </div>
+      <div  class="content-container " id="content-container">
+        <h4 class="role-title-sm mt-2 mb-0 mob-text" href="#"><strong>{{roleName}}</strong></h4>
+        <router-outlet></router-outlet>
+        <!-- <jd-end-user-management  [listModel]="listModel"></jd-end-user-management> -->
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+<app-footer (actioncontactUsEmit)="contactUSMenuChange()"></app-footer>

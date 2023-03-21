@@ -1,0 +1,240 @@
+.user-panel {
+    border-radius: 10px;
+    opacity: 1;
+    height: 335px;
+}
+
+.card-body {
+    p {
+        margin-bottom: 8px;
+
+    }
+}
+
+.wishlist-title {
+    font-size: 22px;
+
+}
+
+.card-title {
+    color: #666666;
+    font-size: 12px;
+}
+
+.end-comment {
+    position: absolute;
+    right: 50px;
+}
+
+.end-share {
+    position: absolute;
+    right: 15px;
+}
+
+.card-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.extend {
+    width: 100px;
+    font-size: 12px;
+    padding: 7px 10px;
+    position: absolute;
+    right: 5px;
+
+}
+
+.extend_btn {
+    width: 110px;
+    font-size: 12px;
+    padding: 7px 10px;
+    position: absolute;
+    left: 5px;
+
+}
+
+.title_btn {
+    width: 110px;
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    right: 4px;
+}
+
+.title_btn_remove {
+    width: 70px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.select_all_chck {
+    position: absolute;
+    top: -10px;
+    left: -100px;
+
+}
+
+.custom-control-label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.doc-description {
+    font-size: 12px;
+    color: #333333;
+}
+
+.custom-control {
+    position: absolute;
+    top: -2px;
+    margin-top: 12px;
+    left: 20px;
+
+    .custom-control-label:after,
+    .custom-control-label:before {
+        height: 1rem;
+        width: 1rem;
+        top: .375rem;
+    }
+}
+
+.custom-checkbox .custom-control-input:not(:disabled):not(.disabled)~.custom-control-label,
+.custom-radio .custom-control-input:not(:disabled):not(.disabled)~.custom-control-label {
+    cursor: pointer;
+    width: 102px !important;
+}
+
+.no-data-found {
+    width: 100%;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.width-custom {
+    //width: fit-content;
+    max-width: 100%;
+    min-width: 50px;
+    width: auto !important;
+}
+
+.endImg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    align-items: center;
+}
+
+.card {
+    height: 358px;
+}
+
+.document-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer;
+}
+
+.check-item {
+    top: 148px;
+}
+
+.nodata_found {
+    color: #333333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.printable {
+    background-color: #b4dfad;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 9px;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+.card-img-top {
+    max-width: 100% !important;
+    min-width: 50px !important;
+    width: auto !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .select_all_chck {
+        position: absolute;
+        top: -10px;
+        left: -3px;
+    }
+
+    @media only screen and (max-width: 450px) {
+
+        .wishlist-title,
+        .nodata_found {
+            font-size: 16px;
+        }
+    }
+
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid #367c2b;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-bottom: 4px solid #ffde00;
+    border-left: 4px solid transparent;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.endImg1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 140px;
+    align-items: center;
+    background-color: #ccc;
+}
+
+.editable-text {
+    position: absolute;
+    top: 40%;
+    color: #367C2B !important;
+
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #367C2B;
+}

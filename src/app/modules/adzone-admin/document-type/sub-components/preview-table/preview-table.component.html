@@ -1,0 +1,65 @@
+<div class="container-fluid pb-5" *ngIf="uploadPopup">
+    <div class="row">
+        <div class="col-24 col-md-8 mt-3" *ngFor="let item of listModel;let i = index;">
+            <div class="card">
+                <div class="endImg" *ngIf="item.extensionType === 'video' || item.extensionType === 'image' || item.extensionType === 'audio'">
+                    <div style="width: 50px; height:100px ;position:absolute;" class="pt-4 "
+                      *ngIf="item.isLoaded==false && item.extensionType === 'image'"><span class="loader"></span></div>
+                     <img class="previewImgs" loading="lazy" (click)="showLightbox(item)" title="Click to View"
+                *ngIf="item.extensionType === 'image'" [src]="item.thumbnailUrl" alt="Document Image">
+                    <img class="width-custom card-img-top" *ngIf="item.extensionType === 'audio'"
+                      src="../../../../assets/icons/audio.svg" height="140px" alt="Document Image">
+                    
+                    <video controls *ngIf="item.extensionType === 'video'" height="140px" width="100%">
+                      <source [src]="item.thumbnailUrl" type="video/mp4">
+                      Your browser does not support HTML video.
+                    </video>
+                  </div>
+                    <div class="endImg1"
+                        *ngIf="item.extensionType != 'video' && item.extensionType != 'image' && item.extensionType != 'audio'">
+                        <p class="text-center align-middle editable-text">Editable File - <b>{{item.extensionType}}</b> </p>
+                    </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <div class="row">
+                            <div class="col-20">
+                                <label><b>{{item.fileName}}</b></label>
+                            </div>
+                            <div class="col-md-2" *ngIf="deleteAccess">
+                                <span style="position: absolute;" (click)="deleteItems(item)"><svg focusable="false"
+                                        aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 28 28">
+                                        <path
+                                            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z">
+                                        </path>
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                    </svg></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col text-center mt-3 mb-3" *ngIf="imgsData">
+        <button type="button" class="btn btn-primary extend" (click)="onSubmit()" style="margin-left: 20px;">Back to
+            Documents</button>
+    </div>
+
+    <!-- <div class="row float-right" *ngIf="imgsData?.length">
+        <ul style="display: none;">
+            <li *ngFor="let item of imgsData | paginate: config"></li>
+        </ul>
+        <pagination-controls id="test" (pageChange)="pageChanged($event)" class="my-pagination "></pagination-controls>
+    </div> -->
+</div>
+
+
+<ng-image-fullscreen-view [images]="listImageSelect" [imageIndex]=0 [show]="showFlag" *ngIf="showFlag"
+    (close)="closeEventHandler()">
+</ng-image-fullscreen-view>
+
+<jd-loader *ngIf="loading"></jd-loader>
+
+<jd-document-type *ngIf="showTableData"></jd-document-type>

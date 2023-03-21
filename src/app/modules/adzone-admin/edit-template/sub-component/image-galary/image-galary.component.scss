@@ -1,0 +1,35 @@
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #367C2B !important;
+  color: #fefefe;
+  cursor: default;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #367C2B;
+}
+.cover {
+  object-fit: cover;
+  width: 100%;
+
+
+}
+.image-round{
+  border-radius: 5px ;
+}
+.edit {
+	padding-top: 7px;
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+}
+
+.edit a {
+  color: #000;
+  background: #e3e0e0;
+  border-radius: 8px;
+}
+.image-iteam:hover .edit {
+	display: block;
+}

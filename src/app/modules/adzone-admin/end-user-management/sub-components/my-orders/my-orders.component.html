@@ -1,0 +1,84 @@
+<div class="container  mt-4">
+    <div class="row">    
+        <div class="col-1"></div>
+        <div class="col-23 ">
+            <div class="row mt-4">
+                <div class="col-16">
+                 <p class="text-green wishlist-title"><strong>{{"HOME.MYDOWNLOADS" | translate}}</strong></p>
+                </div>
+            </div>
+            <div class="row bg-white user-panel mt-4" *ngFor="let item of listModel">
+              <!-- <p>ajsgdhsa:{{item.extensionType}}</p> -->
+                  <div class="col-24 col-md-6  mt-1" style="text-align:center"
+                  *ngIf="item.extensionType === 'video' || item.extensionType === 'image' || item.extensionType === 'audio'">
+                  <img class="width-custom card-img-top" *ngIf="item.extensionType === 'audio'" loading="lazy"
+                  src="../../../../assets/icons/audio.svg" height="140px" alt="Document Image">
+                 <img [src]="item.thumbnailUrl" *ngIf="item.extensionType === 'image'"  (click)="goToDetailedScreen(item)" class="img-fluid myorder-img">
+                  <video *ngIf="item.extensionType === 'video'" height="140px" width="200px" controls>
+                      <source [src]="item.thumbnailUrl" type="video/mp4">
+                      <!-- <source [src]="item.thumbnailUrl" type="video/ogg"> -->
+                      <source [src]="item.thumbnailUrl" type="video/mov">
+                      <source [src]="item.thumbnailUrl" type="video/avi">
+                      <source [src]="item.thumbnailUrl" type="video/wmv">
+                      <source [src]="item.thumbnailUrl" type="video/webm">
+                      <source [src]="item.thumbnailUrl" type="video/mkv">
+                      Your browser does not support HTML video.
+                    </video>
+                  </div>
+                <div class="col-24 col-md-6  mt-1 endImg"
+              *ngIf="item.extensionType != 'video' && item.extensionType != 'image' && item.extensionType != 'audio'">
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.documentFileType}}</b> </p>
+            </div>
+                <div class="col-24 col-md-8 pt-3">
+                      <!-- <span [ngClass]="item.productFlag == 1 ? 'printable' : 'invisible'">Printable</span> -->
+                      <p class="order-documentname" title="{{item.documentName}}"><strong> {{item.documentName}}</strong></p>
+                      <p class="order-filetype"> {{item.documentFileType}} , {{item.documentFileSize}}</p>
+                      
+                  </div>
+                  <!-- <div class="col-5  pt-3">
+                    <p class="order-filetype">Quantity : {{item.quantity}}</p>
+                    <p class="order-filetype">Order Number : {{item.orderNumber}}</p>
+                  </div> -->
+                  <div class="col-15 col-md-6 pt-3 mob-top">
+                    <p class="order-filetype">{{"HOME.QUANTITY" | translate}} : <strong>{{item.quantity}}</strong></p>
+                    <p class="order-filetype" *ngIf="item.productFlag == 1">{{"HOME.PRICEPERUNIT" | translate}}: <strong>{{item.orderAmount}}</strong></p>
+                    <p class="order-filetype" >{{"HOME.ORDERNUMBER" | translate}} : <strong>{{item.orderNumber}}</strong></p>
+                    <p class="order-filetype">{{"HOME.ORDERON" | translate}} :<strong>{{item.orderOn}}</strong> </p>
+                    <!-- <p class="order-filetype">{{item.productFlag == 1 ? "Delivered On" : "Downloaded On"}} : <strong>{{item.deliveredOn}}</strong></p> -->
+                    <p class="order-filetype">{{"HOME.DOWNLOADEDON" | translate}} : <strong>{{item.deliveredOn}}</strong></p>
+                </div>
+                <div class="col-4 mob-view mob-top">
+                  <div class="my-order-bar ">
+                    <p class="bar-text"><strong>{{"HOME.DOWNLOADED" | translate}}</strong></p>
+                </div>
+                </div>
+                <div class=" col-md-4 pt-3 mob-none">
+                    <div class="my-order-bar">
+                        <p class="bar-text"><strong>{{"HOME.DOWNLOADED" | translate}}</strong></p>
+                    </div>
+                </div>
+              
+              </div>
+
+              <div class="row" *ngIf="listModel.length == 0">
+                <div class="col-24 col-md-24  text-center mt-5">
+                    <img src="../../../../assets/icons/tractor_ag.svg" class="img-fluid">
+                    <p class="nodata_found mt-4">{{"HOME.NODATAFOUND" | translate}}</p>
+                </div>
+              </div>
+              <div class="row float-right mt-5" *ngIf="listModel.length > 0">
+               <!-- // <pagination-controls *ngIf="listModel.length > 0" (pageChange)="handlePageChange($event)" class="my-pagination float-right"></pagination-controls> -->
+                <ul style="display: none;">
+                  <li *ngFor="let item of listModel | paginate: config"></li>
+              </ul>
+              <pagination-controls id="test" 
+              [previousLabel]="'HOME.PREVIOUS' | translate"
+              [nextLabel]="'HOME.NEXT' | translate"
+              (pageChange)="pageChanged($event)" class="my-pagination "></pagination-controls>
+          
+              </div>
+
+        </div>
+    </div>
+</div>
+<jd-loader *ngIf="loading"></jd-loader>

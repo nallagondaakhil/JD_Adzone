@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~bootstrap/scss/bootstrap";
+
+@import "assets/scss/index.scss";
+
+// Styles for text editor
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+@import '~primeicons/primeicons.css';
+
+@import '~primeng/resources/themes/saga-blue/theme.css';
+@import '~primeng/resources/primeng.min.css';
+@media (min-width: 1200px) {
+body{
+    max-width: 90%;
+}
+}
+body,.uxf-header-title .uxf-header-title-heading,.uxf-top-nav {
+    font-family: Noto Sans,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Arial,Nimbus Sans L,FreeSans,Liberation Sans,sans-serif !important;
+}
+.flatpickr-calendar.animate.open{
+    right: 8.6666px !important;
+
+}
+/*.uxf-header-title .dropdown
+{
+    top:-2.9rem !important;
+}*/

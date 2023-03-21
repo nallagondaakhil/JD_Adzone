@@ -1,0 +1,25 @@
+
+.back-section{
+    display: flex;
+    margin-left: 35px;
+    margin-bottom: 15px;
+}
+.form-control{
+    height:40px !important;
+}
+button.extend{
+    width: 150px;
+}
+::ng-deep.form-control,::ng-deep.dropdown-container{
+    width: 85% !important;
+}
+.label_empty {
+    min-height: 10px;
+}
+
+.docAccess{
+    border: 1px solid #ffde00;
+}
+.docAccess:hover{
+background-color: lightgray;
+}

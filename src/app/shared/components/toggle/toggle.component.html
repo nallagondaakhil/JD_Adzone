@@ -1,0 +1,7 @@
+<div class="d-flex">
+  <label for="toggle">{{label}}</label>
+  <button type="button" class="btn btn-toggle" [ngClass]="{'active': toggle}" (click)="onToggle()" aria-pressed="false"
+    autocomplete="off">
+    <div class="handle"></div>
+  </button>
+</div>

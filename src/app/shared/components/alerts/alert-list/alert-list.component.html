@@ -1,0 +1,5 @@
+<div class="jd-toast absolute-center-x">
+    <ng-container *ngFor="let item of activeAlerts" >
+        <jd-alerts *ngIf="item" [alertModel]="item" (dismiss)="onDismiss($event)"></jd-alerts>
+    </ng-container>
+</div>

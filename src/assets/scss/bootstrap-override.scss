@@ -1,0 +1,24 @@
+.uxf-header {
+  margin: 0;
+}
+
+.modal {
+  display: block !important;
+  background: rgba(102, 102, 102, 0.6);
+  .modal-header {
+    padding: 1rem 1rem 1rem 1.25rem;
+    min-height: 3.5rem;
+  }
+  // overflow: scroll !important;
+}
+
+.modal-body {
+  // overflow-y: unset !important;
+}
+
+.nav-tabs>.nav-item>.nav-link.active {
+  z-index: 1;
+}
+.modal .modal-content {
+  // max-height: max-content;
+}

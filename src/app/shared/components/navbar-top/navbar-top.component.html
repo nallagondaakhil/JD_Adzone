@@ -1,0 +1,434 @@
+<nav class="navbar uxf-top-nav navbar-expand-md" style="height: 2.3rem !important;flex-flow: wrap;">
+  <!-- <div class="collapse navbar-collapse" id="siteTopnav">
+    <ul class="navbar-nav ">
+           
+            <li class="uxf-nav-back bgWhite ">
+                <button class="navbar-back btn btn-link" id="closeButton" aria-label="Close Navigation Menu" data-toggle="collapse" data-target="#siteTopnav" aria-controls="siteTopnav" type="button" aria-expanded="true" (click)="removeBackdrop()" >
+                    <svg focusable="false" aria-hidden="true" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></button>
+            </li>
+        
+            <li *ngFor="let menu of menuItems" class="nav-item"
+                [ngClass]="{active: menu.isActive, 'uxf-nav-item-icon': menu.menuType === 'icon', dropdown: menu.menuType === 'dropdown'}">
+                <a *ngIf="menu.menuType === 'icon'" class="nav-icon" (click)="onMenuItemClick(menu)" [innerHtml]="menu.svgIcon | noSanitize">
+                </a>
+                <a   *ngIf="menu.menuType === 'link'" class="nav-link" (click)="onMenuItemClick(menu)">
+                    <span class="uxf-link-text test2">{{menu.label | titlecase}}</span>
+                </a>
+                <a *ngIf="menu.menuType === 'dropdown'" class="nav-link dropdown-toggle" role="button"
+                    data-toggle="dropdown" aria-expanded="false">
+                    <span class="uxf-link-text test1">{{menu.label | titlecase}}</span>
+                </a>
+                <ul class="dropdown-menu test3" *ngIf="menu.children && menu.children.length">
+                    <ng-container *ngFor="let subMenu of menu.children">
+                        <li [ngClass]="{active: subMenu.isActive}">
+                            <a class="dropdown-item"  (click)="onMenuItemClick(subMenu)">{{subMenu.label | titlecase}}</a>
+                        </li>
+                        <li *ngIf="subMenu.showDivider"><div class="dropdown-divider"></div></li>
+                    </ng-container>
+                </ul>
+            </li> -->
+  <!-- <li  class="nav-item" *ngIf="!isimpersonateuser && isAdmin"(click)="onimpersonateuser()">
+                <a  class="nav-link">
+                    <span class="uxf-link-text">Impersonate user</span>
+                </a>
+            </li> -->
+  <!-- <li  class="nav-item">
+                <a  class="nav-link" href="/admin/documents">
+                    <span class="uxf-link-text">Reference Document</span>
+                </a>
+            </li>
+            <li  class="nav-item">
+                <a  class="nav-link">
+                    <span class="uxf-link-text">Language Setup</span>
+                </a>
+            </li>
+            <li  class="nav-item">
+                <a  class="nav-link">
+                    <span class="uxf-link-text">Contact Us</span>
+                </a>
+            </li>
+            <li class="nav-item foter-height">
+            </li>
+    </ul>
+    </div> -->
+
+  <!-- Role Name -->
+
+  <div class="Adzone-title-web d-none d-md-block">
+    <h1 class="uxf-nav-title cms-title pl-0 adzone-title-web"><strong href="#">AdZone</strong></h1>
+  </div>
+
+  <div class="Adzone-title-mob d-flex d-md-none d-flex justify-content-between">
+    <h1 class="uxf-nav-title cms-title d-flex">
+      <!-- <span class=""><a class="nav-link"> -->
+      <!-- <svg focusable="false" aria-hidden="true" class="nav-home-icon" fill="#000" height="28" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+        </a></span> -->
+      <h5 class="mt-2" href="/master/end-user-management">AdZone</h5>
+    </h1>
+    <div *ngIf="endservice.userRole" class="dropdown dropdown-main d-flex align-items-center">
+      <!-- <span class="uxf-header-title-username mob-text mr-0">{{roleName}}</span> -->
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Super Admin'">{{"HOME.SUPERADMIN" | translate}}  </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'John Deere Employee'">{{"HOME.JOHNDEEREMPLOYEE" | translate}}  </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Sub Region Admin'">{{"HOME.SUBREGIONADMIN" | translate}}  </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Vendor'">{{"HOME.VENDOR" | translate}}  </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Dealer'">{{"HOME.DEALER" | translate}}  </span>
+      
+      <!-- <span class="uxf-header-title-username mr-0">Admin | </span> -->
+      <!-- <button
+          class="btn btn-sm btn-link dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton10"
+          data-toggle="dropdown"
+          aria-label="account menu"
+          aria-haspopup="true"
+          aria-expanded="false"
+        > -->
+      <!-- <span class="uxf-header-title-username ">Welcome</span> -->
+      <!-- <span class="uxf-header-title-username" title="{{userName}}">{{userName|titlecase}}</span> -->
+      <!-- <div> -->
+      <!-- <span class="uxf-header-title-username userName" title="">Shanmuga priya aaaaaaaaaaaaaaaaas gjg jh kjh ssssssss</span> -->
+      <!-- </div> -->
+      <!-- </button> -->
+      <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+          <a class="dropdown-item" href="javascript:void(0);" *ngIf="!isimpersonateuser" (click)="onLogout()">Sign out</a>
+        </div> -->
+    </div>
+    <h5 class="card-title cms-title uxf-nav-title downfilter-top" *ngIf="showFilterIcon && endservice.downloadFilter">
+      <svg focusable="false" (click)="MyOrderfiltertop()" aria-hidden="true" fill="#666666"
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z">
+        </path>
+      </svg></h5>
+
+  </div>
+
+  <!-- <div class="Adzone-title-mob d-flex align-items-center justify-content-between"> 
+      <div class="d-md-none">
+        <h1 class="uxf-nav-title cms-title pl-0 d-flex align-items-center">
+         <span class="mt-2"><a class="nav-link" href="/master/end-user-management">
+         <svg focusable="false" aria-hidden="true" class="nav-home-icon" fill="#367c2b" height="28" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+          </a></span>
+          <strong href="#">Adzone</strong>
+        </h1>
+      </div>
+      <h5 class="card-title cms-title uxf-nav-title" *ngIf="showFilterIcon && endservice.downloadFilter"><svg focusable="false" (click)="MyOrderfiltertop()" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="none"></path><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"></path></svg></h5>
+    </div> -->
+  <!-- dummy nav bar -->
+
+  <div class="collapse navbar-collapse" id="dummy-nav">
+    <ul class="navbar-nav">
+      <li class="uxf-nav-back">
+        <button class="navbar-back btn btn-link" aria-label="Close Navigation Menu" data-toggle="collapse"
+          data-target="#siteTopnav" aria-controls="siteTopnav" type="button" aria-expanded="true"
+          (click)="removeBackdrop()">
+          <svg focusable="false" aria-hidden="true" height="24" viewbox="0 0 24 24" width="24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+            </path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg></button>
+      </li>
+      <li class="nav-item" *ngIf="dashBoardAccess == 'Dealer View Access'">
+        <a href="/master/end-user-management" (click)="homeMenuClick1();" class="nav-icon nav-link p-0 " oncontextmenu="return false;">
+          <svg focusable="false" aria-hidden="true" class="nav-home-icon" fill="#367c2b" height="24" viewbox="0 0 24 24"
+            width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </a>
+        <span></span>
+        <a *ngIf="menuItems[0]?.menuType === 'link'" class="nav-link">
+          <span class="uxf-link-text">{{menuItems[0].label}}</span>
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="dashBoardAccess == 'Dashboard View Access'" style="max-width: 2rem;">
+        <!-- commented for home icon replaced by menu items issue -->
+        <!-- <a href="/homepage" (click)="homeMenuClick();" *ngIf="menuItems[0]?.menuType === 'icon'" class="nav-icon nav-link pb-2 "  [innerHtml]="menuItems[0]?.svgIcon | noSanitize">
+              </a> -->
+        <!-- end -->
+        <a href="/master/dashboard" (click)="homeMenuClick();" class="nav-icon nav-link p-0" oncontextmenu="return false;">
+          <svg focusable="false" aria-hidden="true" class="nav-home-icon" fill="#aaa" height="24" viewbox="0 0 24 24"
+            width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </a>
+        <span></span>
+        <a *ngIf="menuItems[0]?.menuType === 'link'" class="nav-link">
+          <span class="uxf-link-text">{{menuItems[0].label}}</span>
+        </a>
+      </li>
+
+      <!-- <ng-container class="menuItem" *ngFor="let subMenu of topmenuOptions">
+        <li *ngIf="dashBoardAccess == 'Dashboard View Access' && !dealerView" class="nav-item menuItem"
+          [ngClass]="{active: subMenu.isActive} ">
+          <ng-container>
+            <a *ngIf="isSubRegionAdmin" class="nav-link"
+              [ngClass]="{'active non-active': subMenu.isActive}" (click)="onMenuItemClick(subMenu)">{{subMenu.name |
+              titlecase}}</a>
+          </ng-container>
+          <a *ngIf="!isSubRegionAdmin && dashBoardAccess == 'Dashboard View Access'" class="nav-link"
+            [ngClass]="{'active non-active': subMenu.isActive}" (click)="onMenuItemClick(subMenu)">{{subMenu.name |
+            titlecase}}</a>
+
+        </li>
+      </ng-container> -->
+      
+      <ng-container class="menuItem" *ngFor="let subMenu of topmenuOptions">
+        <!-- {{subMenu | json}} -->
+        <li *ngIf="dashBoardAccess == 'Dashboard View Access' && !dealerView" class="nav-item menuItem"
+             [ngClass]="{'active': subMenu.isActive} " >
+          <ng-container>
+            <!-- <p>{{subMenu.isActive}}</p> -->
+            <a *ngIf="isSubRegionAdmin"  [routerLink]=subMenu.url class="nav-link" 
+              [ngClass]="{'active non-active': subMenu.isActive}" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{subMenu.name |
+              titlecase}}</a>
+          </ng-container>
+          <a *ngIf="!isSubRegionAdmin && dashBoardAccess == 'Dashboard View Access'" [routerLink]=subMenu.url  class="nav-link"
+            [ngClass]="{'active non-active': subMenu.isActive}" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{subMenu.name |
+            titlecase}}</a>
+
+        </li>
+      </ng-container>
+      <li *ngIf="((permissionView) &&  (dashBoardAccess == 'Dashboard View Access') && !dealerView)"
+        class="nav-item menuItem">
+        <a class="nav-link" (click)="dealernewView()" oncontextmenu="return false;">Dealer View </a>
+      </li>
+
+
+
+      <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                <a class="dropdown-item" href="javascript:void(0);">Settings</a>
+</div>
+<button
+class="navbar-toggler"
+type="button"
+data-toggle="collapse"
+data-target="#siteTopnav"
+aria-controls="#siteTopnav"
+aria-expanded="false"
+aria-label="Toggle navigation"
+(click)="addBackdrop()"
+>
+<svg
+  focusable="false"
+  aria-hidden="true"
+  fill="#666"
+  class="menu-icon"
+  height="24"
+  viewbox="0 0 24 24"
+  width="24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path d="M0 0h24v24H0z" fill="none"></path>
+  <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+</svg>
+</button> -->
+      <!-- <div class="dropdown"> -->
+
+
+      <!-- <li class="nav-item">
+        <a  class="nav-link" href="#">
+            <span class="dropdown" href="#">Language setup
+                
+            <button
+                class="btn btn-sm  btn-link dropdown-toggle dropdown-custom"
+                type="button"
+                id="dropdownMenuButton10"
+                data-toggle="dropdown-menu"
+                aria-label="account menu"
+                aria-haspopup="true"
+                aria-expanded="false"
+            >
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                <a class="dropdown-item" href="javascript:void(0);">English</a>
+                <a class="dropdown-item" href="javascript:void(0);">Hindi</a>
+            </div>
+            </span>
+        </a>
+</li> -->
+
+      <!-- </div> -->
+
+
+      <!--  -->
+      <!-- <li class="nav-item">
+        <a  class="nav-link" href="/admin/documents">
+            <span class="" >Reference Document</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a  class="nav-link" href="#">
+              <span class="" href="#">Contact us</span>
+        </a>        
+    </li> -->
+
+      <!-- <span class="role-title rolename-custom" href="#">
+                  <span>{{roleName}}</span>
+
+              <button _ngcontent-ymb-c127="" type="button" *ngIf="isAdmin" class="btn  ml-1 pt-1 overallSync" (click)="commonsync()">
+
+                <span class="">
+
+                    <svg focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 4 25 25">
+
+                            <path
+
+                                d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8A5.87 5.87 0 0 1 6 12c0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z">
+
+                            </path>
+
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+
+                        </svg>
+
+                  </span>  
+
+                <span class="sync pointer"><u >Sync</u></span>
+
+                </button>
+            </span> -->
+    </ul>
+    <div *ngIf="dashBoardAccess == 'Dealer View Access' || dealerView" role="search" id="search-form-panel1">
+      <ul class="navbar-nav nav-cart">
+
+        <li class="nav-item">
+          <a class="mt-1 nav-language-item" oncontextmenu="return false;" (click)="showPopup()">
+            <!-- <img  src="../../../../assets/icons/wishlistblack.svg" height="20px" alt="Card image cap">   -->
+           <img src="../../../../assets/icons/language.svg" height="20px" alt="language">
+
+            <span class="uxf-link-text" style="font-size: 0.7rem !important;">&nbsp; {{this.language}} </span>
+            <!-- <span class="show-count" *ngIf="wishlistCount > 0">{{wishlistCount}}</span> -->
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="mt-1 nav-wishlist-item" (click)="onwishlist()" oncontextmenu="return false;">
+            <!-- <img  src="../../../../assets/icons/wishlistblack.svg" height="20px" alt="Card image cap">   -->
+            <svg class="wishlist-icon" focusable="false" aria-hidden="true" fill="#666666"
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z">
+              </path>
+              <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+
+            <span class="uxf-link-text">&nbsp; {{"HOME.WISHLIST" | translate}}</span>
+            <span class="show-count" *ngIf="wishlistCount > 0">{{wishlistCount}}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="mt-1 nav-cart-item" (click)="onaddcart()" oncontextmenu="return false;">
+            <img src="../../../../assets/icons/cart.svg" height="20px" alt="Card image cap"> <span
+              class="uxf-link-text">&nbsp; {{"HOME.CART" | translate}}</span>
+            <span class="show-count" *ngIf="cartCount > 0">{{cartCount}}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <div style="max-width: 350px" #searchBox *ngIf="searchClicked"
+          class="input-group uxf-search uxf-panel-search m-0 d-flex justify-content-between">
+          <input #txtSearch (keyup.enter)="onSearchClick(txtSearch.value)" (keyup)="onSearchKeyup(txtSearch.value)"
+            aria-label="Search" class="uxf-search-bar form-control" type="search" [placeholder]="'HOME.SEARCH' | translate" name="s"
+            [class.active]="txtSearch.value" value="{{this.searchTxt}}">
+            <!-- {{this.searchTxt}} -->
+            <!-- {{txtSearch.value}} -->
+          <div class="input-group-append">
+            <button class="uxf-search-bar-clear-icon uxf-btn-icon" type="reset" aria-label="reset"
+              (click)="onClearSearch(txtSearch.value)">
+              <svg focusable="false" aria-hidden="true" class="uxf-icon-remove" fill="#666"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 20 19">
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                </path>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+              </svg>
+            </button>
+            <button aria-label="Submit search" class="btn uxf-search-bar-submit-icon"
+              (click)="onSearchClick(txtSearch.value)">
+              <svg focusable="false" aria-hidden="true" class="uxf-icon-search" width="18" height="19" fill="#367C2B "
+                viewBox="3 6 16 10" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                </path>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+              </svg> 
+            </button>
+          </div>
+        </div>
+        <div *ngIf="!searchClicked" class="ml-2">
+          <button class="btn  py-1 px-1 ml-2 icon-box search-link" (click)="searchClicked=!searchClicked" title="Search"
+            type="button" >
+            <span class="uxf-icon ml-2">
+  
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#367C2B " class="bi bi-funnel-fill"
+                viewBox="0 2 22 17">
+                <path fill="#367C2B "
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+              </svg>
+            </span>
+            <!-- Filters -->
+          </button>
+        </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-help-item">
+            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown"
+              aria-label="account menu" aria-haspopup="true" aria-expanded="false">
+              <img src="../../../../assets/icons/help.svg" height="20px" alt="Help Guide">
+              <span class="help_title">{{"HOME.HELP" | translate}}</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10"
+              style="min-width: 9rem;margin-left: -53px;padding: 0px;">
+              <a class="dropdown-item" href="javascript:void(0);" (click)="userManualGuide()">Adzone User Guide</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- <div style="max-width: 350px" class="input-group uxf-search uxf-panel-search m-0">
+            <input #txtSearch (keyup.enter)="onSearchClick(txtSearch.value)" (keyup)="onSearchKeyup(txtSearch.value)"  id="page-level-search2" aria-label="Search" class="uxf-search-bar form-control" type="search" placeholder="Search" name="s" [class.active]="txtSearch.value"><div class="input-group-append">
+                <button class="uxf-search-bar-clear-icon uxf-btn-icon" type="reset" aria-label="reset" (click)="onClearSearch(txtSearch.value)">
+                    <svg focusable="false" aria-hidden="true" class="uxf-icon-remove" fill="#666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></button>
+                <button aria-label="Submit search" id="submit-form3" class="btn uxf-search-bar-submit-icon" (click)="onSearchClick(txtSearch.value)">
+                    <svg focusable="false" aria-hidden="true" class="uxf-icon-search" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></button>
+            </div>
+        </div> -->
+    
+
+
+    </div>
+  </div>
+</nav>
+<jd-langugae-preference *ngIf="showEditDoc"  (closed)="onCloseAddModal($event)">
+</jd-langugae-preference>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" *ngIf="errMsg">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <img src="https://cdn.ux.deere.com/uxframe/2019.4.0/img/jd-logo-green-xl@1x.png" class="jdLogo" alt="logo">
+      <!-- <embed type="application/pdf" [src]="pdfView" frameborder="0" width="99.9%" height="450"> -->
+        <pdf-viewer
+        [src]="pdfView.changingThisBreaksApplicationSecurity"
+        [rotation]="0"
+        [original-size]="false"
+        [show-all]="true"
+        [fit-to-page]="false"
+        [zoom]="zoom"
+        [zoom-scale]="'page-width'"
+        [stick-to-page]="false"
+        [render-text]="true"
+        [external-link-target]="'blank'"
+        [autoresize]="true"
+        [show-borders]="false"
+        style="width: 100%; height: 450px;"
+      ></pdf-viewer>
+      <div class="modal-footer" style="justify-content: center;">
+        <button type="button" class="skipBtn btn btn-warning" data-dismiss="modal"
+          (click)="closeModal()"><b>Close</b></button>
+      </div>
+    </div>
+  </div>
+</div>

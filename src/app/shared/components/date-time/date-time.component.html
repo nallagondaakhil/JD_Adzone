@@ -1,0 +1,21 @@
+<div class="form-group">
+  <div class="uxf-date-picker" [ngClass]="{
+    'uxf-date-picker-allow-input': allowInput,
+    'uxf-date-picker-range': range
+  }">
+    <label *ngIf="label!=='' && disableLable ==false" for="flatpickr-example" class="uxf-date-picker-label uxf-label  uxf-label-bold">{{
+      label | translate
+      }} <span *ngIf="markAsRequired" aria-label="required field" class="uxf-is-required">*</span>
+    </label>
+    <div [class.disabled]="disabled">
+      <ng2-flatpickr aria-label="date format: dd-mm-yyyy" [config]="options" placeholder="{{placeholder}}"
+        [setDate]="selectedDate" [ngModel]="selectedDate"></ng2-flatpickr>
+    </div>
+    <div *ngIf="control && control.invalid && (control.dirty || control.touched)">
+      <label class="error" *ngIf="control.errors.required">
+        {{label}} is required.
+      </label>
+      <label class="error" *ngIf="control.errors.customErrMsg">{{control.errors.customErrMsg}}.</label>
+    </div>
+  </div>
+</div>

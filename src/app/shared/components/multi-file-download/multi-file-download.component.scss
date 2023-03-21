@@ -1,0 +1,15 @@
+.modal-content {
+    max-height: 500px;
+}
+
+@media (min-width: 576px) {
+  .modal .modal-title {
+      font-size: .99rem !important;
+  }
+}
+.modal .modal-title {
+  font-size: .99rem !important;
+}
+.uxf-label{
+  font-size: .95rem;
+}

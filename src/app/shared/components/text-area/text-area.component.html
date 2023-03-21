@@ -1,0 +1,30 @@
+<div class="form-group">
+  <label class="uxf-label" *ngIf="label!=null && disableLable ==false">{{label}}
+    <span *ngIf="markAsRequired" aria-label="required field" class="uxf-is-required">*</span>
+  </label>
+  <textarea [value]="value" [disabled]="disabled" (input)="changeValue($event)" (blur)="markAsTouched()"
+    class="form-control outline-none text-area" rows="{{rowCount}}" cols="50" aria-label="Address"
+    [maxLength]="control?.errors?.maxlength?.requiredLength ? control.errors.maxlength.requiredLength : 1000"
+    [ngClass]="{ error: control && control.invalid && (control.dirty || control.touched) }"></textarea>
+    <small  *ngIf="displayDynamicLength"[ngStyle]="{'color': control?.errors?.maxlength ? '#c21020' : null}" class="d-flex flex-row-reverse pt-1" >
+      Characters: {{control?.value?.length||0 }}/{{ maxlength}}
+    </small>
+  <div *ngIf="control && control.invalid && (control.dirty || control.touched) " class="error">
+    
+    
+  
+    
+    <label class="error" *ngIf="control.errors.required">
+      {{label}} {{this.requiredData}}.
+    </label>
+    <label class="error" *ngIf="control.errors.jdName">Please enter valid characters.</label>
+    <label class="error" *ngIf="control.errors.jdAlfaNumeric">Please enter valid characters.</label>
+    <label class="error" *ngIf="control.errors.maxlength">
+      {{label}} should not be {{control.errors.maxlength.requiredLength}} characters long.
+    </label>
+    <label class="error" *ngIf="control.errors.minlength">
+      {{label}} should contain atleast {{control.errors.minlength.requiredLength}} characters.
+    </label>
+  </div>
+  
+</div>

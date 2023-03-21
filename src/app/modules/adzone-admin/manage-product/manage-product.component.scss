@@ -1,0 +1,96 @@
+
+.manage-conatiner
+{
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+}
+.product-img
+{
+    height: 120px;
+    width:120px;
+    opacity: 1;
+}
+
+.product-name
+{
+    color:#333;
+    font-size:14px;
+}
+.product-price
+{
+    color:#367C2B;
+    font-size:14px;
+}
+.card-body{
+    p{
+        margin-bottom: 8px;
+    }
+}
+.product-code
+{
+    font-size:12px;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+}
+.product-bottom
+{
+    border-bottom:1px solid #eee;
+}
+.bg-white
+{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 2px 6px #00000026;
+}
+.product-left-align
+{
+    justify-content: flex-end;
+}
+.btn-product
+{
+    width:83px !important;
+}
+.panel-content
+{
+    padding:20px 32px 20px 32px;
+}
+
+.uxf-search-bar {
+    height: 2.11rem !important;
+   
+}
+
+.uxf-search-bar.form-control{
+
+    font-size: .675rem;
+   
+}
+
+::placeholder {
+    color: #837c7c ;
+    
+}
+
+.uxf-search.input-group.uxf-panel-search .uxf-search-bar-submit-icon {
+    border: none;
+    padding: .5625rem .5625rem .425rem;
+}
+.icon-box{
+   border : 1px solid #707070;
+   color: #367C2B; 
+   background-color: transparent;
+}
+
+.width-custom{
+    width: fit-content;
+    max-width: 100%;
+}
+.endImg{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    align-items: center;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #367C2B;
+  }

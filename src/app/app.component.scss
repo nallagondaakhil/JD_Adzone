@@ -1,0 +1,71 @@
+
+.content-container {
+    // width: calc(100% - 230px);
+    padding-right: 1rem;
+}
+
+.menu-container {
+    width: 230px;
+}
+
+::ng-deep .w-100 .row h1.text-green strong{
+  font-size: 1.2rem ;
+}
+::ng-deep .btn-secondary,::ng-deep .btn-primary,::ng-deep .btn-outline-primary,::ng-deep .btn-info,::ng-deep .btn-outline-info,::ng-deep .btn-success,::ng-deep .btn-danger{
+  font-size: .775rem;
+  padding: .275rem .725rem;
+}
+@media (min-width: 992px) {
+  .content-container {
+    width: calc(100% - 230px);
+  }
+}
+@media only screen and (max-width: 768px) {
+*{
+  width:100vw!important;
+}
+.mob-text{
+  display:none;
+}
+.content-container {
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.menu-container{
+  width:0px;
+}
+::ng-deep .uxf-backdrop {
+  height: auto!important;
+  overflow: hidden!important;
+}
+
+}
+@media (max-width: 992px) {
+  .content-container {
+    width: calc(100% - 230px);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .main-container {
+    margin-top: 0 !important;
+    height: auto;
+    padding-bottom: 12px;
+  }
+}
+
+.banner{
+  width: 100%;
+ 
+  font: normal normal bold 14px/19px Noto Sans;
+letter-spacing: 0px;
+color: #800000;
+white-space: nowrap;
+    -moz-animation:  caption 50s linear 0s infinite;
+    -webkit-animation:  caption 50s linear 0s infinite;
+}
+
+.ngx-pagination .current
+{
+  background: #367C2B !important;
+}

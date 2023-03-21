@@ -1,0 +1,186 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md">
+      <div class="card">
+        <div class="card-body col-md-12">
+          <form id="basicForm" action="" novalidate="novalidate" #f="ngForm">
+            <div class="form-group">
+              <label for="exampleInputName1" class="uxf-label"
+                >Name
+                <span aria-label="required field" class="uxf-is-required"
+                  >*</span
+                >
+              </label>
+              <input
+                #name="ngModel"
+                [(ngModel)]="model.name"
+                type="text"
+                name="uname"
+                class="form-control uxf-tooltip-danger"
+                required
+                minlength="3"
+                data-toggle="tooltip"
+                data-placement="right"
+                data-original-title="Enter your name"
+                [ngClass]="{
+                  error: name.invalid && (name.dirty || name.touched)
+                }"
+              />
+              <div
+                *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="error"
+              >
+                <label class="error" *ngIf="name.errors.required">
+                  Name is required.
+                </label>
+                <label class="error" *ngIf="name.errors.minlength">
+                  Name must be at least 3 characters long.
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="uxf-label"
+                >Email address
+                <span aria-label="required field" class="uxf-is-required"
+                  >*</span
+                >
+              </label>
+              <input
+                #email="ngModel"
+                [(ngModel)]="model.email"
+                (ngModelChange)="validateEmail()"
+                type="email"
+                name="email"
+                class="form-control"
+                required=""
+                data-toggle="tooltip"
+                data-placement="right"
+                data-original-title="Enter your email"
+                [ngClass]="{
+                  error: email.invalid && (email.dirty || email.touched)
+                }"
+              />
+              <div
+                *ngIf="
+                  !isEmailValid &&
+                  email.invalid &&
+                  (email.dirty || email.touched)
+                "
+              >
+                <label class="error" *ngIf="email.errors.required"
+                  >Email is required.</label
+                >
+              </div>
+              <label class="error" *ngIf="model.email && !isEmailValid">
+                Please enter a valid email.
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPhone1" class="uxf-label"
+                >Phone
+                <span class="uxf-is-optional">(Optional)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="exampleInputPhone1"
+                aria-describedby="phoneHelp"
+                data-toggle="tooltip"
+                data-placement="right"
+                data-original-title="Enter your phone number"
+              /><small id="phoneHelp" class="form-text text-muted"
+                >Ex. (123) 456-7890</small
+              >
+            </div>
+
+            <div class="form-group">
+              <fieldset>
+                <legend>Select Language</legend>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    checked
+                    name="checkbox"
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck1"
+                  /><label class="custom-control-label" for="customCheck1"
+                    >English</label
+                  >
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    name="checkbox2"
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck2"
+                  /><label class="custom-control-label" for="customCheck2"
+                    >German</label
+                  >
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    name="checkbox3"
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck3"
+                  /><label class="custom-control-label" for="customCheck3"
+                    >Russian</label
+                  >
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    name="checkbox4"
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck4"
+                    disabled
+                  /><label class="custom-control-label" for="customCheck4"
+                    >Spanish</label
+                  >
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                <legend>
+                  Would you like to be added to our mailing list?
+                  <span aria-label="required field" class="uxf-is-required"
+                    >*</span
+                  >
+                </legend>
+                <div class="custom-control custom-control-inline custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio1"
+                    name="radio"
+                    class="custom-control-input"
+                  /><label class="custom-control-label" for="customRadio1"
+                    >Yes</label
+                  >
+                </div>
+                <div class="custom-control custom-control-inline custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio2"
+                    name="radio"
+                    class="custom-control-input"
+                    checked
+                  /><label class="custom-control-label" for="customRadio2"
+                    >No</label
+                  >
+                </div>
+              </fieldset>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!form.valid"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

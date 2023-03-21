@@ -1,0 +1,108 @@
+// .rmp-main-container {
+//     margin-top: 24px !important;
+//     margin-bottom: 0 !important;
+//     background-color: #f6f6f6;
+//     padding: 30px 24px;
+//     border-radius: 2px;
+//     border: 1px solid #e5e5e5;
+// }
+// .rmp-rating-widget__icons {
+//     margin-bottom: 0;
+// }
+
+// .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-rating-widget__icons {
+//     margin: 0 0 0.4rem 0;
+// }
+// .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-rating-widget__icons-list {
+//     list-style-type: none;
+//     padding: 0;
+//     margin: 0;
+// }
+
+// .main-content ul {
+//     max-width: 800px;
+// }
+// .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-rating-widget__icons-list::before {
+//     content: "";
+// }
+// .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-rating-widget__icons-list__icon {
+//     display: inline-block;
+//     margin: 0;
+// }
+// .rmp-icon--ratings {
+//     color: #ccc;
+//     font-size: 1rem;
+// }
+
+// [class*="rmp-icon--"], [class^=rmp-icon--] {
+//     font-family: ratemypost!important;
+//     /* speak: none; */
+//     font-style: normal;
+//     /* font-weight: 400; */
+//     font-variant: normal;
+//     text-transform: none;
+//     /* line-height: 1; */
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+// }
+// .rmp-icon--star:before {
+//     content: "\f005";
+// }
+.cont {
+    width: 93%;
+    max-width: 350px;
+    text-align: center;
+    margin: 4% auto;
+    padding: 30px 0;
+    background: #111;
+    color: #EEE;
+    border-radius: 5px;
+    border: thin solid #444;
+    overflow: hidden;
+  }
+  
+  div.stars {
+    width: 270px;
+    display: inline-block;
+  }
+::ng-deep textarea
+{
+    height:150px !important;
+}
+::ng-deep .star.on {
+  color:gold !important ;
+}
+::ng-deep .star {
+
+  color:grey !important;
+ 
+}
+.panel
+{
+  background-color: #ccc !important;
+  height:80px;
+}
+.dweb{
+  display: block;
+}
+.dmob{
+display: none;
+}
+
+@media only screen and (max-width: 528px){
+  .dweb{
+    display: none;
+  }
+  .dmob{
+  display: block;
+  height:80px;
+  }
+  .dmob div{
+    width:100%;
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+  } 
+
+}

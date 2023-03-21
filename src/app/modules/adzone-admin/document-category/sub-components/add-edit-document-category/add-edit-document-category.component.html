@@ -1,0 +1,61 @@
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="addeditdoccategory">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><b>{{title}}</b></h5>
+          <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close" (click)="onClose()">
+            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewbox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+              </path>
+              <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+          </button>
+        </div>
+  
+        <form action="" novalidate="novalidate" #addeditdoccat="ngForm">
+          <div class="modal-body" *ngIf="model">
+            <div class="row">
+              <!-- <div class="col-24">
+                <jd-text-box
+                  [label]="'Category ID'" 
+                  [markAsRequired]="true" required></jd-text-box>
+  
+              </div> -->
+              <div class="col-24">
+                <jd-text-box
+                  [label]="'Category Name'"  #documentCategoryName="ngModel" name="documentCategoryName" [(ngModel)]="model.documentCategoryName" [control]="documentCategoryName.control" [markAsRequired]="true" required pattern="^(?!\s*$).+"></jd-text-box>
+  
+              </div>
+            </div> 
+            <!-- <div *ngIf="isEdit" class="row">
+              <div class="col">
+                <div class="form-group">
+                  <fieldset>
+                    <div class="custom-control custom-control-inline custom-radio">
+                      <input type="radio" name="editRoleRadio" id="active" class="custom-control-input"
+                        [(ngModel)]="model.activateFlag" [value]="'Active'" /><label class="custom-control-label"
+                        for="active">Active</label>
+                    </div>
+                    <div class="custom-control custom-control-inline custom-radio">
+                      <input type="radio" name="editRoleRadio" id="inActive" class="custom-control-input"
+                        [(ngModel)]="model.activateFlag" [value]="'Inactive'" /><label class="custom-control-label radio-red"
+                        for="inActive">Inactive</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div> -->
+          </div>
+  
+          <div class="modal-footer d-flex justify-content-right ">
+            <div class="text-center">
+              <button type="button" class="btn btn-secondary ml-3" (click)="onClose()">Cancel</button>
+              <button class="btn btn-primary ml-3 mr-4" (click)="onsave()">{{buttonText}}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

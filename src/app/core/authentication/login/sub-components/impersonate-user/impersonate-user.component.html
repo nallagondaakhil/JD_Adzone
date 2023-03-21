@@ -1,0 +1,31 @@
+<div class="modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Impersonate User</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="closemodal()">&times;</button>
+      </div>
+      <!-- <form class="bg-white  rounded-5 shadow-5-strong p-5">
+      
+        <div class="form-outline mb-4">
+          <label class="form-label">Enter the RACF ID</label>
+          <input type="text" class="form-control" [(ngModel)]="racfId" name="racfId" />
+        </div>
+
+        <button type="button" class="btn-blue  btn-sm btn-block" [disabled]="racfId?.length < 7"
+          (click)="onimpersonateuser()">Start Impersonate Session</button>
+      </form> -->
+      <form class="bg-white  rounded-5 shadow-5-strong form-padding ">
+      
+        <div class="form-outline mb-4">
+          <label class="form-label">Enter the RACF ID</label>
+          <input type="text" class="form-control" [(ngModel)]="racfId" name="racfId" />
+        </div>
+
+        <button type="button" class="btn-blue button  btn-sm btn-block" [disabled]="racfId?.length < 7"
+          (click)="onimpersonateuser()">Start Impersonate Session</button>
+      </form>
+    </div>
+    <!-- </div> (click)="onLogin()"-->
+  </div>
+</div>

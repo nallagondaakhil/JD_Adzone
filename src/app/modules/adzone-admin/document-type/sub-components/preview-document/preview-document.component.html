@@ -1,0 +1,28 @@
+<div class="container-fluid pb-5" *ngIf="preview_page">
+    <div class="row" *ngFor="let form of newArr; let i = index">
+        <div class="col-24 col-md-8 mt-3" *ngFor="let item of form.multipleThumbnailResponseDto">
+            <div class="card">
+                <img src="{{item.thumbnailFileURL}}">
+                <div class="card-body">
+                    <div class="card-title">
+                        <input type="radio" [id]="'sample'+item.thumbailDocumentId" [name]="'sample'+ i"
+                            [value]="item.thumbailDocumentId" [checked]="item.checked ? true : false"
+                            (change)="isSelected(item,$event,form.multipleThumbnailResponseDto)">
+                        <label><b>{{item.thumbnailFileSize}}</b></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col text-center mt-3 mb-3" *ngIf="newArr">
+        <button type="button" class="btn btn-primary extend" (click)="submitImgs()">Submit</button>
+    </div>
+    <div class="row float-right" *ngIf="newArr?.length">
+        <ul style="display: none;">
+            <li *ngFor="let item of newArr | paginate: config"></li>
+        </ul>
+        <pagination-controls id="test" (pageChange)="pageChanged($event)" class="my-pagination "></pagination-controls>
+    </div>
+</div>
+<jd-loader *ngIf="loading"></jd-loader>
+<!-- <jd-document-type *ngIf="showTableData" [previewData]="previewData"></jd-document-type> -->

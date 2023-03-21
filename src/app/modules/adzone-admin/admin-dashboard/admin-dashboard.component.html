@@ -1,0 +1,558 @@
+<div class="row mx-0 mt-4 mb-4">
+    <div class="col-24 col-md-6 left-side-column">
+        <div class="claim-card-box-lg mt-3" *ngIf="tileData">
+            <div class="row m-0">
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/activeEmp.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="No of Active Employees">No of Active JD Employees</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfEmployees}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/activeVendors.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="No of Active Vendors">No of Active Vendors</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfVendors}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/otherUser.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="No.of Active Super Admins & Sub Region Admins">No.of Active Super Admins & Sub Region Admins</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfOtherUsers}}</h4>
+                        </div>
+                      </div>
+                </div>
+            
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/dash-left-file.svg" />
+                        <div class="card-body">
+                          <p class="card-text description" title="Total No of Documents Uploaded">Total No.of.Documents Uploaded</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfDocumentsUploaded}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/dash-left-download-file.svg" />
+                        <div class="card-body">
+                          <p class="card-text description" title="Total No of Documents Downloaded">Total No.of.Documents Downloaded</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfDocumentsDownloaded}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/tmp_download_file.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="Total No.of.Templates Downloaded">Total No.of.Templates Downloaded</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfTemplateDownloaded}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/login.svg" width="9%">
+                        <div class="card-body">
+                          <p class="card-text description" title="Dealer Logged In">Dealer Logged In</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfDealersLoggedIn}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/vendor.svg" width="9%">
+                        <div class="card-body">
+                          <p class="card-text description" title="Vendors Logged In">Vendors Logged in</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfVendorsLoggedIn}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/login-user.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="JD Employee Logged In"> JD Employee Logged In</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfJDEmployeeLoggedIn}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/Group 29554.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="Super Admins & Sub Region Admins Logged in">Super Admins & Sub Region Admins Logged in</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.noOfOthersLoggedIn}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/dash-left-folder.svg"  >
+                        <div class="card-body">
+                          <p class="card-text description" title="Total Order Placed">Total Order Placed</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.orderPlaced}}</h4>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-24 col-xl-24 custom-padding ">
+                    <div class="card flex-row shadow-none">
+                        <img src="../../../../assets/icons/dashboard/dash-left-category.svg">
+                        <div class="card-body">
+                          <p class="card-text description" title="Total Document Category Count">Total Document Category Count</p>
+                          <h4 class="card-title h5 h4-sm count mb-0">{{tileData.documentCategoryCount}}</h4>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-24 col-md-18 right-side-column pr-0">
+     <div class="w-100 dashboard  mt-0">
+      <div class="row m-0" *ngIf="permissionView">
+        <div class="col header-container">
+            <h1 class="text-green mb-0"><strong>Dashboard (Inception - Till Date)</strong></h1>
+
+        </div>
+
+        <div class="pt-0 col-auto1 d-flex text-right" #filterButton>
+
+            <div class="ml-2">
+                <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                    (click)="onFilterClick()" [disabled]="false">
+                    <span class="uxf-icon">
+                        <svg *ngIf="!fillSelectedDate" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                            <path fill="#367C2B "
+                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                        </svg>
+                        <svg *ngIf="fillSelectedDate" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                            <path fill="#ffde00 "
+                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="dashboard-container">
+        <div class="filter-container" *ngIf="showFilters">
+            <form #filterForm="ngForm" (ngSubmit)="onfiltersubmit(filterForm.value)">
+                <div class="row  row mt-3 ml-2 mr-2 mb-0">
+                    <div class="col-8 custom-padding" *ngIf="showOptions">
+                        <label></label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group">
+                            <label class="btn uxf-btn-toggle" [ngClass]="changeView1 ? 'active' : ''" >
+                                <input type="radio" name="options1" id="option1" autocomplete="off"
+                                    (click)="changeView(1)"> Daily View
+                            </label>
+                            <label class="btn uxf-btn-toggle" [ngClass]="changeView2 ? 'active' : ''">
+                                <input type="radio" name="options2" id="option2" autocomplete="off"
+                                    (click)="changeView(2)"> Monthly View
+                            </label>
+                            <label class="btn uxf-btn-toggle" [ngClass]="changeView3 ? 'active' : ''">
+                                <input type="radio" name="options3" id="option44" autocomplete="off"
+                                    (click)="changeView(3)"> Yearly View
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-4 custom-padding">
+                        <div class="position-relative">
+                            <jd-date-time #filterDate="ngModel" [maxDate]="currentDate" [label]="'From Date'" [control]="filterDate.control"
+                                [(ngModel)]="filterSelectedDate" (ngModelChange)="dateValidation()" name="filterDate" placeholder="Start Date">
+                            </jd-date-time>
+                        </div>
+                    </div>
+
+                    <div class="col-4 custom-padding">
+                        <div class="position-relative">
+                            <jd-date-time #filterToDate="ngModel" [maxDate]="currentDate" [label]="'To Date'" *ngIf="showToDate"
+                                [control]="filterToDate.control" [(ngModel)]="fillSelectedToDate" name="filterToDate" placeholder="End Date"
+                                [minDate]="minDate">
+                            </jd-date-time>
+                        </div>
+                    </div>
+
+                    <div class="col-8 text-right dashboard-filter custom-padding">
+                        <div class="row m-0">
+                            <button type="reset" class="btn col-11 btn-secondary button-min-width ml-1 mr-3"
+                                style="text-align: center;" (click)="clearFilter()">Clear</button>
+                            <button type="submit" class="btn col-11 btn-primary button-min-width"
+                                style="text-align: center;">Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+
+        <div class="row m-0">
+            <div class="col-24 col-lg-14 col-xl-14">
+                <div class="document-summary-section ">
+                    <div class="document-download-header">
+                        <div class="header" style="margin-left: 30px;"></div>
+                        <div class="header">
+                            Category Wise Download Summary
+                            <!-- <div style="font-size: 9px;text-align: left; color: #215A18;">(Based on the2 23- 2022)</div> -->
+                        </div>
+                        <div class="filter-section d-flex">
+                            <div class="dashfilter-container">
+                                <div class="position-relative ">
+                                    <div class="d-flex text-right" #filterButton>
+
+                                        <!-- <div class="ml-2">
+                                <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                                     [disabled]="false" >
+                                    
+                                    <span class="uxf-icon">
+                                       
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                            <path fill="#367C2B "
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                            <path fill="#ffde00 "
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="document-graph-section">
+                        <div id="document-graph">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-24 col-lg-10 col-xl-10 pr-0">
+                <div class="order-summary-section">
+                    <div class="document-header">
+                        <div class="header">
+                            Order Summary
+                            <!-- <div style="font-size: 9px;text-align: left; color: #215A18;">(Based on the 234)</div> -->
+                        </div>
+                        <div></div>
+                        <div class="filter-section d-flex">
+                            <div class="dashfilter-container">
+                                <div class="position-relative ">
+                                    <div class="d-flex text-right" #filterButton>
+
+                                        <!-- <div class="ml-2">
+                            <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                                 [disabled]="false">
+                                <span class="uxf-icon">
+                                    
+                                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                        <path fill="#367C2B "
+                                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                        <path fill="#ffde00 "
+                                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-graph-section">
+                        <div id="order-graph"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-0 mt-3 ">
+            <div class="col-24 pr-0">
+                <div class="month-wise-section">
+                    <div class="document-header">
+                        <div class="header">
+                            Month Wise Download and Upload Summary
+                        </div>
+                        <div class="d-flex">
+                            <div class="yearFilter mr-4">
+                                <jd-select-list #year="ngModel" [disabledLabel]="true" name="year" [label]="'Year'"
+                                    [multiple]="false" [itemSource]="yearFilter" [(ngModel)]="model.year"
+                                    (ngModelChange)="yearFilterChange($event)" [displayProperty]="'name'"
+                                    [control]="year.control" [valueProperty]="'id'">
+                                </jd-select-list>
+                            </div>
+                            <div class="changeGraph">
+                                <div class="changeParent " [class.active]="activeTab === 1"
+                                    (click)="setActiveTab(1, 'download')">
+                                    <div class="innerText">Downloaded</div>
+
+                                </div>
+                                <div class="changeParent" [class.active]="activeTab === 2"
+                                    (click)="setActiveTab(2, 'upload')">
+                                    <div class="innerText">Uploaded</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="month-wise-graph-section">
+                        <div id="month-wise-graph">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3">
+           
+            <div class="col-24 pr-0">
+                <div class="order-summary-section">
+                    <div class="document-header">
+                        <div class="header">
+                            Documents Uploaded and Downloaded Summary
+                            <!-- <div style="font-size: 9px;text-align: left; color: #215A18;">(Based on the 234)</div> -->
+                        </div>
+                        <div></div>
+                        <div class="filter-section d-flex">
+                            <div class="dashfilter-container">
+                                <div class="position-relative ">
+                                    <div class="d-flex text-right" #filterButton>
+
+                                        <!-- <div class="ml-2">
+                            <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                                 [disabled]="false">
+                                <span class="uxf-icon">
+                                    
+                                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                        <path fill="#367C2B "
+                                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                        <path fill="#ffde00 "
+                                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-graph-section">
+                        <div id="download-graph-report"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3">
+            <div class="col-24 col-lg-12 col-xl-12 pr-0">
+                <div class="document-summary-section trending">
+                    <div class="document-download-header">
+                        <div class="header" style="margin-left: 30px;"></div>
+                        <div class="header">
+                            Top 10 Trending Documents
+                            <!-- <div style="font-size: 9px;text-align: left; color: #215A18;">(Based on the2 23- 2022)</div> -->
+                        </div>
+                        <!-- <jd-data-table *ngIf="showTableData" class="col-sm-12 responsive" [model]="dataTableModel1"></jd-data-table> -->
+                        <table class="table table-stripped table-hover table-sm dealertable"  >
+                            <thead >
+                              <th>Document Name</th>
+                              <th>Document Downloaded Count</th>
+                            </thead>
+                            <tbody *ngIf= "DocumentData.length > 0">
+                              <tr *ngFor="let row of DocumentData, i as index">
+                                <td title="{{row.name}}">{{row.name}}</td>
+                                <td>{{row.count}}</td>
+                              </tr>
+                            </tbody>
+                            <tbody *ngIf= "DocumentData.length == 0">
+                              <tr>
+                                <td colspan="2"><p class="nodatafound">No Data Found</p></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        <div class="filter-section d-flex">
+                            <div class="dashfilter-container">
+                                <div class="position-relative ">
+                                    <div class="d-flex text-right" #filterButton>
+
+                                        <!-- <div class="ml-2">
+                                <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                                     [disabled]="false" >
+                                    
+                                    <span class="uxf-icon">
+                                       
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                            <path fill="#367C2B "
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                            <path fill="#ffde00 "
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="document-graph-section">
+                        <!-- <div id="document-graph1">
+
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-24 col-lg-12 col-xl-12 pr-0">
+                <div class="document-summary-section trending">
+                    <div class="document-download-header">
+                        <div class="header" style="margin-left: 30px;"></div>
+                        <div class="header">
+                            Top 10 Trending Dealers
+                            <!-- <div style="font-size: 9px;text-align: left; color: #215A18;">(Based on the2 23- 2022)</div> -->
+                        </div>
+                        <!-- <jd-data-table *ngIf="showTableData" class="col-sm-12 responsive" [model]="dataTableModel"></jd-data-table> -->
+                        <table class="table table-stripped table-hover table-sm dealertable"  >
+                            <thead >
+                              <th>Dealer ID</th>
+                              <th>Dealer Name</th>
+                              <th>Document Count</th>
+                            </thead>
+                            <tbody *ngIf= "DealerData.length > 0 ">
+                              <tr *ngFor="let row of DealerData, i as index">
+                                <td>{{row.id}}</td>
+                                <td title="{{row.name}}">{{row.name}}</td>
+                                <td>{{row.count}}</td>
+                              </tr>
+                            </tbody>
+                            <tbody *ngIf= "DocumentData.length == 0">
+                                <tr>
+                                  <td colspan="3"><p class="nodatafound">No Data Found</p></td>
+                                </tr>
+                              </tbody>
+                          </table>
+                        <div class="filter-section d-flex">
+                            <div class="dashfilter-container">
+                                <div class="position-relative ">
+                                    <div class="d-flex text-right" #filterButton>
+
+                                        <!-- <div class="ml-2">
+                                <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                                     [disabled]="false" >
+                                    
+                                    <span class="uxf-icon">
+                                       
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                            <path fill="#367C2B "
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                            <path fill="#ffde00 "
+                                                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="document-graph-section">
+                        <!-- <div id="document-graph1">
+
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-24 col-lg-12 col-xl-12">
+                <div class="order-summary-section">
+                    <div class="document-header">
+                        <div class="header">
+                            Doc Uploaded And Doc Downloaded
+                            <div style="font-size: 9px;text-align: left; color: #215A18;">(Based on the 234)</div>
+                        </div>
+                        <div>
+
+                        </div>
+                        <div class="filter-section d-flex">
+                            <div class="dashfilter-container">
+                                <div class="position-relative ">
+                                    <div class="d-flex text-right" #filterButton>
+
+                                        <div class="ml-2">
+                            <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" title="Filters" type="button"
+                                 [disabled]="false">
+                                <span class="uxf-icon">
+                                    
+                                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                        <path fill="#367C2B "
+                                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                                        <path fill="#ffde00 "
+                                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-graph-section">
+                        <div id="download-graph-report"></div>
+
+        </div>
+    </div>
+</div> -->
+        </div>
+
+    </div>
+        </div>
+    </div>
+</div>
+<!-- <jd-filter-modal class="filter-modal" *ngIf="showFilterDialog"
+    [state]="showFilterDialog" (onClose)='onCloseFilter()' (onFilterUpdated)="onFilterUpdated($event)"
+    (onFilterButtonClick)="onFilterCallback($event)"
+    [ngStyle]="{'top':filterDialogTop+'px','right':filterDialogRight+'px'}"></jd-filter-modal> -->
+
+<!-- <jd-dashboard-filter  *ngIf="showdashboardfilter" [selectedTypemonth]="dashfilterselected" 
+    [selectedType]="categoryfilterselected" [SummaryselectedType]="SummaryselectedType" [dashfilteroption]="selectedfilteroption"  (closed)="closedashfilter($event)"></jd-dashboard-filter> -->

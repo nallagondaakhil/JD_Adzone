@@ -1,0 +1,42 @@
+<footer class="footer uxf-footer" role="contentinfo">
+    <div class="container-fluid">
+       <div class="row flex-xl-nowrap">
+          <div class="col-24">
+             <ul class="nav">
+                <!-- <li *ngIf="isAdmin || isSubRegionAdmin">
+                   <a class="uxf-footer-link" href="javascript:void(0);">Dashboard</a>
+                </li> -->
+                <li>
+                   <a class="uxf-footer-link" (click)="redirectToContactus()">{{"HOME.CONTACTUS" | translate}}</a>
+                </li>
+                <li>
+                  <a class="uxf-footer-link" (click)="clearFeedbackSideMenu()">{{"HOME.FEEDBACK" | translate}}</a>
+               </li>
+                <!-- <li>
+                   <a class="uxf-footer-link" href="https://github.deere.com/ux/uxframe" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </li> -->
+                <!-- <li>
+                   <a class="uxf-footer-link" href="javascript:void(0);" rel="noopener noreferrer">Subscribe to our Newsletter</a>
+                </li> -->
+                <!-- <li>
+                   <a class="uxf-footer-link" href="javascript:void(0);">Privacy &amp;
+                      Data</a>
+                </li> -->
+                <li>
+                   <!-- <a class="uxf-footer-link" href="https://www.deere.com/en/privacy-and-data/terms/">{{"HOME.TERMSOFUSE" | translate}}</a> -->
+                   <a class="uxf-footer-link" href="{{termsOfUseLink}}">{{"HOME.TERMSOFUSE" | translate}}</a>
+                  </li>
+                <li>
+                  <a class="uxf-footer-link" href="{{privacyPolicyLink}}">{{"HOME.PRIVACYDATA" | translate}}</a>
+               </li>
+             </ul>
+             <span class="uxf-footer-legal">
+                <!-- Copyright ©  -->
+                <span id="uxf-current-year"></span>
+                <p>{{"HOME.COPYRIGHTS" | translate}}</p>
+                <!-- <p></p>  -->
+             </span>
+          </div>
+       </div>
+    </div>
+ </footer>

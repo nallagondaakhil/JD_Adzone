@@ -1,0 +1,1291 @@
+
+<nav class="navbar uxf-top-nav navbar-expand-md" >
+  <div class="navbar-collapse" *ngIf="!close" id="siteTopnav">
+    <ul class="navbar-nav" style="white-space: nowrap;">
+            <!-- <a class="back-btn" id="backButton1" aria-label="Back Navigation Menu" data-toggle="collapse" data-target="#siteTopnav" aria-controls="siteTopnav"  type="button" (click)="backNavigation2()"  >
+              <svg focusable="false" aria-hidden="true" fill="#367c2b" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg> Back 
+            </a>    -->
+            <li class="uxf-nav-back bgWhite ">
+                <button class="navbar-back btn btn-link" id="closeButton" aria-label="Close Navigation Menu" aria-controls="siteTopnav" type="button" aria-expanded="true" (click)="removeBackdrop()" >
+                <svg focusable="false" aria-hidden="true" height="24" viewbox="0 0 26 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></button>
+            </li>
+            <li class="nav-item" *ngIf="dashBoardAccess == 'Dashboard View Access'">
+                <a class="nav-link" href="/master/dashboard" (click)="homeIconClick()" oncontextmenu="return false;">
+                  <svg focusable="false" aria-hidden="true" class="nav-home-icon-sidenav" fill="#000" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                </a>
+              </li>
+            <li class="nav-item" *ngIf="dashBoardAccess == 'Dealer View Access'">
+              <a class="nav-link" href="/master/end-user-management" (click)="homeIconClick()" oncontextmenu="return false;">
+                <svg focusable="false" aria-hidden="true" class="nav-home-icon-sidenav" fill="#000" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+              </a>
+            </li>
+            <!-- <div class="" *ngFor="let menu of menuItems">
+              <p>{{menu.name}}</p>
+            </div> -->
+              
+           
+              <ul class="docOptionsMenu" *ngIf="docOptionsFor">
+                <div class="" *ngIf="langMang == false">
+                  <li *ngFor="let subMenu of docOptions" [ngClass]="{active: subMenu.isActive} " class="nav-item">
+                    <!-- <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}"  data-toggle="dropdown" aria-expanded="false" role="button" (click)="mobonMenuItemClick(subMenu)">
+                                   <span class="submenutitle">{{subMenu.name}}</span>
+                                   <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                                    <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                                 </a> -->
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Agriculture'" (click)="mobonMenuItemClick(subMenu)">
+                      <span class="submenutitle"> {{'HOME.AGRICULTURE' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Construction'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.CONSTRUCTION' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Aftermarket'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle"> {{'HOME.AFTERMARKET' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Finance'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.FINANCE' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Tractors'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle"> {{'HOME.TRACTORS' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Uploads'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.UPLOADS' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Uploads_testing'"
+                      (click)="mobonMenuItemClick(subMenu)" oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.UPLOADS_TESTING' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Software'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.SOFTWARE' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'abc'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.ABC' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Demo test'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.DEMOTEST' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'arts'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.ARTS' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'AME'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.AME' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Asia pacific'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.ASIAPASCIFIC' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'aaaaa'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.AAAAA' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Automobiles'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.AUTOMOBILES' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                    <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" data-toggle="dropdown"
+                      aria-expanded="false" role="button" *ngIf="subMenu.name == 'Banking'" (click)="mobonMenuItemClick(subMenu)"
+                      oncontextmenu="return false;">
+                      <span class="submenutitle">{{'HOME.BANKING' | translate}}</span>
+                      <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                          viewBox="0 0 24 24">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                          <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        </svg></span>
+                    </a>
+                
+                
+                    <!-- <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'abc'" (click)="mobonMenuItemClick(subMenu)"  data-toggle="dropdown" aria-expanded="false" role="button">
+                              {{'HOME.ABC' | translate}}
+                              <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon">
+                                <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                            </a> -->
+                
+                    <!-- <div class="" *ngFor="let menu of menuItems">
+                                   <p>{{menu.name}}</p>
+                                 </div> -->
+                  </li>
+                </div>
+                <div class="" *ngIf="langMang == true">
+                <li  *ngFor="let subMenu of docOptions" [ngClass]="{active: subMenu.isActive} " class="nav-item">
+                  <a class="nav-link subMenu" [ngClass]="{'active non-active': subMenu.isActive}"  data-toggle="dropdown" aria-expanded="false" role="button" (click)="mobonMenuItemClick(subMenu)">
+                    <span class="submenutitle">{{subMenu.name}}</span>
+                    <span class="sidemenuicon sidemenuicon-1" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                  </a>
+                </li>
+              </div>
+              </ul>
+                
+             
+
+            <ng-container>
+                <ul class="dropdown-menu" *ngIf="mobmenuItems && mobmenuItems.length > 0">
+                  <li style="padding-bottom:40px;">
+                    <a class="back-btn"  id="backButton" aria-label="Back Navigation Menu"  type="button"  (click)="backNavigation()"  >
+                      <svg focusable="false" aria-hidden="true" fill="#367c2b" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg> Back
+                    </a>  
+                  </li>
+                  <div class="" *ngIf="langMang == false">
+                    <li *ngFor="let menu of mobmenuItems"
+                      [ngClass]="{'active-parent': (subchildMenuItem && menu.isActive)}">
+                      <!-- <a class="dropdown-item subchildmenu" [ngClass]="{'active non-active': menu.isActive}" (click)="onsubMenuItemClick(menu)" style="max-width: 22rem;">
+                        <span class="submenutitle">{{menu.name}}</span> 
+                        <span class="sidemenuicon" *ngIf="showicon">
+                          <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a> -->
+                      
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Brochures'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.BROUCHERS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Advertisment'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.ADVERTISMENT" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Social and Online promotion'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.SOCIALANDNLINEPROMOTION" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Point of Sale'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.POINTOFSALE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Campaign material'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.CAMPAIGNMATERIAL" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Photographs'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.PHOTOGRAPHS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Videos'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.VIDEOS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Others'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.OTHERS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Documents'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.DOCUMENTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Audios'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AUDIOS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Ag Parts'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AGPARTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Turf Parts'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.TURFPARTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Maintenance Parts & Accessories'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.ACCMAINTANCE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'market1'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.MARKET1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'test'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.SMALLTEST" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'UnsupportedType'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.UNSUPPORTTYPE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Sublime editor'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.SUBLIMEEDITOR" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'aaaa'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AAAA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'aa'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Service'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.SERVICES" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'NewService'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.NEWSERVICE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Agritech'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AGRITECH" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Sample'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.SAMEPLE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Marketing materials'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.MARKETINGMATERIALS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Check'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.CHECK" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'New'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.NEWMENU" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Testing'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.TESTING" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Java'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.JAVA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'C++'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.C++" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Asia pacific'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.ASIAPACIFIC" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'AME1'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AME1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Upload Testing data'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.UPLOADTESTINGDATA1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'china'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.CHINA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Sub Uploads'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.SUBUPLOAD" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'AME'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AME" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'AP1'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AP1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'ame'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AMES" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'aaaaa'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.AAAAA" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'bbbb'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.BBBB" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Vehicle'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.VEHICLE" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Accounts'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.ACCOUNTS" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Demo Test P1'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.DEMOTESTP1" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'banking Sector'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.BANKINGSECTOR" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Bank'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.BANK" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'Test'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.TEST" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" *ngIf="menu.name == 'check'" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                        {{"HOME.CHECK" | translate}} <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                      </a>
+                      <!-- <ng-container [ngTemplateOutlet]="subchildMenuItem" [ngTemplateOutletContext]="{'childMenu': subchildMenuItem}">
+                      </ng-container> -->
+                    </li>
+                  </div>
+                  <div class="" *ngIf="langMang == true">
+                    <li *ngFor="let menu of mobmenuItems"
+                    [ngClass]="{'active-parent': (subchildMenuItem && menu.isActive)}">
+                    <!-- <a class="dropdown-item subchildmenu" [ngClass]="{'active non-active': menu.isActive}" (click)="onsubMenuItemClick(menu)" style="max-width: 22rem;">
+                      <span class="submenutitle">{{menu.name}}</span> 
+                      <span class="sidemenuicon" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                    </a> -->
+                    
+                    <a class="nav-link" [ngClass]="{'active non-active': menu.isActive}" (click)="onsubMenuItemClick(menu)" oncontextmenu="return false;">
+                      {{menu.name}} <span class="sidemenuicon" *ngIf="showicon">
+                        <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                    </a>
+                    </li>
+                    </div>
+                </ul>
+            <!-- </div> -->
+            </ng-container> 
+
+            <ng-container> 
+                <ul class="dropdown-menu" *ngIf=" subchildMenuItem && subchildMenuItem.length > 0">
+                    <li style="padding-bottom:40px;">
+                      <a class="back-btn" style="padding-bottom:0px;" id="backButton2" aria-label="Back Navigation Menu"  type="button" (click)="backNavigation1();" >
+                        <svg focusable="false" aria-hidden="true" fill="#367c2b" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg> Back 
+                    </a>  
+                    </li>
+                    <div class="" *ngIf="langMang == false">
+                    <li *ngFor="let subMenu of subchildMenuItem" class="dropdown-item subchildMenuItem-dropdown-item">
+                      <!-- <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 1'">
+                        {{"HOME.TEST1" | translate}}
+                      </a> -->
+                       <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 1'">
+                            {{"HOME.TEST1" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                            <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Test 1'">
+                            {{"HOME.TEST1" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 2'">
+                            {{"HOME.TEST2" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Test1'">
+                            {{"HOME.TEST1" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Test2'">
+                            {{"HOME.TEST2" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Testing'">
+                            {{"HOME.TESTING" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'img'">
+                            {{"HOME.IMG" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'exe'">
+                            {{"HOME.EXE" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'bbbb'">
+                            {{"HOME.BBBB" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'ccccc'">
+                            {{"HOME.CCCCC" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'dddd'">
+                            {{"HOME.DDDD" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Warranty Service'">
+                            {{"HOME.WARRANTYSERVICE" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Non-Warranty Service'">
+                            {{"HOME.NON-WARRANTYSERVICE" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Service'">
+                            {{"HOME.SERVICES" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Agritech'">
+                            {{"HOME.AGRITECH" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample1'">
+                            {{"HOME.SAMEPLE" | translate}}1
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample2'">
+                            {{"HOME.SAMEPLE" | translate}}2
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample3'">
+                            {{"HOME.SAMEPLE" | translate}}3
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'sample4'">
+                            {{"HOME.SAMEPLE" | translate}}4
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Tractor'">
+                            {{"HOME.TRACTOR" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Harvester'">
+                            {{"HOME.HARVESTER" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'implements'">
+                            {{"HOME.IMPLEMENTS" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'spare parts'">
+                            {{"HOME.SPAREPARTS" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Check'">
+                            {{"HOME.CHECK" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'New'">
+                            {{"HOME.NEWMENU" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Java'">
+                            {{"HOME.JAVA" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'C++'">
+                            {{"HOME.C++" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sublime editor'">
+                            {{"HOME.SUBLIMEEDITOR" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'upload test'">
+                            {{"HOME.UPLOADTEST" | translate}} 
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'upload data'">
+
+                            {{"HOME.UPLOADDATA" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'AME2'">
+
+                            {{"HOME.AME2" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample A'">
+
+                            {{"HOME.SAMPLEA" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample B'">
+
+                            {{"HOME.SAMPLEB" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Sample C'">
+
+                            {{"HOME.SAMPLEC" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'AP2'">
+
+                            {{"HOME.AP2" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'aaaaa'">
+
+                            {{"HOME.AAAAA" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'ame'">
+
+                            {{"HOME.AMES" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Car 1'">
+                            {{"HOME.CAR1" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Creditor'">
+                            {{"HOME.CREDITOR" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Debitor'">
+                            {{"HOME.DEBITOR" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Loan'">
+                            {{"HOME.LOAN" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Eroo'">
+                            {{"HOME.EROO" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Bank 1'">
+                            {{"HOME.BANK1" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <a class="nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'Bank'">
+                            {{"HOME.BANK" | translate}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+                          </a>
+                          <!-- <ng-container [ngTemplateOutlet]="fouthchildmenu" [ngTemplateOutletContext]="{'childMenu': fouthchildmenu}">
+                          </ng-container> -->
+                    </li>
+                  </div>
+                  <div class="" *ngIf="langMang == true">
+                    <li *ngFor="let subMenu of subchildMenuItem" class="dropdown-item subchildMenuItem-dropdown-item">
+                      <!-- <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 1'">
+                        {{"HOME.TEST1" | translate}}
+                      </a> -->
+                       <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                            (click)="onsubchildMenuItemClick(subMenu)">
+                            {{subMenu.documentChildName}}
+                            <span class="sidemenuicon" *ngIf="showicon"><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg></span>
+
+                          </a>
+                      </li>
+                  </div>
+                  
+                </ul>
+              </ng-container>
+              <ng-container> 
+                <ul class="dropdown-menu" *ngIf="fouthchildmenu && fouthchildmenu?.length > 0">
+                    <li style="padding-bottom:40px;">
+                      <a class="back-btn" style="padding-bottom:0px;" id="backButton3" aria-label="Back Navigation Menu"  type="button" (click)="backNavigation2();" >
+                        <svg focusable="false" aria-hidden="true" fill="#367c2b" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg> Back 
+                    </a>  
+                    </li>
+                    <div class="" *ngIf="langMang == false">
+                    <li *ngFor="let subChildMenu of fouthchildmenu" class="dropdown-item subchildMenuItem-dropdown-item">
+                      <!-- <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                        (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 1'">
+                        {{"HOME.TEST1" | translate}}
+                      </a> -->
+                      <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                      (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload test 1'">
+                      {{"HOME.UPLOADDATATEST1" | translate}}
+                    </a>
+                    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                      (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload test 2'">
+                      {{"HOME.UPLOADDATATEST2" | translate}}
+                    </a>
+                    <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload data 1'">
+                    {{"HOME.UPLAODDATA1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'upload data with 7'">
+                    {{"HOME.UPLOADDATA7" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'aaaaa'">
+                    {{"HOME.AAAA" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'ame'">
+                    {{"HOME.AMES" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample A1'">
+                    {{"HOME.SAMPLEA1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'SampleA4'">
+                    {{"HOME.SAMPLEA4" | translate}}
+                  </a>
+                  
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample B1'">
+                    {{"HOME.SAMPLEB1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample c1'">
+                    {{"HOME.SAMPLEC1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample c2'">
+                    {{"HOME.SAMPLEC2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Sample c3'">
+                    {{"HOME.SAMPLEC3" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'aaaaaa'">
+                    {{"HOME.AAAAAA" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 2'">
+                    {{"HOME.CAR2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 3'">
+                    {{"HOME.CAR3" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 4'">
+                    {{"HOME.CAR4" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 5'">
+                    {{"HOME.CAR5" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 6'">
+                    {{"HOME.CAR6" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 7'">
+                    {{"HOME.CAR7" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 8'">
+                    {{"HOME.CAR8" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 9'">
+                    {{"HOME.CAR9" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 10'">
+                    {{"HOME.CAR10" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 11'">
+                    {{"HOME.CAR11" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Car 12'">
+                    {{"HOME.CAR12" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Creditor one'">
+                    {{"HOME.CREDITOR1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Creditor two'">
+                    {{"HOME.CREDITOR2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Creditor three'">
+                    {{"HOME.CREDITOR3" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Debitor one'">
+                    {{"HOME.DEBITOR1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Debitor two'">
+                    {{"HOME.DEBITOR2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Loan 1'">
+                    {{"HOME.LOAN1" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Ero 2'">
+                    {{"HOME.ERO2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Bank 2'">
+                    {{"HOME.BANK2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Bank'">
+                    {{"HOME.BANK" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'Test 2'">
+                    {{"HOME.TEST2" | translate}}
+                  </a>
+                  <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                    (click)="onsubMenuItemClick2(subChildMenu)" *ngIf="subChildMenu.nameChildmenu == 'tes1'">
+                    {{"HOME.TES1" | translate}}
+                  </a>
+                    </li>
+                    </div>
+                    <div class="" *ngIf="langMang == true">
+                      <li *ngFor="let subChildMenu of fouthchildmenu" class="dropdown-item subchildMenuItem-dropdown-item">
+                        <!-- <a class="nav-link subchildMenuItem-nav-link" [ngClass]="{'active sub-active': subMenu.isActive, 'non-active': !subMenu.isActive}"
+                          (click)="onsubchildMenuItemClick(subMenu)" *ngIf="subMenu.documentChildName == 'test 1'">
+                          {{"HOME.TEST1" | translate}}
+                        </a> -->
+                        <a class="nav-link subchildMenuItem4-nav-link" [ngClass]="{'active sub-active': subChildMenu.isActive, 'non-active': !subChildMenu.isActive}"
+                        (click)="onsubMenuItemClick2(subChildMenu)">
+                        {{subChildMenu.nameChildmenu}}
+                      </a>
+                      </li>
+                    </div>
+                </ul>
+              </ng-container>
+          
+          <ng-container>
+          <ul class="docOptionsMenu" *ngIf="docOptionsFor">
+            <li class="nav-item">
+              <a class="nav-link subMenu" (click)="downloadsPage()" >{{"HOME.MYDOWNLOADS" | translate}}</a>
+              <!--<span class="show-count"  *ngIf="orderCount > 0">{{orderCount}}</span>-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link subMenu" (click)="filterOptionVisible()"> {{"HOME.LANGUAGE" | translate}}
+                <!-- <span class="show-count show-count-wishlist"  *ngIf="endservice.wishlistCount > 0">
+                  {{endservice.wishlistCount}}</span> -->
+                </a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link subMenu" href="/master/wish-list" >{{"HOME.WISHLIST" | translate}}
+                <span class="show-count show-count-wishlist"  *ngIf="endservice.wishlistCount > 0">{{endservice.wishlistCount}}</span></a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link subMenu" href="/master/shopping-cart" >{{"HOME.CART" | translate}}
+                <span class="show-count"  *ngIf="endservice.cartCount > 0">{{endservice.cartCount}}</span></a>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link subMenu" (click)="userManualGuide()">{{"HOME.HELP" | translate}}
+                <!-- <span class="sidemenuicon sidemenuicon-1">
+                  <svg focusable="false" aria-hidden="true" fill="#333" xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                    viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                  </svg></span> -->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link subMenu" href="javascript:void(0);"  *ngIf="!isimpersonateuser" (click)="onLogout()" >{{"HOME.SIGNOUT" | translate}}</a>
+
+            </li>
+          </ul>
+          </ng-container>
+          <!-- <ng-container>
+            <ul class="dropdown-menu" *ngIf="manualGuide">
+              <li style="padding-bottom:40px;">
+                <a class="back-btn" style="padding-bottom:0px;" id="backButton2" aria-label="Back Navigation Menu"  type="button" (click)="backToMenu()" >
+                  <svg focusable="false" aria-hidden="true" fill="#367c2b" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg> Back 
+              </a>  
+              </li>
+              <li>
+                <a class="nav-link" (click)="userManualGuide()">
+                  Adzone User Guide
+                </a>
+              </li>
+            </ul>
+          </ng-container>  -->
+     </ul>
+   
+  </div>
+</nav>
+
+<div class="head-contain">
+<header class="uxf-header navbar justify-content-between">
+ 
+ <!-- logo -->
+<!-- <p>{{dashBoardAccess}}</p> -->
+  <div class="header-title" *ngIf="dashBoardAccess == 'Dashboard View Access'">
+    <a aria-label="home page" href="/master/dashboard" (click)="homeMenuClick()" oncontextmenu="return false;">
+    <div class="uxf-logo set-logo"></div> 
+   </a>
+  </div>
+
+  <div class="header-title" *ngIf="dashBoardAccess == 'Dealer View Access'">
+    <a aria-label="home page" href="/master/end-user-management" oncontextmenu="return false;">
+     <div class="uxf-logo set-logo"></div> 
+    </a>
+  </div>
+ 
+<!-- Navbar brand -->
+      
+  <!-- Left links -->
+    <div class="nav-content" id="headmenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="dashBoardAccess == 'Dealer View Access' || dealerView">
+        <ng-container  *ngFor="let subMenu of docOptions">
+          <div class="" *ngIf="langMang == false">
+            <li [ngClass]="{active: subMenu.isActive} ">
+              <!-- <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" 
+              (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{subMenu.name}}</a> -->
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Agriculture'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.AGRICULTURE' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Construction'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.CONSTRUCTION' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Aftermarket'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.AFTERMARKET' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Finance'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.FINANCE' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Tractors'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.TRACTORS' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Uploads'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.UPLOADS' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Uploads_testing'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.UPLOADS_TESTING' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Software'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.SOFTWARE' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'abc'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.ABC' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Demo test'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.DEMOTEST' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'arts'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.ARTS' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'AME'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.AME' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Asia pacific'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.ASIAPASCIFIC' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'aaaaa'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.AAAAA' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Automobiles'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.AUTOMOBILES' | translate}}</a>
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" *ngIf="subMenu.name == 'Banking'" (click)="onMenuItemClick(subMenu)" oncontextmenu="return false;">{{'HOME.BANKING' | translate}}</a>
+             
+          </li>
+          </div>
+          <div class="" *ngIf="langMang == true">
+            <li [ngClass]="{active: subMenu.isActive} ">
+              <a class="nav-link" [ngClass]="{'active non-active': subMenu.isActive}" (click)="onMenuItemClick(subMenu)">{{subMenu.name}}</a>
+          </li>
+          </div>
+         
+      
+        </ng-container>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);">Templates</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);">My Budget</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/master/edit-template" (click)="onTemplates()">Templates</a>
+          
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/master/my-templates"  (click)="myTemplates()" >My Templates</a>
+         
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active non-active': myOrdersPage}" (click)="downloadsPage()" oncontextmenu="return false;">{{'HOME.MYDOWNLOADS' | translate}}</a>
+          <!--<span class="show-count"  *ngIf="orderCount > 0">{{orderCount}}</span>-->
+        </li>
+      </ul>
+    </div>
+  <!-- Left links -->
+    
+  <div class="uxf-header-title">
+    <span class="h1 uxf-header-title-heading mb-2">
+      <h5 class="cms-title mb-1 mt-2" >AdZone</h5>
+     <!--<div class="cms-title1" style="padding: 14px;" ><img src="../../../../assets/icons/Adzone 120x120.svg" style="margin-top:-32px" class="img-fluid adzonelogo"></div>-->
+      <!-- <a class="uxf-header-title-link" href="#">{{roleName}}</a> -->
+    </span>
+    <div class="dropdown dropdown-main mt-n1">
+      <!-- <span class="uxf-header-title-username mob-text mr-0">{{roleName}} | </span> -->
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Super Admin'">{{"HOME.SUPERADMIN" | translate}} | </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'John Deere Employee'">{{"HOME.JOHNDEEREMPLOYEE" | translate}} | </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Sub Region Admin'">{{"HOME.SUBREGIONADMIN" | translate}} | </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Vendor'">{{"HOME.VENDOR" | translate}} | </span>
+      <span class="uxf-header-title-username mob-text mr-0" *ngIf="roleName == 'Dealer'">{{"HOME.DEALER" | translate}} | </span>
+      
+      <!-- <span class="uxf-header-title-username mr-0">Admin | </span> -->
+
+      <button
+        class="btn btn-sm btn-link dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton10"
+        data-toggle="dropdown"
+        aria-label="account menu"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <span class="uxf-header-title-username ">{{'HOME.TITLE' | translate}}</span>
+        <span class="uxf-header-title-username ">{{userName|titlecase}}</span>
+        <!-- <span class="uxf-header-title-username ">Shanmugapriya</span> -->
+
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+        <a class="dropdown-item" href="javascript:void(0);" *ngIf="!isimpersonateuser" (click)="onLogout()">{{"HOME.SIGNOUT" | translate}}</a>
+      </div>
+    </div>
+  </div>
+  
+<div class="header-special-options">
+
+  <div class="mobile-respo-search home-link" *ngIf="homeisActive" [ngClass]="{'home-link mobile-respo-search': homeisActive}">
+    <span class="uxf-nav-title cms-title pl-0 d-flex">
+      <a class="nav-link" href="/master/end-user-management" (click)="homeIconClick()" oncontextmenu="return false;">
+      <svg focusable="false" aria-hidden="true" class="nav-home-icon" fill="#000" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+      </a>
+    </span>
+  </div>
+<!-- <div class="mobile-respo-search home-link active" [ngClass]="{'home-link mobile-respo-search': homeisActive}"> -->
+  <div class="mobile-respo-search home-link-1" *ngIf="!homeisActive">
+   <span class="uxf-nav-title cms-title pl-0 d-flex">
+    <a class="nav-link" href="/master/dashboard" (click)="homeIconClick()" oncontextmenu="return false;">
+    <svg focusable="false" aria-hidden="true" class="nav-home-icon" fill="#aaa" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </a>
+   </span>
+  </div>
+
+
+
+  <div class="header-notification" >
+   <a  (click)="redirectToNotification()" oncontextmenu="return false;">
+      <svg class="notification-icon" focusable="false" aria-hidden="true" fill="#666666" width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 -2 24 24">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z">
+        </path>
+      </svg>
+      <div class="notiNum" *ngIf="notificationService.miniNotificationCount">{{notificationService.miniNotificationCount< 99?notificationService.miniNotificationCount:'99+' }}</div>
+    </a>
+  </div>
+
+
+  
+  <!-- Mobile Responsive Search -->
+
+  <div class="mobile-respo-search">
+    <div class="searchbox-mobile d-flex align-items-center justify-content-center" >
+      <button class="btn btn-sm py-1 px-1 icon-box" (click)="searchClicked=!searchClicked"  title="Search" type="button" >
+        <span class="uxf-icon ml-0">
+          <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-funnel-fill" viewBox="0 2 24 17">
+            <path fill="#666666"  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+    
+  <!-- toggle navigation  -->
+  
+  <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#siteTopnav"
+      aria-controls="#siteTopnav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="addBackdrop()"
+    >
+      <svg
+        focusable="false"
+        aria-hidden="true"
+        fill="#666"
+        class="menu-icon"
+        height="24"
+        viewbox="0 2 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- <form role="search" id="header-search-form1" class="uxf-header-search navbar-form" action="">
+       <input tabindex="-1" aria-label="Search" class="uxf-search-bar" type="search" placeholder="Search" name="s" id="uxf-search-input" /><button class="uxf-search-bar-clear-icon uxf-btn-icon" type="reset" aria-label="reset">
+          <svg focusable="false" aria-hidden="true" class="uxf-icon-remove" fill="#666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24">
+             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+             </path>
+             <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+       </button>
+       <button aria-label="Search" id="submit-form1" class="btn uxf-btn-search" aria-controls="uxf-search-input" aria-expanded="false">
+          <svg focusable="false" aria-hidden="true" class="uxf-icon-search" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+             </path>
+             <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+       </button>
+       <button type="submit" class="btn uxf-btn-mobile-search">Go</button>
+    </form> -->
+    <!-- <div class="mobile-respo-search-input" *ngIf="searchClicked">
+      
+    </div> -->
+</header>
+
+<!-- search display -->
+
+<div class="mobile-respo-search-main">
+  <div #searchBox *ngIf="searchClicked" class="input-group uxf-search uxf-panel-search m-0 d-flex justify-content-between">
+    <!-- <div #searchBox class="input-group uxf-search uxf-panel-search m-0 d-flex justify-content-between"> -->
+      <input #txtSearch (keyup.enter)="onSearchClick(txtSearch.value)"
+        aria-label="Search" class="uxf-search-bar form-control" type="search" id="search"
+        [placeholder]="'HOME.SEARCH' | translate" name="s" [class.active]="txtSearch.value" value="{{this.searchTxt}}">
+      
+      <div class="input-group-append">
+        <button  class="uxf-search-bar-clear-icon uxf-btn-icon" type="reset" aria-label="reset"
+          (click)="onClearSearch(txtSearch.value)">
+          <svg focusable="false" aria-hidden="true" class="uxf-icon-remove" fill="#666"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 20 19">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+            </path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </button>
+  
+        <button aria-label="Submit search" class="btn uxf-search-bar-submit-icon"
+          (click)="onSearchClick(txtSearch.value)">
+          <svg focusable="false" aria-hidden="true" class="uxf-icon-search" width="18" height="19" fill="#666" viewBox="3 6 16 10"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+            </path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+        </button>
+      </div>
+  </div>
+</div>
+
+</div>
+<div >
+  
+  <div *ngIf="languageMobileView" class="MyOrdercard" >
+    <div class="card sidebar-card mt-5 ml-4">
+      <div class="card-body" >
+        <h5 class="card-title">
+          Choose Language
+          <button style="float:right" type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close" (click)="onClearAll()">
+            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewbox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+              </path>
+              <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+          </button>
+        </h5>
+          <div class="row language-pre">
+            <div class="col-24">
+              
+              <div class="pad-10" *ngFor="let data of languageData">
+                <span *ngIf="data.languageId == 2 || data.languageId == 3">
+                  <input type="radio" name="options1" id="option1" autocomplete="off" [checked]="data.checked"
+                    (click)="changePreference(data)"> 
+                    <span class="radio-left">
+                      <span *ngIf="data.languageName == 'Chinese'">天鹅座</span>
+                      <span *ngIf="data.languageName == 'English'">English</span>
+                      <!-- {{data.languageName}} -->
+                      <span *ngIf="data.languageIsoCode !=null">
+                        <span *ngIf="appliedLang == data.languageIsoCode && data.checked == false">(Applied)</span>
+                        <span *ngIf="(preferredLang == data.languageIsoCode && data.checked == true) || data.checked == true">(Preferred)</span>
+                      </span>
+                    </span>
+                 </span>
+              </div>
+              <!-- <div class="pad-10">
+                  <input type="radio" name="options2" id="option2" autocomplete="off"
+                  (click)="changePreference(2)"><span class="radio-left">Hindi</span> 
+              </div>
+              <div class="pad-10">
+                  <input type="radio" name="options3" id="option3" autocomplete="off"
+                  (click)="changePreference(3)"> <span class="radio-left">Chinese</span>
+              </div>
+              <div class="pad-10">
+                  <input type="radio" name="options4" id="option4" autocomplete="off"
+                  (click)="changePreference(4)"> <span class="radio-left">German (Deutsch)</span>
+              </div>
+              <div class="pad-10">
+                  <input type="radio" name="options5" id="option5" autocomplete="off"
+                  (click)="changePreference(5)"> <span class="radio-left">Spanish (Español)</span>
+              </div>      -->
+            </div>
+          </div> 
+        <div class="row justify-content-center" >
+          <div class="col-3 div-btn">
+            <button class="btn btn-primary cancel-btn"  (click)="onsave()" >Save Preference</button>
+            </div><div class="col-3 div-btn">
+            <button class="btn apply-btn" type="submit"  (click)="onApply()">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+</div>
+<jd-lang-apply *ngIf="apply"  (closedApply)="onCloseApply($event)">
+</jd-lang-apply>
+<jd-lang-save-preference *ngIf="savepreference"  (closedSave)="onCloseSave($event)">
+</jd-lang-save-preference>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" *ngIf="errMsg">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+        <img src="https://cdn.ux.deere.com/uxframe/2019.4.0/img/jd-logo-green-xl@1x.png" class="jdLogo" alt="logo">
+        <div class="zoomIcons">
+          <button ion-button (click)="incrementZoom(0.1)" class="mr-2">
+            <img src="../../../../assets/icons/in.png" style="width: 25px;"/>
+          </button>
+          <button ion-button (click)="incrementZoom(-0.1)">
+            <img src="../../../../assets/icons/out.png" style="width: 25px;"/>
+          </button>
+        </div>
+        <!-- <iframe type="application/pdf" [src]="pdfView" frameBorder="0" scrolling="auto" height="450px" width="100%"></iframe> -->
+        <pdf-viewer
+        [src]="pdfView.changingThisBreaksApplicationSecurity"
+        [rotation]="0"
+        [original-size]="false"
+        [show-all]="true"
+        [fit-to-page]="false"
+        [zoom]="zoom"
+        [zoom-scale]="'page-width'"
+        [stick-to-page]="false"
+        [render-text]="true"
+        [external-link-target]="'blank'"
+        [autoresize]="true"
+        [show-borders]="false"
+        style="width: 100%; height: 450px;"
+      ></pdf-viewer>
+      <!-- <object [data]="pdfView" type="application/pdf" width="100%" height="450px"></object> -->
+            <!-- <embed type="application/pdf" [src]="pdfView" frameborder="0" width="99.9%" height="450px"> -->
+      <div class="modal-footer" style="justify-content: center;">
+        <button type="button" class="skipBtn btn btn-warning" data-dismiss="modal" (click)="closeModal()"><b>Close</b></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="dropdown">
+  <button *ngIf="!isInNav" [ngClass]="{
+      'btn-secondary': btnType === 'button',
+      'btn-link': btnType === 'link'
+    }" class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+    {{ label }}
+  </button>
+  <a *ngIf="isInNav" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+    <span class="uxf-link-text">{{ label }}</span>
+  </a>
+  <ul class="dropdown-menu">
+    <ng-container *ngFor="let item of menu">
+      <li>
+        <a class="dropdown-item" [routerLink]="[item?.link]" routerLinkActive="router-link-active"
+          (click)="menuSelect(item)">{{ item.label }}</a>
+      </li>
+    </ng-container>
+  </ul>
+</div>

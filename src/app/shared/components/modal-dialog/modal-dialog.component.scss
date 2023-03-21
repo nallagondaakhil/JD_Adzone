@@ -1,0 +1,31 @@
+.modal-second {
+    z-index: 1051;
+}
+
+.uxf-alert-icon {
+  height: 24px !important;
+  min-height: 24px !important;
+}
+
+.modal-body {
+  overflow-y: auto !important;
+}
+.modal-title{
+  font-size: 1.175rem ;
+}
+.uxf-label{
+  font-size: .95rem;
+}
+.btn-primary{
+  background-color: #367C2B;
+  color: whitesmoke;
+  border: none;
+}
+.btn-secondary{
+  background-color: #c21020;
+  color: whitesmoke;
+  border: none;
+}
+#exampleModal1{
+  z-index: 9999999;
+}

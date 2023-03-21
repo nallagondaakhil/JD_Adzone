@@ -1,0 +1,1618 @@
+{
+    "users": {
+        "error": {
+            "erroCode": null,
+            "errorMessage": null,
+            "errorDetails": null
+        },
+        "message": {
+            "messageDescription": "User Retrieved Successfully",
+            "messageCode": "10001"
+        },
+        "data": {
+            "content": [
+                {
+                    "jdUserId": "JD7467",
+                    "jdUserName": "Tom O",
+                    "emailId": "tomasdfj@kdjfs.com",
+                    "racfId": "KDJ765",
+                    "roleId": 120,
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "vistarUserFlag": null,
+                    "createdBy": "0",
+                    "createdDate": null,
+                    "updatedBy": "0",
+                    "updatedDate": null,
+                    "userStateMappingList": [
+                        {
+                            "userStateMapId": 56,
+                            "stateId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": 0,
+                            "jdUserId": "JD7467",
+                            "states": {
+                                "id": 1,
+                                "name": "Kerala",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userStateMapId": 57,
+                            "stateId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": 0,
+                            "jdUserId": "JD7467",
+                            "states": {
+                                "id": 2,
+                                "name": "Tamil Nadu",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "areaOfficeMappingList": [
+                        {
+                            "userAreaOfficeMapId": 32,
+                            "jdUserId": "JD7467",
+                            "areaOfficeId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        },
+                        {
+                            "userAreaOfficeMapId": 33,
+                            "jdUserId": "JD7467",
+                            "areaOfficeId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        }
+                    ],
+                    "zoneMappingList": [
+                        {
+                            "userZoneMapId": 36,
+                            "jdUserId": "JD7467",
+                            "zoneId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 1,
+                                "name": "North",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userZoneMapId": 37,
+                            "jdUserId": "JD7467",
+                            "zoneId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 2,
+                                "name": "South",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "roles": {
+                        "id": 120,
+                        "name": "Parts TM",
+                        "roleDescription": "Territory manager",
+                        "deleteFl": 0,
+                        "isActive": 1,
+                        "createdBy": 2,
+                        "createdDate": "2021-05-11T18:30:00.000+00:00",
+                        "updatedBy": 1,
+                        "updatedDate": null
+                    }
+                },
+                {
+                    "jdUserId": "JD7465",
+                    "jdUserName": "Tom N",
+                    "emailId": "toma@kdjfs.com",
+                    "racfId": "KDJ765",
+                    "roleId": 120,
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "vistarUserFlag": null,
+                    "createdBy": "0",
+                    "createdDate": null,
+                    "updatedBy": "0",
+                    "updatedDate": null,
+                    "userStateMappingList": [
+                        {
+                            "userStateMapId": 54,
+                            "stateId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": 0,
+                            "jdUserId": "JD7465",
+                            "states": {
+                                "id": 1,
+                                "name": "Kerala",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userStateMapId": 55,
+                            "stateId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": 0,
+                            "jdUserId": "JD7465",
+                            "states": {
+                                "id": 2,
+                                "name": "Tamil Nadu",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "areaOfficeMappingList": [
+                        {
+                            "userAreaOfficeMapId": 30,
+                            "jdUserId": "JD7465",
+                            "areaOfficeId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        },
+                        {
+                            "userAreaOfficeMapId": 31,
+                            "jdUserId": "JD7465",
+                            "areaOfficeId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        }
+                    ],
+                    "zoneMappingList": [
+                        {
+                            "userZoneMapId": 34,
+                            "jdUserId": "JD7465",
+                            "zoneId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 1,
+                                "name": "North",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userZoneMapId": 35,
+                            "jdUserId": "JD7465",
+                            "zoneId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 2,
+                                "name": "South",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "roles": {
+                        "id": 120,
+                        "name": "Parts TM",
+                        "roleDescription": "Territory manager",
+                        "deleteFl": 0,
+                        "isActive": 1,
+                        "createdBy": 2,
+                        "createdDate": "2021-05-11T18:30:00.000+00:00",
+                        "updatedBy": 1,
+                        "updatedDate": null
+                    }
+                },
+                {
+                    "jdUserId": "JD51",
+                    "jdUserName": "Tom M",
+                    "emailId": "toma@kdjfs.com",
+                    "racfId": "KDJ765",
+                    "roleId": 120,
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "vistarUserFlag": null,
+                    "createdBy": "0",
+                    "createdDate": null,
+                    "updatedBy": "0",
+                    "updatedDate": null,
+                    "userStateMappingList": [
+                        {
+                            "userStateMapId": 50,
+                            "stateId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": 0,
+                            "jdUserId": "JD51",
+                            "states": {
+                                "id": 1,
+                                "name": "Kerala",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userStateMapId": 51,
+                            "stateId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": 0,
+                            "jdUserId": "JD51",
+                            "states": {
+                                "id": 2,
+                                "name": "Tamil Nadu",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "areaOfficeMappingList": [
+                        {
+                            "userAreaOfficeMapId": 26,
+                            "jdUserId": "JD51",
+                            "areaOfficeId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        },
+                        {
+                            "userAreaOfficeMapId": 27,
+                            "jdUserId": "JD51",
+                            "areaOfficeId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        }
+                    ],
+                    "zoneMappingList": [
+                        {
+                            "userZoneMapId": 30,
+                            "jdUserId": "JD51",
+                            "zoneId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 1,
+                                "name": "North",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userZoneMapId": 31,
+                            "jdUserId": "JD51",
+                            "zoneId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 2,
+                                "name": "South",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "roles": {
+                        "id": 120,
+                        "name": "Parts TM",
+                        "roleDescription": "Territory manager",
+                        "deleteFl": 0,
+                        "isActive": 1,
+                        "createdBy": 2,
+                        "createdDate": "2021-05-11T18:30:00.000+00:00",
+                        "updatedBy": 1,
+                        "updatedDate": null
+                    }
+                },
+                {
+                    "jdUserId": "JD50",
+                    "jdUserName": "Tom L",
+                    "emailId": "toma@kdjfs.com",
+                    "racfId": "KDJ765",
+                    "roleId": 120,
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "vistarUserFlag": null,
+                    "createdBy": "0",
+                    "createdDate": null,
+                    "updatedBy": "0",
+                    "updatedDate": null,
+                    "userStateMappingList": [
+                        {
+                            "userStateMapId": 48,
+                            "stateId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "jdUserId": "JD50",
+                            "states": {
+                                "id": 1,
+                                "name": "Kerala",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userStateMapId": 49,
+                            "stateId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "jdUserId": "JD50",
+                            "states": {
+                                "id": 2,
+                                "name": "Tamil Nadu",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "areaOfficeMappingList": [
+                        {
+                            "userAreaOfficeMapId": 24,
+                            "jdUserId": "JD50",
+                            "areaOfficeId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        },
+                        {
+                            "userAreaOfficeMapId": 25,
+                            "jdUserId": "JD50",
+                            "areaOfficeId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        }
+                    ],
+                    "zoneMappingList": [
+                        {
+                            "userZoneMapId": 28,
+                            "jdUserId": "JD50",
+                            "zoneId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 1,
+                                "name": "North",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userZoneMapId": 29,
+                            "jdUserId": "JD50",
+                            "zoneId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 2,
+                                "name": "South",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "roles": {
+                        "id": 120,
+                        "name": "Parts TM",
+                        "roleDescription": "Territory manager",
+                        "deleteFl": 0,
+                        "isActive": 1,
+                        "createdBy": 2,
+                        "createdDate": "2021-05-11T18:30:00.000+00:00",
+                        "updatedBy": 1,
+                        "updatedDate": null
+                    }
+                },
+                {
+                    "jdUserId": "JD49",
+                    "jdUserName": "Tom K",
+                    "emailId": "toma@kdjfs.com",
+                    "racfId": "KDJ765",
+                    "roleId": 120,
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "vistarUserFlag": null,
+                    "createdBy": "0",
+                    "createdDate": null,
+                    "updatedBy": "0",
+                    "updatedDate": null,
+                    "userStateMappingList": [
+                        {
+                            "userStateMapId": 46,
+                            "stateId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "jdUserId": "JD49",
+                            "states": {
+                                "id": 1,
+                                "name": "Kerala",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userStateMapId": 47,
+                            "stateId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "jdUserId": "JD49",
+                            "states": {
+                                "id": 2,
+                                "name": "Tamil Nadu",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "areaOfficeMappingList": [
+                        {
+                            "userAreaOfficeMapId": 22,
+                            "jdUserId": "JD49",
+                            "areaOfficeId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        },
+                        {
+                            "userAreaOfficeMapId": 23,
+                            "jdUserId": "JD49",
+                            "areaOfficeId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        }
+                    ],
+                    "zoneMappingList": [
+                        {
+                            "userZoneMapId": 26,
+                            "jdUserId": "JD49",
+                            "zoneId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 1,
+                                "name": "North",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userZoneMapId": 27,
+                            "jdUserId": "JD49",
+                            "zoneId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 2,
+                                "name": "South",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "roles": {
+                        "id": 120,
+                        "name": "Parts TM",
+                        "roleDescription": "Territory manager",
+                        "deleteFl": 0,
+                        "isActive": 1,
+                        "createdBy": 2,
+                        "createdDate": "2021-05-11T18:30:00.000+00:00",
+                        "updatedBy": 1,
+                        "updatedDate": null
+                    }
+                },
+                {
+                    "jdUserId": "JD45",
+                    "jdUserName": "Tom new",
+                    "emailId": "toma@kdjfs.com",
+                    "racfId": "KDJ765",
+                    "roleId": 120,
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "vistarUserFlag": null,
+                    "createdBy": "0",
+                    "createdDate": null,
+                    "updatedBy": "0",
+                    "updatedDate": null,
+                    "userStateMappingList": [
+                        {
+                            "userStateMapId": 38,
+                            "stateId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "jdUserId": "JD45",
+                            "states": {
+                                "id": 1,
+                                "name": "Kerala",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userStateMapId": 39,
+                            "stateId": 3,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "jdUserId": "JD45",
+                            "states": {
+                                "id": 3,
+                                "name": "Karnataka",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "areaOfficeMappingList": [
+                        {
+                            "userAreaOfficeMapId": 14,
+                            "jdUserId": "JD45",
+                            "areaOfficeId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        },
+                        {
+                            "userAreaOfficeMapId": 15,
+                            "jdUserId": "JD45",
+                            "areaOfficeId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null
+                        }
+                    ],
+                    "zoneMappingList": [
+                        {
+                            "userZoneMapId": 18,
+                            "jdUserId": "JD45",
+                            "zoneId": 1,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 1,
+                                "name": "North",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        },
+                        {
+                            "userZoneMapId": 19,
+                            "jdUserId": "JD45",
+                            "zoneId": 2,
+                            "createdBy": null,
+                            "createdDate": null,
+                            "updatedBy": null,
+                            "updatedDate": null,
+                            "deleteFl": null,
+                            "zones": {
+                                "id": 2,
+                                "name": "South",
+                                "deleteFl": 0,
+                                "createdBy": "1",
+                                "createdDate": "2021-05-15T18:30:00.000+00:00",
+                                "updatedBy": null,
+                                "updatedDate": null
+                            }
+                        }
+                    ],
+                    "roles": {
+                        "id": 120,
+                        "name": "Parts TM",
+                        "roleDescription": "Territory manager",
+                        "deleteFl": 0,
+                        "isActive": 1,
+                        "createdBy": 2,
+                        "createdDate": "2021-05-11T18:30:00.000+00:00",
+                        "updatedBy": 1,
+                        "updatedDate": null
+                    }
+                }
+            ],
+            "pageable": {
+                "sort": {
+                    "sorted": true,
+                    "unsorted": false,
+                    "empty": false
+                },
+                "offset": 0,
+                "pageSize": 10,
+                "pageNumber": 0,
+                "paged": true,
+                "unpaged": false
+            },
+            "last": true,
+            "totalElements": 6,
+            "totalPages": 1,
+            "size": 10,
+            "number": 0,
+            "sort": {
+                "sorted": true,
+                "unsorted": false,
+                "empty": false
+            },
+            "first": true,
+            "numberOfElements": 6,
+            "empty": false
+        }
+    },
+    "roles": {
+        "error": {
+            "erroCode": null,
+            "errorMessage": null,
+            "errorDetails": null
+        },
+        "message": {
+            "messageDescription": "User Retrieved Successfully",
+            "messageCode": "10001"
+        },
+        "data": {
+            "content": [
+                {
+                    "id": 129,
+                    "name": "JD",
+                    "roleDescription": "Territory manager",
+                    "isActive": 0,
+                    "deleteFl": 0,
+                    "createdBy": 0,
+                    "createdDate": "2021-05-23T18:30:00.000+00:00"
+                },
+                {
+                    "id": 128,
+                    "name": "JD",
+                    "roleDescription": "Territory manager",
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "createdBy": 0,
+                    "createdDate": "2021-05-23T18:30:00.000+00:00"
+                },
+                {
+                    "id": 123,
+                    "name": "JD",
+                    "roleDescription": "abc",
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "createdBy": 1,
+                    "createdDate": "2021-05-23T18:30:00.000+00:00"
+                },
+                {
+                    "id": 121,
+                    "name": "add_jd_user",
+                    "roleDescription": "test updated",
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "createdBy": 1,
+                    "createdDate": "2021-05-18T18:30:00.000+00:00"
+                },
+                {
+                    "id": 120,
+                    "name": "Parts TM",
+                    "roleDescription": "Territory manager",
+                    "isActive": 1,
+                    "deleteFl": 0,
+                    "createdBy": 2,
+                    "createdDate": "2021-05-11T18:30:00.000+00:00"
+                }
+            ],
+            "pageable": {
+                "sort": {
+                    "sorted": true,
+                    "unsorted": false,
+                    "empty": false
+                },
+                "offset": 0,
+                "pageNumber": 0,
+                "pageSize": 10,
+                "paged": true,
+                "unpaged": false
+            },
+            "totalElements": 5,
+            "totalPages": 1,
+            "last": true,
+            "size": 10,
+            "number": 0,
+            "numberOfElements": 5,
+            "sort": {
+                "sorted": true,
+                "unsorted": false,
+                "empty": false
+            },
+            "first": true,
+            "empty": false
+        }
+    },
+    "activity-docs": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "id": 1,
+                "actName": "User1",
+                "actType": 1,
+                "glCode": 1,
+                "actSacDec": 1,
+                "actSac": 1,
+                "internalOrder": 1,
+                "costCenetrFun": 1,
+                "category": 1,
+                "companyShare": [
+                    {
+                        "selectArea": 1,
+                        "sharePerc": 10
+                    }
+                ],
+                "expenseLmt": 1000,
+                "comShareLmt": 2000,
+                "effectiveDate": 1621019617587,
+                "isActive": true
+            },
+            {
+                "id": 2,
+                "actName": "User1",
+                "actType": 1,
+                "glCode": 1,
+                "actSacDec": 1,
+                "actSac": 1,
+                "internalOrder": 1,
+                "costCenetrFun": 1,
+                "category": 1,
+                "companyShare": [
+                    {
+                        "selectArea": 1,
+                        "sharePerc": 10
+                    }
+                ],
+                "expenseLmt": 1000,
+                "comShareLmt": 2000,
+                "effectiveDate": 1621019617587,
+                "isActive": true
+            }
+        ]
+    },
+    "activitys": [
+        {
+            "id": 0,
+            "name": "Activity1"
+        },
+        {
+            "id": 1,
+            "name": "Activity2"
+        }
+    ],
+    "gl-codes": [
+        {
+            "id": 0,
+            "name": "gl-codes1"
+        },
+        {
+            "id": 1,
+            "name": "gl-codes2"
+        }
+    ],
+    "act-sac-descriptions": [
+        {
+            "id": 0,
+            "name": "act-sac-descriptions1"
+        },
+        {
+            "id": 1,
+            "name": "act-sac-descriptions2"
+        }
+    ],
+    "act-sacs": [
+        {
+            "id": 0,
+            "name": "act-sacs1"
+        },
+        {
+            "id": 1,
+            "name": "act-sacs2"
+        }
+    ],
+    "internal-orders": [
+        {
+            "id": 0,
+            "name": "internal-orders1"
+        },
+        {
+            "id": 1,
+            "name": "internal-orders2"
+        }
+    ],
+    "cost-center-fun": [
+        {
+            "id": 0,
+            "name": "cost-center-fun1"
+        },
+        {
+            "id": 1,
+            "name": "cost-center-fun2"
+        }
+    ],
+    "categorys": [
+        {
+            "id": 0,
+            "name": "Policy"
+        },
+        {
+            "id": 1,
+            "name": "categorys2"
+        }
+    ],
+    "reference-docs": {
+        "totalRecords": 3,
+        "data": [
+            {
+                "id": 1,
+                "docName": "file1",
+                "docFor": 128,
+                "docCategory": 1,
+                "docType": 0,
+                "createdBy": "Admin",
+                "attachments": [
+                    {
+                        "id": 1,
+                        "name": "attach1.pdf"
+                    },
+                    {
+                        "id": 2,
+                        "name": "attach2.jpg"
+                    }
+                ],
+                "date": 1621019617587,
+                "isActive": true
+            },
+            {
+                "id": 2,
+                "docName": "file2",
+                "docFor": 128,
+                "docCategory": 1,
+                "docType": 0,
+                "createdBy": "Admin",
+                "attachments": [
+                    {
+                        "id": 1,
+                        "name": "attach1.pdf"
+                    },
+                    {
+                        "id": 2,
+                        "name": "attach2.jpg"
+                    }
+                ],
+                "date": 1620991480780,
+                "isActive": false
+            }
+        ]
+    },
+    "states": [
+        {
+            "id": 0,
+            "name": "Kerala"
+        },
+        {
+            "id": 1,
+            "name": "Delhi"
+        }
+    ],
+    "country": [
+        {
+            "id": 0,
+            "name": "India"
+        },
+        {
+            "id": 1,
+            "name": "Sreelanka"
+        }
+    ],
+    "areas": [
+        {
+            "id": 0,
+            "name": "Area1"
+        },
+        {
+            "id": 1,
+            "name": "Area2"
+        }
+    ],
+    "dealers": [
+        {
+            "id": 0,
+            "name": "Dealer1"
+        },
+        {
+            "id": 1,
+            "name": "Dealer2"
+        }
+    ],
+    "zones": [
+        {
+            "id": 0,
+            "name": "ZOne1"
+        },
+        {
+            "id": 1,
+            "name": "Zone2"
+        }
+    ],
+    "branches": [
+        {
+            "id": 0,
+            "name": "Branch1"
+        },
+        {
+            "id": 1,
+            "name": "Branch2"
+        }
+    ],
+    "vendors": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "id": 1,
+                "name": "Steve",
+                "date": 1620991480780,
+                "states": [
+                    0,
+                    1
+                ],
+                "code": "123",
+                "gstNumber": "qwerty",
+                "email": "someone@jd.com",
+                "status": "Active",
+                "ownerName": "Hemanth",
+                "address": "",
+                "contactName1": "",
+                "contactNumber1": "",
+                "contactEmail1": "",
+                "contactName2": "",
+                "contactNumber2": "",
+                "contactEmail2": ""
+            },
+            {
+                "id": 2,
+                "name": "Mark",
+                "date": 1621019617587,
+                "states": [
+                    1
+                ],
+                "code": "123",
+                "gstNumber": "qwerty",
+                "email": "someone@jd.com",
+                "status": "Active",
+                "ownerName": "Monica",
+                "address": "",
+                "contactName1": "",
+                "contactNumber1": "",
+                "contactEmail1": "",
+                "contactName2": "",
+                "contactNumber2": "",
+                "contactEmail2": ""
+            }
+        ]
+    },
+    "locations-management": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "id": 1,
+                "locName": "location 1",
+                "locType": "sate",
+                "date": 1621019617587,
+                "isActive": true
+            },
+            {
+                "id": 2,
+                "locName": "location 2",
+                "locType": "sate",
+                "date": 1620991480780,
+                "isActive": false
+            }
+        ]
+    },
+    "locations-data": {
+        "numberOfLocations": 23,
+        "dateTime": "12/12/2021",
+        "lastSync": "12/12/2021",
+        "nextSync": "12/12/2021",
+        "status": "Success"
+    },
+    "role": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "id": "JD2021",
+                "name": "Area Manager",
+                "date": 1621019617587,
+                "createdBy": "Nikhil",
+                "status": "Active"
+            },
+            {
+                "id": "JD2022",
+                "name": "Area Manager",
+                "date": 1620991480780,
+                "createdBy": "Soumya",
+                "status": "InActive"
+            }
+        ]
+    },
+    "role-data": {
+        "numberOfRoles": 23,
+        "dateTime": "12/12/2021",
+        "lastSync": "12/12/2021",
+        "nextSync": "12/12/2021",
+        "status": "Success"
+    },
+    "role-features": [
+        {
+            "id": 0,
+            "name": "Vendor Claims",
+            "isSubMenu": false,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": true,
+                "delete": true
+            }
+        },
+        {
+            "id": 1,
+            "name": "Vendor Claim Creation",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": true,
+                "delete": true
+            }
+        },
+        {
+            "id": 2,
+            "name": "Vendor Claim Edit",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": true,
+                "delete": false
+            }
+        },
+        {
+            "id": 3,
+            "name": "Vendor Claim Delete",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": false,
+                "edit": true,
+                "delete": true
+            }
+        },
+        {
+            "id": 4,
+            "name": "Vendor Claim Approval",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": true,
+                "delete": false
+            }
+        },
+        {
+            "id": 5,
+            "name": "Vendor Claim Rejection",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": true,
+                "delete": false
+            }
+        },
+        {
+            "id": 6,
+            "name": "Dealer Claims",
+            "isSubMenu": false,
+            "permissions": {
+                "view": false,
+                "add": true,
+                "edit": true,
+                "delete": true
+            }
+        },
+        {
+            "id": 7,
+            "name": "Dealer Claim Creation",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": false,
+                "delete": true
+            }
+        },
+        {
+            "id": 8,
+            "name": "Dealer Claim Edit",
+            "isSubMenu": true,
+            "permissions": {
+                "view": true,
+                "add": true,
+                "edit": false,
+                "delete": true
+            }
+        }
+    ],
+    "claims-workflow": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "configId": "JD1",
+                "workflowVersion": "1.0",
+                "activationDate": 1620991480780,
+                "deActivationDate": 1620991480780,
+                "roleWorkflow": [
+                    {
+                        "role": [
+                            0,
+                            1
+                        ],
+                        "level": "L1",
+                        "minAmount": 100,
+                        "maxAmount": 200,
+                        "autoApproval": true,
+                        "activity": 1
+                    },
+                    {
+                        "role": [
+                            0,
+                            1
+                        ],
+                        "level": "L2",
+                        "minAmount": 100,
+                        "maxAmount": 200,
+                        "autoApproval": true,
+                        "activity": 1
+                    }
+                ]
+            },
+            {
+                "configId": "JD2",
+                "workflowVersion": "2.0",
+                "activationDate": 1620991480780,
+                "deActivationDate": 1620991480780,
+                "roleWorkflow": [
+                    {
+                        "role": [
+                            0,
+                            1
+                        ],
+                        "level": "L3",
+                        "minAmount": 100,
+                        "maxAmount": 200,
+                        "autoApproval": true,
+                        "activity": [
+                            0,
+                            1
+                        ]
+                    },
+                    {
+                        "role": [
+                            0,
+                            1
+                        ],
+                        "level": "L4",
+                        "minAmount": 100,
+                        "maxAmount": 200,
+                        "autoApproval": true,
+                        "activity": [
+                            0,
+                            1
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "claim-workflow-history": [
+        {
+            "version": "Version 1.0",
+            "activationDate": 1620991480780,
+            "deactivationDate": 1620991480780
+        },
+        {
+            "version": "Version 2.0",
+            "activationDate": 1620991480780,
+            "deactivationDate": 1620991480780
+        }
+    ],
+    "cliam-timeline-docs": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "id": "1",
+                "timeLineType": 1,
+                "claimSubTimeLime": 23,
+                "claimDeadTimeLime": 23,
+                "appDeadTimeLime": 23,
+                "activityName": [
+                    {
+                        "id": 0
+                    },
+                    {
+                        "id": 1
+                    }
+                ],
+                "geoSetup": "geoSetup",
+                "country": 1,
+                "states": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "areas": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "zones": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "date": 1621019617587,
+                "isActive": true
+            },
+            {
+                "id": "2",
+                "timeLineType": 0,
+                "claimSubTimeLime": 23,
+                "claimDeadTimeLime": 23,
+                "appDeadTimeLime": 23,
+                "activityName": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "geoSetup": "geoSetup",
+                "country": 1,
+                "states": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "areas": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "zones": [
+                    {
+                        "id": 0
+                    }
+                ],
+                "date": 1621019617587,
+                "isActive": true
+            }
+        ]
+    },
+    "timeline": [
+        {
+            "id": 0,
+            "name": "Activity1"
+        },
+        {
+            "id": 1,
+            "name": "Activity2"
+        }
+    ],
+    "doc-type": [
+        {
+            "id": 0,
+            "name": "pdf"
+        },
+        {
+            "id": 1,
+            "name": "doc"
+        }
+    ],
+    "service-req": {
+        "totalRecords": 2,
+        "data": [
+            {
+                "id": "1",
+                "actNo": "SER1234",
+                "actType": 1,
+                "actPeriod": "20/5/20021-20/5/2020",
+                "actDays": 23,
+                "action": "Request Qutoes",
+                "isActive": true,
+                "serviceReqAssign": "serviceReqAssign",
+                "serviceReqInit": "serviceReqInit",
+                "serviceReqDate": 1621019617587,
+                "quoteValue": 3,
+                "attachment": "file",
+                "vendors": [
+                    {
+                        "id": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "actNo": "SER12345",
+                "actType": 1,
+                "actPeriod": "20/5/20021-20/5/2020",
+                "actDays": 23,
+                "action": "Request Qutoes",
+                "isActive": true,
+                "serviceReqAssign": "serviceReqAssign",
+                "serviceReqInit": "serviceReqInit",
+                "serviceReqDate": 1621019617587,
+                "quoteValue": 3,
+                "attachment": "file",
+                "vendors": [
+                    {
+                        "id": 1
+                    }
+                ]
+            }
+        ]
+    },
+    "vendor": [
+        {
+            "id": 1,
+            "name": "Steve"
+        },
+        {
+            "id": 2,
+            "name": "Mark"
+        }
+    ],
+    "activityClaims": {
+        "error": {
+            "erroCode": null,
+            "errorMessage": null,
+            "errorDetails": null
+        },
+        "message": {
+            "messageCode": "500019",
+            "messageDescription": "Claims Retrieved Successfully"
+        },
+        "data": {
+            "content": [
+                {
+                    "claimNo": "20210624_NA_SA_33",
+                    "actNo": 28,
+                    "actName": "JD74761",
+                    "activityPeriod": [
+                        "2021-06-15T18:30:00.000Z",
+                        "2021-06-23T18:30:00.000Z"
+                    ],
+                    "activityDays": 8,
+                    "cAmount": 700.0
+                }
+            ],
+            "pageable": {
+                "sort": {
+                    "unsorted": false,
+                    "sorted": true,
+                    "empty": false
+                },
+                "offset": 0,
+                "pageSize": 10,
+                "pageNumber": 0,
+                "unpaged": false,
+                "paged": true
+            },
+            "totalElements": 1,
+            "totalPages": 1,
+            "last": true,
+            "size": 10,
+            "number": 0,
+            "sort": {
+                "unsorted": false,
+                "sorted": true,
+                "empty": false
+            },
+            "numberOfElements": 1,
+            "first": true,
+            "empty": false
+        }
+    },
+    "vendorClaim": {
+        "error": {
+            "erroCode": null,
+            "errorMessage": null,
+            "errorDetails": null
+        },
+        "message": {
+            "messageDescription": "10001",
+            "messageCode": "Claim Retrieved Successfully"
+        },
+        "data": {
+            "name": "Tom N",
+            "actNo": "1234",
+            "code": "KDJ765",
+            "actName": "Tom N",
+            "claimNo": "120",
+            "category": "test",
+            "initDate": "2021-06-15T18:30:00.000Z",
+            "actStartDate": "2021-06-15T18:30:00.000Z",
+            "state": "kerala",
+            "areaOffice": "Chokli",
+            "actEndDate": "2021-06-20T18:30:00.000Z",
+            "location": "kerala",
+            "exDays": 25,
+            "reqDays": 30,
+            "CGST": 50,
+            "SGST": 8,
+            "IGST": 8,
+            "debitToDealer": "Yes",
+            "cSharePer": 40,
+            "dSharePer": 60,
+            "checkList": [
+                {
+                    "docName": "Activity Invoice",
+                    "expense": 2000
+                },
+                {
+                    "docName": "Activity Invoice",
+                    "expense": 2000
+                }
+            ]
+        }
+    }
+}

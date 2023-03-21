@@ -1,0 +1,257 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "e745a433-5388-4ec8-b409-12b0a26ba816"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "adzone": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "jd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app1",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "ignore": ["scss/**"],
+                "output": "/assets/"
+              },
+              "src/favicon.ico",
+              "src/manifest.webmanifest",
+              "src/firebase-messaging-sw.js"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [
+
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "20kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            },
+            "devl": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.devl.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "20kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            },
+            "qual": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qual.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "20kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            },
+            "cert": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.cert.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "20kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "adzone:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "adzone:build:production"
+            },
+            "devl": {
+              "browserTarget": "adzone:build:devl"
+            },
+            "qual": {
+              "browserTarget": "adzone:build:qual"
+            },
+            "cert": {
+              "browserTarget": "adzone:build:cert"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "adzone:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/favicon.png",
+              "src/assets",
+              "src/manifest.webmanifest"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.bubble.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/quill-emoji/dist/quill-emoji.css",
+              "node_modules/quill-mention/dist/quill.mention.min.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "adzone:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "adzone:serve:production"
+            },
+            "devl": {
+              "devServerTarget": "adzone:serve:devl"
+            },
+            "qual": {
+              "devServerTarget": "adzone:serve:qual"
+            },
+            "cert": {
+              "devServerTarget": "adzone:serve:cert"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "adzone"
+}

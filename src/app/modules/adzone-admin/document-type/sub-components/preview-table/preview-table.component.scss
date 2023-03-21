@@ -1,0 +1,46 @@
+.previewImgs {
+    cursor: pointer;
+}
+
+.card {
+    width: 18rem;
+    height: 17rem;
+}
+
+.card img {
+    height: 140px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 11px;
+    word-break: break-all;
+}
+
+svg:hover{
+    cursor: pointer;
+}
+
+::ng-deep #body {
+    overflow: scroll !important;
+}
+.endImg1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 140px;
+    align-items: center;
+    background-color: #ccc;
+}
+
+.editable-text {
+    position: absolute;
+    top: 40%;
+    color: #367C2B !important;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #367C2B;
+}

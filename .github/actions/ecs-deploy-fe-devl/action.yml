@@ -1,0 +1,39 @@
+name: ECS deploy service FE QUAL
+description: Deploy the service to ECS BE QUAL
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy to ECS FE QUAL
+      shell: bash
+      run: |
+        export SERVICE_NAME="adzoneservicefrontend"
+        export Application_Name="adzoneservicefrontend"
+        export FAMILY="adzoneservicefrontendTaskDef"
+        export Deployment_Group="adzone-frontend"
+        export REGION="ap-south-1"
+        export CLUSTER="adzone-cluster"
+        export TASK_ARN_DEFINITION=`aws ecs describe-task-definition --task-definition ${FAMILY}  --region ${REGION} | jq .taskDefinition.taskDefinitionArn -r`
+        echo $TASK_ARN_DEFINITION
+
+        export REVISION=`aws ecs describe-task-definition --task-definition ${FAMILY} --region ${REGION} | jq .taskDefinition.revision`
+        export OLD_TASK_ID=`aws ecs list-tasks --cluster ${CLUSTER} --region ${REGION} --query "taskArns" --output text | awk -F ":"  '{print $6}'  | awk -F "/" '{print $3}'`
+        echo $REVISION
+        echo $OLD_TASK_ID
+
+        echo "---
+        version: 0.0
+        Resources:
+          - TargetService:
+              Type: AWS::ECS::Service
+              Properties:
+                TaskDefinition: "${TASK_ARN_DEFINITION}"
+                LoadBalancerInfo:
+                  ContainerName: "${SERVICE_NAME}"
+                  ContainerPort: 80
+        " > appsec.yaml
+        cat appsec.yaml
+        aws ecs register-task-definition --family ${FAMILY} --cli-input-json file://./codedeploy-fe-devl/task.json --region ${REGION}
+        aws ecs deploy --service ${SERVICE_NAME} --task-definition ./codedeploy-fe-devl/task.json --codedeploy-appspec appsec.yaml --cluster ${CLUSTER} --region ${REGION} --codedeploy-application ${Application_Name} --codedeploy-deployment-group ${Deployment_Group}
+
+

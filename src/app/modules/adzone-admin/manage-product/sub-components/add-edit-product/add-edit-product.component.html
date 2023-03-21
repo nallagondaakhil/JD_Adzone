@@ -1,0 +1,135 @@
+<div class="w-100 mt-1">
+  <div class="row">
+    <div class="back-section mt-3">
+        <div class="pointer" (click)="onClear()">
+            <svg *ngIf="!showUpload" focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+            </svg>
+        </div>
+        <!-- <h5 class="modal-title ml-3 mt-1"><strong>{{title}}</strong></h5> -->
+        <h1 class="text-green"><strong>{{title}}</strong></h1>
+    </div>
+    <!-- <div class="col-24 ml-4">
+        
+    </div> -->
+</div> 
+      <form novalidate="novalidate" #documentType="ngForm">
+        <div *ngIf="model && !showUpload">
+        <div class="row ml-3 pt-2">
+            <div class="col-12" *ngIf="isEdit">
+                <jd-text-box
+                  [label]="'Product Code'"  #documentId="ngModel" [(ngModel)]="model.documentId" [control]="documentId.control"  [markAsRequired]="true"  class="form-input-control" [disabled]="true" required  name="documentId"></jd-text-box>
+  
+              </div>
+              <div class="col-12">
+                <jd-text-box [label]="'Product Name'" #documentName="ngModel" name="documentName" [(ngModel)]="model.documentName" [control]="documentName.control" [markAsRequired]="true" required>
+                </jd-text-box>
+              </div>
+            <div class="col-12">
+                <jd-text-box
+                  [label]="'Specification'" #specification="ngModel" name="specification" [(ngModel)]="model.specification" [control]="specification.control" [markAsRequired]="false"  class="form-input-control"   name="specification"></jd-text-box>
+              </div>
+              <div class="col-12">
+                <jd-select-list #doc="ngModel" name="doc" [control]="doc.control" [itemSource]="docOptions" (ngModelChange)="loadCat1ByDoc($event)" [(ngModel)]="model.documentCategoryId"  name="regionResponseDto" required [label]="'Product Category'" [markAsRequired]="true"
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+            <div class="col-12">
+                <jd-select-list  #cat1="ngModel" name="cat1" [control]="cat1.control"  required [label]="'Product Sub-Category'" [markAsRequired]="true" [itemSource]="category1Options" (ngModelChange)="loadCat2ByCat1($event)" [(ngModel)]="model.documentSubCategoryId"
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+              <div class="col-12">
+                <jd-select-list  #documentSubChildCategoryId="ngModel" name="documentSubChildCategoryId" [label]="'Category 2'" [itemSource]="category2Options"[(ngModel)]="model.documentSubChildCategoryId" [markAsRequired]="false"
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+            <div class="col-12">
+                <jd-text-box
+                [label]="'Currency'" #currency="ngModel" name="currency" [(ngModel)]="model.currency" [control]="currency.control" [markAsRequired]="false"   class="form-input-control"></jd-text-box>
+              </div>
+              <div class="col-12">
+                <jd-text-box
+                  [label]="'Price'" #price="ngModel" name="price" [(ngModel)]="model.price" [control]="price.control" [markAsRequired]="false" [isPhoneNum]="true"  class="form-input-control"></jd-text-box>
+              </div>
+            <div class="col-12">
+                <jd-select-list  #region="ngModel" name="region" [control]="region.control" [label]="'Region'" [markAsRequired]="true" required [itemSource]="regionOptions" (ngModelChange)="loadSubByRegions($event)" [(ngModel)]="model.regions"
+                [multiple]="true" [displayProperty]="'name'" required [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+            <div class="col-12">
+                <jd-select-list #subRegion="ngModel" name="subRegion" [control]="subRegion.control" [label]="'Sub Region'" [markAsRequired]="true" required [itemSource]="subRegionOptions" (ngModelChange)="loadDivBySub($event)" [(ngModel)]="model.subRegions"
+                [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+            <div class="col-12">
+                <jd-select-list #divisions="ngModel" name="divisions" [control]="divisions.control" [label]="'Divisions'" [markAsRequired]="true" required [itemSource]="divisionOptions" (ngModelChange)="loadCountryByDiv($event)" [(ngModel)]="model.divisions"
+                [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+            <div class="col-12">
+                <jd-select-list #country="ngModel" name="country" [control]="country.control" [label]="'Country/Market'" [markAsRequired]="true" required [itemSource]="countryOptions" [(ngModel)]="model.countries"
+                [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+              
+            <!-- <div class="col-12">
+                <jd-select-list  name="regionResponseDto"  [label]="'State'" [markAsRequired]="false"
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div>
+            <div class="col-12">
+                <jd-select-list  name="regionResponseDto"  [label]="'City'" [markAsRequired]="false"
+                [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                </jd-select-list>
+              </div> -->
+          <!-- <div class="col-12" *ngIf="isEdit">
+            <jd-multi-file-upload [label]="'Thumbnail Image'"  [markAsRequired]="true" required [files]="thumbnailFile" [fileTypes]="fileUplodExtention" [uploadFunctionWithParam]="docthumb" (onComplete)="onthumbUpload($event)" [param]="model" [showDownload]="true" [multiple]="false" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+            </jd-multi-file-upload>
+            <label class="error "  *ngIf="isNotFile1">
+                File is required.
+              </label>
+        </div> -->
+        <div class="col-12">
+          <jd-date-time [range]="false" #expireDatee="ngModel" [label]="'Expire Date'" 
+              [markAsRequired]="false" [minDate]="currentDate"  [control]="expireDatee.control" [(ngModel)]="model.expiryDate"
+              name="expireDatee" (ngModelChange)="changeExpiry()">
+          </jd-date-time>
+          <label class="error" *ngIf="pastDate">
+                The expiry date for this printable material was {{oldExpiryDate}}. Please choose a future date.
+          </label>
+        </div>
+        <div class="col-12" *ngIf="isEdit">
+          <jd-multi-file-upload [label]="'Upload File'"  [markAsRequired]="true" required [files]="uploadedFile" [fileTypes]="fileUplodExtention" [uploadFunctionWithParam]="docFn" (onComplete)="onUpload($event)" [param]="model" [showDownload]="true" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+          </jd-multi-file-upload>
+          <label class="error "  *ngIf="isNotFile">
+              File is required.
+            </label>
+      </div>
+        </div>
+        </div>
+        <jd-upload-product *ngIf="showUpload" [model]="model" (closed)="onCloseUploadModal($event)">
+        </jd-upload-product>
+        <div class="" *ngIf="!showUpload">
+            <div class="col-8"></div>
+            <div class="col text-center mt-3 mb-3">
+              <button type="button" class="btn btn-primary mr-5 extend" (click)="onsave()">{{buttonText}}</button>
+              <button type="button" class="btn btn-secondary extend" (click)="onClear()">Cancel</button>
+      
+            </div>
+            <div class="col-8"></div>
+          </div>
+          <div class="" *ngIf="showUpload">
+            <div class="col-8"></div>
+            <div class="col text-center mt-3 mb-3">
+              <button type="button" class="btn btn-primary mr-5 extend" (click)="onSubmit()">Submit</button>
+              <!--<button type="button" class="btn btn-secondary extend" (click)="onClear()">Cancel</button>-->
+      
+            </div>
+            <div class="col-8"></div>
+          </div>
+
+    </form>
+      </div>

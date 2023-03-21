@@ -1,0 +1,105 @@
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="addeditbanner">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><b>{{title}}</b></h5>
+          <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close" (click)="onClose()">
+            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewbox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+              </path>
+              <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+          </button>
+        </div>
+  
+
+        <form action="" novalidate="novalidate" #addeditdoccat="ngForm">
+          <div class="modal-body" *ngIf="model">
+            <div class="row">
+              <div class="col">
+                <jd-select-list #doccatId="ngModel" name="doccatId" [(ngModel)]="model.documentCategoryId" [itemSource]="categoryOptions"
+                [label]="'Category Name'"  [multiple]="false" [control]="doccatId.control" [displayProperty]="'name'" [markAsRequired]="true" required
+                [valueProperty]="'id'"></jd-select-list>
+              </div>
+            <div class="col">
+              <jd-text-box #documentsubname="ngModel" [(ngModel)]="model.documentSubCategoryName" [disabled]="false" name="documentSubCategoryName"
+              [label]="'Sub-Category Name'" [control]="documentsubname.control" required
+              [markAsRequired]="true" pattern="^(?!\s*$).+"></jd-text-box>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <button  type="button" class="btn btn-primary add-category"  (click)="addexpense()">Add
+                <!-- <svg focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path
+                    d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+                  </path>
+                </svg> -->
+              </button>
+            </div>
+          </div>
+          <div  *ngFor="let item of model.documentSubChildCategory ; let i=index;">
+            <div class="row mt-25">
+              <div class="col-12 inputField">
+                <jd-text-box [name]="'e'+i" #documentSubChildCategoryName="ngModel"  
+                [control]="documentSubChildCategoryName.control" [disableLable]="false" 
+                   
+                  [(ngModel)]="item.documentSubChildCategoryName" [label]="'Category 2'" pattern="^(?!\s*$).+"> 
+                </jd-text-box>
+              </div>
+              <div class="col-2  mt-34">
+                <button  type="button" class="btn btn-primary add-category1"  (click)="addexpenseCategory(i)">
+                  <svg focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <!-- <div class="row" > -->
+                <div *ngFor="let data of item.childFourthCategory ; let j=index;">
+                  <div class="row">
+                    <div class="col-12 subChild">
+                      <jd-text-box [name]="'r'+j+item.documentSubChildCategoryId" #documentSubChildFourthCategoryName="ngModel"  
+                      [control]="documentSubChildFourthCategoryName.control" [disableLable]="false" 
+                          
+                        [(ngModel)]="data.documentSubChildFourthCategoryName" [label]="'Category 3'" pattern="^(?!\s*$).+"> 
+                      </jd-text-box>
+                  </div>
+                  <div class="col-6">
+                    <button type="button"  [name]="'m'+j" class="btn uxf-btn-icon removebtn"
+                    (click)="onexpenseMinues(j,i,item.documentSubChildCategoryId,data.documentSubChildFourthCategoryId)">
+                    <svg focusable="false" disabled aria-hidden="true" fill="#c21020" xmlns="http://www.w3.org/2000/svg"
+                      width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"></path>
+                    </svg>
+                  </button>
+                  </div>
+                  
+                  </div>
+                </div>
+            <!-- </div> -->
+
+          </div>
+          <!-- <p>{{model.documentSubChildCategory | json}}</p> -->
+         
+      </div>
+  
+      <div class="modal-footer d-flex ">
+            <div class="buttons m-auto">
+              <button type="button" class="btn btn-secondary mr-3"  (click)="onClose()">Cancel</button>
+              <button class="btn btn-primary mr-3" (click)="onsave()">{{buttonText}}</button>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

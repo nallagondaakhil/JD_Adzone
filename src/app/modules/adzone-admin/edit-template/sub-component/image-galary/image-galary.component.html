@@ -1,0 +1,87 @@
+
+
+<div class="w-100  mt-1">
+
+  <div class="row">
+      <div class="col d-flex ml-n2">
+        <div style="display:inline-block !important ;" class="mt-2 mr-2">
+          <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" (click)="backToMain()">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+          </svg>
+        </div>
+        <h1 class="text-green"><strong>Image Gallery</strong></h1>
+      </div>
+
+      <div    class="pt-2 col-auto d-flex text-right"  #filterButton>
+
+
+
+          <div  class="ml-2"  >
+            <button class="btn btn-secondary py-1 px-1 ml-2 icon-box"  title="Filters" type="button"  (click)="onFilterClick()">
+                <span class="uxf-icon">
+                  <svg *ngIf="!filterApplied" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                    <path fill="#367C2B "  d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                  </svg>
+                  <svg *ngIf="filterApplied" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                    <path fill="#ffde00 "  d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                  </svg>
+                </span>
+                <!-- Filters -->
+            </button>
+          </div>
+
+
+
+
+
+          <!-- Add user -->
+
+
+        </div>
+        </div>
+        </div>
+<div class="w-100  mt-1">
+  <div class="row">
+    <div class="col-24">
+
+    </div>
+    <div class="row">
+      <div class="col-5 pt-3" *ngFor="let item of ImageList;let i = index">
+        <div class="card card-hover">
+          <div class="image-iteam">
+            <img class=" image-round cover" src={{item?.sorce}} height="200px" width="200px" alt="Card image cap">
+            <div class="edit"><a (click)="redirectToImage(item?.sorce)"><img
+                  src='data:image/svg+xml;base64,PHN2ZyBpZD0idmlzaWJpbGl0eV9vbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgPHBhdGggaWQ9IlBhdGhfMjU4IiBkYXRhLW5hbWU9IlBhdGggMjU4IiBkPSJNMCwwSDI0VjI0SDBaIiBmaWxsPSJub25lIi8+CiAgPHBhdGggaWQ9IlBhdGhfMjU5IiBkYXRhLW5hbWU9IlBhdGggMjU5IiBkPSJNMTIsNC41QTExLjgyNywxMS44MjcsMCwwLDAsMSwxMmExMS44MTcsMTEuODE3LDAsMCwwLDIyLDBBMTEuODI3LDExLjgyNywwLDAsMCwxMiw0LjVaTTEyLDE3YTUsNSwwLDEsMSw1LTVBNSw1LDAsMCwxLDEyLDE3Wm0wLThhMywzLDAsMSwwLDMsM0EzLDMsMCwwLDAsMTIsOVoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==' /></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row p-2">
+              <button class="btn btn-primary w-100" type="button" (click)="selectIteam(item)">
+                Select
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-4 ml-lg-n5" style="    width: 100% !important;"
+      *ngIf="ImageList?.length">
+      <ul style="display: none;">
+        <li *ngFor="let item of ImageList | paginate: config"></li>
+      </ul>
+      <div class="row d-flex justify-content-center ">
+        <div class="col-auto">
+          <pagination-controls id="test" (pageChange)="handlePageChange($event)" class="my-pagination ">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<jd-datatable-filter [filters]="filters" class="filter-modal" *ngIf="showFilterDialog" [state]="showFilterDialog"
+(onClose)='onCloseFilter()' (onFilterUpdated)="onFilterUpdated($event)"
+(onFilterButtonClick)="onFilterCallback($event)"
+[ngStyle]="{'top':filterDialogTop+'px','right':filterDialogRight+'px'}"></jd-datatable-filter>
+<jd-loader *ngIf="loading"></jd-loader>

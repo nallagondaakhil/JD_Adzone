@@ -1,0 +1,133 @@
+<!-- <div class="w-100  mt-1" [ngStyle]="{'display':!showAddModal?'block':'none'}"> -->
+  <div class="w-100  mt-1" *ngIf="!showAddModal && !showUserAccess">
+    <div class="row">
+        <div class="col">
+          <h1 class="text-green"><strong>User Management</strong></h1>
+        </div>
+        
+        <div    class="pt-2 col-auto d-flex text-right" *ngIf="showTableData || permissionAdd || permissionBulkUpload || permissionEdit || permissionActivate || permissionDeactivate || permissionDelete"  #filterButton>
+      
+            <div #searchBox *ngIf="searchClicked" class="input-group uxf-search uxf-panel-search mb-2 d-flex justify-content-between" style="width: 35%;">
+              <input #txtSearch (keyup.enter)="onSearchClick(txtSearch.value)" (keyup)="onSearchKeyup(txtSearch.value)"
+                aria-label="Search" class="uxf-search-bar form-control" type="search"
+                placeholder="{{dataTable?.model?.options?.searchPlaceHolder || 'Search'}}" name="s" [class.active]="txtSearch.value">
+              <div class="input-group-append">
+                <button  class="uxf-search-bar-clear-icon uxf-btn-icon" type="reset" aria-label="reset"
+                  (click)="onClearSearch(txtSearch.value)">
+                  <svg focusable="false" aria-hidden="true" class="uxf-icon-remove" fill="#666"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 20 19">
+                    <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                    </path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                  </svg>
+                </button>
+                <button aria-label="Submit search" class="btn uxf-search-bar-submit-icon"
+                  (click)="onSearchClick(txtSearch.value)">
+                  <svg focusable="false" aria-hidden="true" class="uxf-icon-search" width="18" height="19" fill="#367C2B " viewBox="3 6 16 10"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                    </path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div *ngIf="!searchClicked" class="ml-2" >
+                <button class="btn btn-secondary py-1 px-1 ml-2 icon-box" (click)="searchClicked=!searchClicked"  title="Search" type="button" >
+                  <span class="uxf-icon">
+                  
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#367C2B " class="bi bi-funnel-fill" viewBox="0 2 22 17">
+                      <path fill="#367C2B "  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                  </span>
+                  <!-- Filters -->
+              </button>
+                
+               
+              </div>
+          
+            <div  class="ml-2" *ngIf="showTableData || permissionAdd || permissionBulkUpload || permissionEdit || permissionActivate || permissionDeactivate || permissionDelete " >
+              <button class="btn btn-secondary py-1 px-1 ml-2 icon-box"  title="Filters" type="button"  (click)="onFilterClick()">
+                  <span class="uxf-icon">
+                    <svg *ngIf="!filterApplied" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#367C2B " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                      <path fill="#367C2B "  d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                    </svg>
+                    <svg *ngIf="filterApplied" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffde00 " class="bi bi-funnel-fill" viewBox="-1 -1 18 17">
+                      <path fill="#ffde00 "  d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                    </svg>
+                  </span>
+                  <!-- Filters -->
+              </button>
+            </div>
+    
+            <div  class="ml-2" *ngIf="permissionBulkUpload">
+              <button class="btn btn-secondary py-1 px-1 ml-2 icon-box"  title="Bulk Upload" type="button"  (click)="bulkUpload()">
+                <span class="uxf-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="#367C2B " class="bi bi-funnel-fill" viewBox="2 1 20 20">
+                    <path fill="#367C2B "  d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                  </svg>
+                </span>
+               
+            </button>
+           
+          </div> 
+    
+            <div  class="ml-2" *ngIf="showTableData || permissionAdd || permissionBulkUpload || permissionEdit || permissionActivate || permissionDeactivate || permissionDelete">
+              <button type="button" (click)="downloadTemplate()" class="btn btn-secondary py-1 px-1 ml-1 icon-box"   title="Export Excel" >
+                <span class="uxf-icon">
+                <svg focusable="false" aria-hidden="true" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="-3 -1 22 22">
+                      <path
+                          d="M2 0C.9 0 .01.9.01 2L0 18c0 1.1.89 2 1.99 2H14c1.1 0 2-.9 2-2V6l-6-6H2zm7 7V1.5L14.5 7H9zm-2.34 7.39l-3.45-5.1h2.73l2.1 3.42 2.175-3.42h2.58L9.36 14.405 13.095 20H10.29l-2.34-3.705L5.565 20h-2.64l3.735-5.61z"
+                          fill-rule="nonzero" fill="#367C2B">
+                      </path>
+                  </svg>
+                  </span>
+                 </button>
+                </div>
+            <!-- </span> -->
+           
+            <div class="ml-2" *ngIf="permissionAdd">
+              <button class="btn btn-secondary py-1 px-1 ml-1 icon-box btn_upldate_access" type="button" title="Update Document Access" (click)="uploadDownloadViewAcessControl()">
+                <span class="uxf-icon pl-2 pr-2">
+                  Update Document Access
+                </span>
+              </button>
+            </div>
+      
+            <!-- Add user -->
+          <div  class="ml-2" *ngIf="permissionAdd">
+            <button class="btn  py-1 px-1 ml-1 " style="background-color: gold;  height:34px" type="button" title="Add User Management" (click)="addUserManage()">
+              <span class="uxf-icon pl-2 pr-2">
+                Add
+              </span>
+              
+            </button>
+          </div>
+          
+          </div>
+          </div>
+         
+          
+      
+          
+       
+        
+          <jd-data-table *ngIf="showTableData" #dataTable [model]="dataTableModel"></jd-data-table>
+    </div>
+
+    <jd-add-edit-user *ngIf="showAddModal" [model]="selectedModel" [dataTable]="dataTable" (closed)="onCloseAddModal($event,dataTableModel)">
+    </jd-add-edit-user>
+    
+    <jd-user-access-control *ngIf="showUserAccess" [getRacfDetails]="getRacfIds" (closed)="onCloseAcessControl($event)">
+    </jd-user-access-control>
+    <jd-bulk-upload-user *ngIf="showUploadModal" (closed)="onCloseUploadModal($event)"></jd-bulk-upload-user>
+    <jd-datatable-filter [filters]="this.dataTableModel.options.filters" class="filter-modal" *ngIf="showFilterDialog" [state]="showFilterDialog"
+    (onClose)='onCloseFilter()' (onFilterUpdated)="onFilterUpdated($event)"
+    (onFilterButtonClick)="onFilterCallback($event)"
+    [ngStyle]="{'top':filterDialogTop+'px','right':filterDialogRight+'px'}"></jd-datatable-filter>
+    
+
+           

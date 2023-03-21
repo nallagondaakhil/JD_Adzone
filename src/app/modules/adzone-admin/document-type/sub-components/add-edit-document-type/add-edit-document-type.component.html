@@ -1,0 +1,164 @@
+<div class="w-100  mt-1">
+    <div class="row">
+        <div class="back-section mt-3" *ngIf="!showUpload && !showPreview">
+            <div class="pointer" (click)="onClear()">
+                <svg  focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </svg>
+            </div>
+            <h5 class="modal-title ml-3 mt-1"><strong>Back to Document</strong></h5>
+            <!-- <h1 class="text-green"><strong>{{title}}</strong></h1> -->
+        </div>
+        <!-- <div class="col-24 ml-4">
+            
+        </div> -->
+    </div>
+    <form novalidate="novalidate" #documentType="ngForm" >
+        <div *ngIf="model && !showUpload && !showPreview">
+            <div class="row ml-3 pt-2" >
+                <div class="col-12" *ngIf="isEdit">
+                    <jd-text-box [label]="'Document ID'" #documentId="ngModel" name="documentId" [(ngModel)]="model.documentId" [control]="documentId.control" [markAsRequired]="true" [disabled]="true" required>
+                    </jd-text-box>
+                </div>
+                <!-- <div class="col-12">
+                    <jd-text-box [label]="'Document Name'" #documentName="ngModel" name="documentName" [(ngModel)]="model.documentName" [control]="documentName.control" [markAsRequired]="true" required>
+                    </jd-text-box>
+                </div> -->
+                <div class="col-12">
+                    <jd-select-list #doc="ngModel" name="doc" [control]="doc.control" [label]="'Document Category'" [markAsRequired]="true" required [itemSource]="docOptions" (ngModelChange)="loadCat1ByDoc($event)" [(ngModel)]="model.documentCategoryId" (click)="loadCat1ByDoc3($event)"
+                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    
+                    <jd-select-list  #cat1="ngModel" name="cat1" [control]="cat1.control" [label]="'Category 1'" [markAsRequired]="true" required [itemSource]="category1Options" (ngModelChange)="loadCat2ByCat1($event)" [(ngModel)]="model.documentSubCategoryId" (click)="loadCat2ByDoc3($event)"
+                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <jd-select-list #cat2="ngModel" name="cat2" [control]="cat2.control"  [label]="'Category 2'" [itemSource]="category2Options" [(ngModel)]="model.documentSubChildCategoryId"
+                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" (ngModelChange)="loadCat3ByCat2($event)" (click)="loadCat3ByDoc4($event)">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <!-- <p>{{model.documentSubChildFourthCategoryId |sfffffffffffffffffffffffffff json}}</p> -->
+                    <jd-select-list #cat3="ngModel" name="cat3" [control]="cat3.control"  [label]="'Category 3'" [itemSource]="category3Options" [(ngModel)]="model.documentSubChildFourthCategoryId"
+                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <jd-select-list #region="ngModel" name="region" [control]="region.control" [label]="'Region'" [markAsRequired]="true" required [itemSource]="regionOptions" (ngModelChange)="loadSubByRegions($event)" [(ngModel)]="model.regions"
+                        [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <jd-select-list #subRegion="ngModel" name="subRegion" [control]="subRegion.control" [label]="'Sub Region'" [markAsRequired]="true" required [itemSource]="subRegionOptions" (ngModelChange)="loadDivBySub($event)" [(ngModel)]="model.subRegions"
+                        [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <jd-select-list #divisions="ngModel" name="divisions" [control]="divisions.control" [label]="'Divisions'" [markAsRequired]="true" required [itemSource]="divisionOptions" (ngModelChange)="loadCountryByDiv($event)" [(ngModel)]="model.divisions"
+                        [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <jd-select-list #country="ngModel" name="country" [control]="country.control" [label]="'Country/Market'" [markAsRequired]="true" required [itemSource]="countryOptions" [(ngModel)]="model.countries"
+                        [multiple]="true" [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <label class="expireDate">Expire Date</label>
+                    <jd-date-time [range]="false" #expireDatee="ngModel" [label]="'Expire Date'" 
+                        [markAsRequired]="false" [minDate]="currentDate"  [control]="expireDatee.control" [(ngModel)]="model.expiryDate"
+                        name="expiryDate" (ngModelChange)="changeExpiry()">
+                    </jd-date-time>
+                    <label class="error" *ngIf="pastDate">
+                        The expiry date for this document was {{oldExpiryDate}}. Please choose a future date.
+                    </label>
+                </div>
+   
+                <!-- <div class="col-12">
+                    <jd-select-list [label]="'State'" [multiple]="true"
+                        [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12">
+                    <jd-select-list [label]="'City'" [multiple]="true"
+                        [displayProperty]="'name'" [valueProperty]="'id'">
+                    </jd-select-list>
+                </div> -->
+                <!-- <div class="col-12">
+                    <div class="form-group">
+                    <label for="inputGroupSelect01" class="uxf-label">
+                        Expire Date 
+                        </label>
+                        <div class="date-time">
+                            <jd-date-time [range]="false" #expireDatee="ngModel" [label]="'Expire Date'" 
+                            [markAsRequired]="false" [minDate]="currentDate"  [control]="expireDatee.control" [(ngModel)]="model.expiryDate"
+                            name="expiryDate" (ngModelChange)="changeExpiry()">
+                            </jd-date-time>
+                            <label class="error" *ngIf="pastDate">
+                                The expiry date for this document was {{oldExpiryDate}}. Please choose a future date.
+                            </label>
+                        </div>
+                   
+                   </div>
+                </div> -->
+                <!-- <div class="col-12" *ngIf="isEdit">
+                    <jd-multi-file-upload [label]="'Thumbnail Image'" [markAsRequired]="true" required [files]="thumbnailFile" [fileTypes]="fileUplodExtentionThumbnail" [uploadFunctionWithParam]="docthumb" (onComplete)="onthumbUpload($event)" [param]="model" [showDownload]="true" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+                    </jd-multi-file-upload>
+                    <label class="error "  *ngIf="isNotFile1">
+                        File is required.
+                      </label>
+                </div> -->
+                
+                <div class="col-12" *ngIf="isEdit">
+                    <jd-multi-file-upload [markAsRequired]="true" required [files]="uploadedFile" [fileTypes]="fileUplodExtention" [uploadFunctionWithParam]="docFn" (onComplete)="onUpload($event)" [param]="model" [showDownload]="true" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+                    </jd-multi-file-upload>
+                    <label class="error "  *ngIf="isNotFile">
+                        File is required.
+                      </label>
+                </div>
+                <div class="col-12" *ngIf="isEdit">
+                    <!-- <jd-multi-file-upload [markAsRequired]="true" required [files]="uploadedFile" [fileTypes]="fileUplodExtention" [uploadFunctionWithParam]="docFn" (onComplete)="onUpload($event)" [param]="model" [showDownload]="true" [allowAllType]="true" [allowAllSize]="true" [deleteFile]="true">
+                    </jd-multi-file-upload>
+                    <label class="error "  *ngIf="isNotFile">
+                        File is required.
+                      </label> -->
+                </div>
+                <!-- <div class="col-12" *ngIf="isEdit">
+                    <div class="" *ngIf="superadmin">
+                        <jd-select-list #approval="ngModel" name="approval" [control]="approval.control" [label]="'Approval Status'" [markAsRequired]="true" required [itemSource]="approvalStatus" [(ngModel)]="model.approval"
+                        (ngModelChange)="approvalChange($event)" [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" [disabled]="disabled">
+                    </jd-select-list>
+                    </div>
+                    
+                </div>
+                <div class="col-12" *ngIf="isEdit">
+                    <div class="" *ngIf="superadmin">
+                        <jd-text-box  #rejectionReason="ngModel" name="rejectionReason" placeholder="Reason" [control]="rejectionReason.control" [label]="'Remarks'" [(ngModel)]="model.rejectionReason
+                        "  [markAsRequired]="true" required style="margin-top: 40px;"
+                        [disabled]="disabled"></jd-text-box>
+
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <jd-upload-document *ngIf="showUpload" [model]="model" (closed)="onCloseUploadModal($event)">
+        </jd-upload-document>
+        <div class="col text-center mt-3 mb-3" *ngIf="!showUpload && !showPreview">
+            <!-- <button type="button" class="btn btn-primary extend" (click)="onsave()" *ngIf="save">{{buttonText}}</button> -->
+            <button type="button" class="btn btn-primary extend" (click)="onsave()">{{buttonText}}</button>
+            <button type="button" class="btn btn-secondary extend" (click)="onClear()">Cancel</button>
+            <!-- <button type="button" class="btn btn-primary extend" *ngIf="isEdit" (click)="onPreview()">Preview</button> -->
+        </div>
+        <div class="col text-center mt-3 mb-3" *ngIf="showUpload">
+            <!-- <button type="button" class="btn btn-secondary mr-5 extend" (click)="onClear()">Cancel</button> -->
+            <button type="button" class="btn btn-primary mr-5 extend" (click)="onSubmit()">Submit</button>
+            <!-- <button type="button" class="btn btn-primary extend" (click)="onPreview()">Preview</button> -->
+        </div>
+        <!-- <jd-preview-document *ngIf="showPreview" (previewData)="previewTable()" [documentId]="doc_Id"></jd-preview-document> -->
+    </form>
+</div>

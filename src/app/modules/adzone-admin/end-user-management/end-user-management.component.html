@@ -1,0 +1,195 @@
+<div class="container mt-4 mob-end-user">
+  <div class="row">
+
+    <div class="col-24">
+      <div class="row user-panel" *ngIf="carouselBusPhoto">
+
+        <!-- <img src="../../../../assets/icons/F142824142.png" class="img-fluid"> -->
+        <p-carousel [value]="carouselBusPhoto " [numVisible]="1" [numScroll]="1" [responsiveOptions]="responsiveOptions"
+          [autoplayInterval]="10000" *ngIf="showCarousel">
+          <ng-template let-photo pTemplate="item">
+            <div class="p-d-flex p-jc-center p-ai-center">
+              <img [src]="photo" alt="" class="img-fluid">
+            </div>
+          </ng-template>
+        </p-carousel>
+        <!-- <h1>test</h1> -->
+
+      </div>
+      <div class="row ml-1">
+        <p class="text-green end-title mb-1"><strong>{{'HOME.NEW/UPDATEDITEMS' | translate}}</strong></p>
+      </div>
+
+      <div class="row" *ngIf="listModel.length > 0">
+        <div class="col-24 col-lg-8 col-xl-8 pt-md-5 pt-2 pb-2 pb-md-0"
+          *ngFor="let item of listModel| paginate: {itemsPerPage: 12, currentPage: page,totalItems: totalCount};let i=index;">
+          <div class="card card-hover">
+            <div class="endImg"
+              *ngIf="item.extensionType === 'video' || item.extensionType === 'image' || item.extensionType === 'audio'">
+              <div style="width: 50px; height:100px ;position:absolute;" class="pt-4 "
+                *ngIf="item.isLoaded==false && item.extensionType === 'image'"><span class="loader"></span></div>
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'audio'" loading="lazy"
+                src="../../../../assets/icons/audio.svg" height="140px" alt="Document Image">
+              <img class="width-custom1 card-img-top previewImage" *ngIf="item.extensionType === 'image'" loading="lazy"
+                (click)="showLightbox(i)" title="Click to View" [src]="item.thumbnailUrl" height="140px"
+                alt="Document Image" (error)="imageLoded(item)" (load)="imageLoded(item)">
+              <!-- <img class="width-custom card-img-top" *ngIf="item.extensionType === 'ai'" loading="lazy" src="../../../../assets/icons/ai.png" height="140px" alt="Document Image">
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'psd'" loading="lazy" src="../../../../assets/icons/ps.png" height="140px" alt="Document Image">
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'cdr'" loading="lazy" src="../../../../assets/icons/cdr.png" height="140px" alt="Document Image"> -->
+
+              <video *ngIf="item.extensionType === 'video'" height="140px" width="85%" controls>
+                <source [src]="item.thumbnailUrl" type="video/mp4">
+                <source [src]="item.thumbnailUrl" type="video/mov">
+                <source [src]="item.thumbnailUrl" type="video/avi">
+                <source [src]="item.thumbnailUrl" type="video/wmv">
+                <source [src]="item.thumbnailUrl" type="video/webm">
+                <source [src]="item.thumbnailUrl" type="video/mkv">
+                Your browser does not support HTML video.
+              </video>
+
+            </div>
+            <div class="endImg1"
+              *ngIf="item.extensionType != 'video' && item.extensionType != 'image' && item.extensionType != 'audio'">
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p>
+              <!-- <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p>
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p>
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p>
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p>
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b>{{item.extensionType}}</b> </p> -->
+            </div>
+
+
+            <div class="card-body">
+              <h5 class="card-title"><span
+                  [ngClass]="item.productFlag == 1 ? 'printable' : 'invisible'">{{"HOME.PRINTABLE" | translate}}</span>
+                <svg *ngIf="!item.wishList" class="wishlist-icon pb-0"
+                  (click)="addWishlist(item.documentId,item.wishList,item.documentFileId,item.productFlag,item.hasDownloadAccess)"
+                  focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="26"
+                  height="26" viewBox="0 0 24 24">
+                  <path
+                    d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z">
+                  </path>
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                </svg>
+                <svg *ngIf="item.wishList" class="wishlist-icon pb-0"
+                  (click)="addWishlist(item.wishlistId,item.wishList,item.documentFileId,item.productFlag,item.hasDownloadAccess)"
+                  focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg" width="26"
+                  height="26" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                  </path>
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                </svg>
+
+                <span><img src="../../../../assets/icons/comment.svg" class="img-fluid end-comment "
+                    (click)="showFeedback($event,item)"> </span>
+                <span><img src="../../../../assets/icons/share.svg" class="img-fluid end-share"
+                    (click)="showShare($event,item)"> </span>
+              </h5>
+              <p class="card-text text-green document-title" title="{{item.documentName}}"
+                (click)="goToDetailedScreen(item)">{{item.documentName}}</p>
+              <p class="doc-description">{{item.extension}} , {{item.documentFileSize}}</p>
+              <p class="doc-description">{{'HOME.RELEADEDDATE' | translate}}: {{item.documentCreatedDate}}</p>
+
+              <div class="expiry-content">
+                <p class="doc-description" *ngIf="item.expiryDate !='-'">{{'HOME.EXPIRYDATE' | translate}}: {{item.expiryDate}}</p>
+
+              </div>
+
+              <div class="row">
+                <div class="col-24 text-center mt-md-3 mt-0 mb-md-3 mb-0 d-flex">
+                  <!-- <a (click)="addToCart(item.documentId,item.documentFileId,item.productFlag)"
+                    [class.disabled]="!permissionDownload" class="btn btn-primary endUser-btn"><img
+                      src="../../../../assets/icons/cart.svg">Add to Cart</a> -->
+                  <!-- <a (click)="addToCart(item.documentId,item.documentFileId,item.productFlag)"
+                    class="btn btn-primary endUser-btn"><img src="../../../../assets/icons/cart.svg">{{'HOME.ADDTOCART' | translate}}</a> -->
+                  <a *ngIf="item.hasDownloadAccess" (click)="addToCart(item.documentId,item.documentFileId,item.productFlag)"
+                    class="btn btn-primary endUser-btn"><img src="../../../../assets/icons/cart.svg">{{'HOME.ADDTOCART' | translate}}</a>
+                  <a *ngIf="!item.hasDownloadAccess" [class.disabled]="item.hasDownloadAccess == false" (click)="addToCart(item.documentId,item.documentFileId,item.productFlag)"
+                    class="btn btn-primary endUser-btn"><img src="../../../../assets/icons/grey_cart.svg">{{'HOME.ADDTOCART' | translate}}</a>
+                  <a *ngIf="item.hasDownloadAccess" (click)="downloadDocument(item.documentFileName,item.documentId,item.documentFileId,item.productFlag,item.downloadUrl,item.downloadFlag)"
+                    [class.disabled]="!permissionDownload" class="btn endUser-download-btn ml-2"><svg focusable="false"
+                      aria-hidden="true" fill="#fff" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                      viewBox="0 0 24 24">
+                      <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>{{'HOME.DOWNLOAD' | translate}}</a>
+                    <a *ngIf="!item.hasDownloadAccess" (click)="downloadDocument(item.documentFileName,item.documentId,item.documentFileId,item.productFlag,item.downloadUrl,item.downloadFlag)"
+                    [class.disabled]="item.hasDownloadAccess == false" class="btn endUser-download-btn ml-2"><svg focusable="false"
+                      aria-hidden="true" fill="#ccc" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                      viewBox="0 0 24 24">
+                      <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>{{'HOME.DOWNLOAD' | translate}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf="listModel.length == 0">
+        <div class="col-24  text-center mt-5">
+          <img src="../../../../assets/icons/tractor_ag.svg" class="img-fluid">
+          <div class="" *ngIf="searchedValue">
+            <p class="nodata_found mt-4">{{"HOME.NODATAFOUNDEND1" | translate}}</p>
+            <span class="nodata_found1 mt-4">{{"HOME.NODATAFOUNDEND2" | translate}}</span>
+          </div>
+          <div class="" *ngIf="!searchedValue">
+            <p class="nodata_found mt-4">{{"HOME.NODATAFOUND" | translate}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <pagination-controls *ngIf="listModel.length > 0" 
+          [previousLabel]="'HOME.PREVIOUS' | translate"
+          [nextLabel]="'HOME.NEXT' | translate"
+    (pageChange)="handlePageChange($event)"
+          class="my-pagination float-right"></pagination-controls>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<ng-image-fullscreen-view [images]="listImageSelect" [imageIndex]=0 [show]="showFlag" *ngIf="showFlag"
+  (close)="closeEventHandler()">
+</ng-image-fullscreen-view>
+
+<jd-add-edit-feedback *ngIf="showFeedbackModal" [model]="selectedModel" (closed)="onCloseAddModal($event)">
+</jd-add-edit-feedback>
+<jd-show-image *ngIf="showImageModal" [model]="selectedImage" (closed)="onCloseImageModal($event)">
+</jd-show-image>
+<jd-share-url *ngIf="showShareModal" [model]="selectedModel" (closed)="onCloseShareModel($event)">
+</jd-share-url>
+<jd-loader *ngIf="loading"></jd-loader>
+<div *ngIf="errMsg">
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" *ngIf="dashBoardAccess">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+          <img src="https://cdn.ux.deere.com/uxframe/2019.4.0/img/jd-logo-green-xl@1x.png" class="jdLogo" alt="logo">
+          <!-- <embed type="application/pdf" [src]="pdfView" frameborder="0" width="99.9%" height="450"> -->
+        <pdf-viewer
+        [src]="pdfView.changingThisBreaksApplicationSecurity"
+        [rotation]="0"
+        [original-size]="false"
+        [show-all]="true"
+        [fit-to-page]="false"
+        [zoom]="1"
+        [zoom-scale]="'page-width'"
+        [stick-to-page]="false"
+        [render-text]="true"
+        [external-link-target]="'blank'"
+        [autoresize]="true"
+        [show-borders]="false"
+        style="width: 100%; height: 450px;"
+      ></pdf-viewer>
+        <div class="modal-footer" style="justify-content: center;">
+          <button type="button" class="skipBtn btn btn-warning" data-dismiss="modal" (click)="closeModal()"><b>Skip</b></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

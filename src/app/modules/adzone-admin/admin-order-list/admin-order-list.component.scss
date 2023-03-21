@@ -1,0 +1,50 @@
+.uxf-search-bar {
+    height: 2.11rem !important;
+   
+}
+
+.uxf-search-bar.form-control{
+
+    font-size: .675rem;
+   
+}
+
+::placeholder {
+    color: #837c7c ;
+    
+}
+
+.uxf-search.input-group.uxf-panel-search .uxf-search-bar-submit-icon {
+    border: none;
+    padding: .5625rem .5625rem .425rem;
+}
+.icon-box{
+   border : 1px solid #707070;
+   color: #367C2B; 
+   background-color: transparent;
+}
+::ng-deep .dt-view-menu.uxf-icon svg{
+    height: 19px ;
+    width: 19px ;
+}
+::ng-deep.status-dropdown{
+    display:flex;
+    label{
+        margin-top:4px;
+        margin-right: 10px;
+    }
+    .btn-primary{
+        padding: 0.1rem 0.7rem;
+        height: 35px;
+        font-size: 13px;
+        margin-left: 17px;
+    }
+    .form-group{
+        //margin-top: 10px;
+        margin-bottom: 10px !important;
+    }
+    .multiselect-dropdown 
+        {
+        width: 150px !important;
+        }
+}

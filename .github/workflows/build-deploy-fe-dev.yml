@@ -1,0 +1,41 @@
+name: build and deploy FE Qual
+
+on:
+  push:
+    branches: [govind]
+
+jobs:
+  build-deploy:
+    name: build and deploy ADZONE QUAL FE
+    runs-on: [deere-ubuntu-latest]
+    steps:
+      - name: checkout codebase
+        uses: actions/checkout@v3
+
+#      - name: maven build
+#        uses: ./.github/actions/maven-build
+
+      - name: get_aws_credentials
+        uses: github-actions-enablement/get-aws-credentials@v2
+        with:
+          OKTA_CLIENT_ID: ${{ secrets.OKTA_CLIENT_ID }}
+          OKTA_CLIENT_SECRET: ${{ secrets.OKTA_CLIENT_SECRET }}
+          ROLE_ARN: "arn:aws:iam::091541603851:role/system-roles/spm-execution-role"
+          REGION: "ap-south-1"
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR DEVL
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: adzone-qual-frontend
+          ADZONE_IMAGE_TAG: latest
+          REGION: ap-south-1
+        run: |
+          docker build -f Dockerfile-Qual -t $ECR_REGISTRY/$ECR_REPOSITORY:$ADZONE_IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$ADZONE_IMAGE_TAG
+
+      - name: Deploy to ECS QUAL
+        uses: ./.github/actions/ecs-deploy-fe-devl

@@ -1,0 +1,126 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor03" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item " [ngClass]="{'active': activeTool == toolType.IMAGE }">
+        <a class="nav-link" (click)="ImageButtonClick()" >Image Galary <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item"  [ngClass]="{'active': activeTool == toolType.LAYOUT }">
+        <a class="nav-link" >Layout</a>
+      </li>
+      <li class="nav-item" (click)="textButtonClick()" [ngClass]="{'active': activeTool == toolType.TEXT }">
+        <a class="nav-link" >Text</a>
+      </li>
+      <li class="nav-item" (click)="setBackground()" [ngClass]="{'active': activeTool == toolType.BKG }">
+        <a class="nav-link" >Background</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="">About</a>
+      </li> -->
+    </ul>
+
+      <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search"> -->
+      <button class="btn btn-secondary my-2 my-sm-0" type="button" (click)="download()">Download</button>
+
+  </div>
+</nav>
+<div class="row">
+  <div class="col-24 p-4"  >
+
+      <div id="leftSide" [ngStyle]="activeTool == toolType.NONE && {'display': 'none'}">
+<!--
+          <div id="dropZone">
+              <p>Drag your images from your file  sau click <u>here</u>!</p>
+          </div> -->
+
+          <div id="images_preview" [ngStyle]="activeTool != toolType.IMAGE && {'display': 'none'}">
+
+          </div>
+
+          <div id="background-color-div" [ngStyle]="activeTool != toolType.BKG && {'display': 'none'}">
+            <div class="color-wrapper" >
+              <app-color-palette [hue]="hue" (color)="color = $event"></app-color-palette>
+              <app-color-slider (color)="hue=$event" ></app-color-slider>
+            </div>
+            <div class="input-wrapper"  style="width: 270px !important; height: 50px !important;">
+              <span class="text">{{color}}</span>
+              <div class="color-div" [ngStyle]="{'background-color': color || 'white'}"></div>
+              <button class="btn btn-secondary ml-2" type="button" (click)="applayBaground()">Applay</button>
+            </div>
+
+          </div>
+          <div id="text-div" [ngStyle]="activeTool != toolType.TEXT && {'display': 'none'}">
+           <div class="row-cust">
+
+                    <div class="col-7">
+                      <div class="color-wrapper" >
+                        <app-color-palette [hue]="hue" (color)="colorText = $event"></app-color-palette>
+                        <app-color-slider (color)="hue=$event" ></app-color-slider>
+                      </div>
+                      <div class="input-wrapper"  style="width: 270px !important; height: 50px !important;">
+                        <span class="text">{{colorText}}</span>
+                        <div class="color-div" [ngStyle]="{'background-color': colorText || 'white'}"></div>
+                        <!-- <button class="btn btn-secondary ml-2" type="button" (click)="applayBaground()">Applay</button> -->
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div >
+                        <jd-select-list #font="ngModel" [label]="'Font Type'"  name="font" [itemSource]="fontOptions" [(ngModel)]="font_type"
+                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'id'" [control]="font.control" [markAsRequired]="true" required>
+                        </jd-select-list>
+                       </div>
+                      <div   style="width: 270px !important; height: 50px !important;">
+                        <textarea name="comment" id="inputBox" #test [(ngModel)]="textContent" placeholder="Submitted text will show in the box" rows="4" cols="50"></textarea><br>
+                        <button class="btn btn-secondary " type="button" (click)="setText(test.value)">Add Text</button>
+                      </div>
+                    </div>
+           </div>
+
+
+          </div>
+          <!-- <div id="images_preview2">
+
+          </div> -->
+      </div>
+
+  </div>
+  </div>
+<div (click)="clickOut()">
+
+  <!-- <h1>Collage</h1> -->
+
+
+      <!-- <div class="column">
+
+          <div id="buttonsArea">
+              <select id="modelSelect" onchange="modelSelect()">
+                  <option value="">Select the pattern</option>
+                  <option value="model1">Model 1</option>
+                  <option value="model2">Model 2</option>
+                  <option value="model3">Model 3</option>
+                  <option value="model4">Model 3</option>
+              </select>
+
+              <div id="singleUploadSection">
+                  Click "Browse" to select a background image for your canvas!
+                  <input id="singleUpload" type="file" onchange="setBackground()"/>
+              </div>
+
+              <a href="#" class="button" id="btn-download">Save your collage image</a>
+          </div>
+
+      </div> -->
+
+      <div class="col-24  " #photo  id="photo" style="position: relative ; width: 1000px;height: 600px;"width="1000" height="600">
+
+          <canvas #canvas id="background" width="1000" height="500"></canvas>
+          <canvas  id="fCanvas" width="1000" height="500"></canvas>
+      </div>
+
+      <div id="images"></div>
+  </div>
+

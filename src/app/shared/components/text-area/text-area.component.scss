@@ -1,0 +1,25 @@
+.uxf-label{
+    font-size: .95rem;
+}
+.outline-none ,.error,.form-control
+{
+outline: none !important;
+box-shadow: none !important;
+border-color: rgb(71, 68, 68);
+  outline: none !important;
+}
+textarea{
+  box-shadow: none !important;
+  border-color: rgb(71, 68, 68);
+    outline: none !important;
+}
+
+.text-area ::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+   outline: none !important;
+ 
+  
+   }
+   .text-area::-webkit-scrollbar {
+    width: 8px !important;
+    }

@@ -1,0 +1,21 @@
+.previewBanner {
+    cursor: pointer;
+}
+
+.card {
+    width: 18rem;
+    height: 17rem;
+    padding: 0px 0rem 1.25rem !important;
+}
+
+.card img {
+    height: 25vh;
+}
+
+.card-title {
+    font-size: 11px;
+}
+
+::ng-deep #body {
+    overflow: scroll !important;
+}

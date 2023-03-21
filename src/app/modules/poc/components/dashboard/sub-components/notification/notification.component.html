@@ -1,0 +1,19 @@
+<div class="w-100">
+    <div >
+        <h2 class="text-center">Send Notification</h2>
+    </div>
+    <div class="form-group">
+        <label>Message title</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="msgTitle">
+    </div>
+    <div class="form-group">
+        <label>Message body</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="msgBody">
+    </div>
+    <div class="form-group">
+        <label>Navigate Url</label>
+        <input type="text" class="form-control form-control-sm" [(ngModel)]="navUrl">
+    </div>
+    
+    <button class="btn btn-sm btn-primary" (click)="sendNotification()">Send Notification</button>
+</div>

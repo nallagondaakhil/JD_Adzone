@@ -1,0 +1,45 @@
+<div class="container  mt-4">
+    <div class="row">    
+        <div class="col-1"></div>
+        <div class="col-23 ">
+            <div class="row mt-4">
+                <div class="col-16">
+                 <p class="text-green wishlist-title"><strong>My Templates</strong></p>
+                </div>
+            </div>
+            <!-- <div class="row bg-white user-panel mt-4" *ngFor="let item of listModel">
+                  <div class="col-8   mt-1">
+                    <img src="{{item.templateImageUrl}}"  class="img-fluid myorder-img">
+                  </div>
+                  <div class="col-8  pt-3">
+                      <p class="order-documentname"><strong>{{item.templateName}}</strong></p>
+                      <p class="order-filetype">{{item.extension}}</p>
+                      
+                  </div>
+                  <div class="col-8 pt-3">
+                    
+                    <p class="order-filetype">Created Date : <strong>{{item.createdDate}}</strong></p>
+                    <p class="order-filetype">Created By: <strong>{{item.racfId}}</strong></p>
+                </div>
+              
+              </div> -->
+              <div class="row" *ngIf="listModel.length > 0">
+                <div class="col-7 bg-white user-panel mt-4" *ngFor="let item of listModel">
+                  <img src="{{item.templateImageUrl}}"  class="img-fluid myorder-img">
+                  <p class="order-documentname"><strong>{{item.templateName}}</strong></p>
+                  <p class="order-filetype">Quantity: <strong>1</strong></p>
+                  <p class="order-filetype">File Type :  <strong>{{item.extension}}</strong></p>
+                  <p class="order-filetype">Downloaded On : <strong>{{item.createdDate}}</strong></p>
+                  <p class="order-filetype">Downloaded By: <strong>{{item.racfId}}</strong></p>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="listModel.length == 0">
+                <div class="col-24  text-center mt-5">
+                    <img src="../../../../assets/icons/tractor_ag.svg" class="img-fluid">
+                    <p class="nodata_found mt-4">No Data Found</p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/server
+hooks:
+
+  ApplicationStop:
+    - location: scripts/stop.sh
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      runas: root
+    

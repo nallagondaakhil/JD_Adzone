@@ -1,0 +1,47 @@
+::ng-deep .btn-secondary,::ng-deep .btn-primary,::ng-deep .btn-outline-primary,::ng-deep .btn-info,::ng-deep .btn-outline-info,::ng-deep .btn-success,::ng-deep .btn-danger{
+    font-size: .975rem;
+    padding: .275rem .725rem ;
+  }
+  
+ .modal-title{
+    font-size: 1.175rem ;
+ }
+ .uxf-label{
+    font-size: .95rem;
+}
+.form-padding{
+   padding-top: 1rem;
+    padding-left: 2rem!important;
+    padding-right: 2rem!important;
+    padding-bottom: 2rem;
+}
+.modal-dialog{
+   max-width: 400px;
+}
+input{
+   font: inherit;
+    vertical-align: baseline;
+    
+    border-radius: 7px;
+    border-style: solid;
+    border-width: 1px;
+    
+}
+.form-label{
+   font-size: .9rem;
+}
+.button{
+   color: #333333;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 2px;
+    border: none;
+    background: #ffd621;
+    height: 40px;
+    outline:none;
+}
+.modal-header{
+   padding-bottom: .5rem !important;
+   
+}
+.close{outline:none;}

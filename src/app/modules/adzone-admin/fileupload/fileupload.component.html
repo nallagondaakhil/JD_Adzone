@@ -1,0 +1,17 @@
+<!-- <label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label> -->
+
+<button class="btn btn-success" (click)="thumbnailUrlImage()">thumbnailUrl</button>
+<button class="btn btn-success" (click)="downloadImage()">downloadurl</button>
+
+<button class="btn btn-success" (click)="s3bucketImage()">s3bucket url</button>
+
+
+
+
+<label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>

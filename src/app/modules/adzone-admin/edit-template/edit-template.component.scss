@@ -1,0 +1,30 @@
+.embedded-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.image-round{
+  border-radius: 5px ;
+}
+.cover {
+  object-fit: cover;
+  width: 100%;
+
+
+}
+.edit {
+	padding-top: 7px;
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+}
+
+.edit a {
+	color: #000;
+}
+.image-iteam:hover .edit {
+	display: block;
+}

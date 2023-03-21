@@ -1,0 +1,51 @@
+.documentname {
+    font: normal normal bold 16px Noto Sans;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+}
+.documentcategory {
+    font: normal normal normal 14px Noto Sans;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+}
+.description {
+    font: normal normal normal 14px Noto Sans;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+}
+.hours {
+    font: normal normal normal 14px Noto Sans;
+    letter-spacing: 0px;
+    color: #215a18;
+    opacity: 1;
+}
+.timericon {
+    color: #215a18;
+}
+.card-link {
+    cursor: pointer;
+}
+.notificationParent {
+    // border-bottom: 1px solid #dddddd;
+    // margin-bottom: 10px;
+    .notificationSection {
+            // margin-bottom: 8px;
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 10px;
+    }
+}
+.notificationSection:last-of-type {
+        border-bottom: none !important;
+}
+.ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #367C2B !important;
+    color: #fefefe;
+    cursor: default;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #367C2B;
+  }

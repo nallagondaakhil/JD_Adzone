@@ -1,0 +1,191 @@
+<div class="w-100  mt-1">
+
+    <div class="row">
+        <div class="col">
+            <h1 class="text-green"><strong>{{"HOME.NOTIFICATION" | translate}}</strong></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-24 col-md-12">
+            <div class="notificationParent">
+                <p class="documentname" *ngIf="modelNewlList?.length">{{"HOME.NEW" | translate}}</p>
+                <div *ngFor="let item of modelNewlList" class="notificationSection">
+                    <!-- <p class="documentcategory">Naveena</p> -->
+                    <!-- <p class="description">{{"HOME.ORDERMSG" | translate}} &nbsp; {{item.orderNumber}} &nbsp; {{"HOME.ORDERMSG1" | translate}}</p> -->
+                    <!-- <span *ngIf="item.type == 'Delete'">
+                        <p class="description">{{"HOME.DELETEDFLAG" | translate}} &nbsp; {{item.racfId}}-&nbsp; {{item.docDeletedName}} {{"HOME.FILENAME" | translate}}&nbsp; {{item.fileName}}</p>
+                    </span> -->
+                    <span *ngIf="item.type == 'Delete' && item.documentId != null">
+                       
+                        <div class="" *ngIf="item.documentFileName == ' ' && item.documentFileId == 0 && item.fileName == null">
+                            <p class="description">{{"HOME.DOCDELETENO" | translate}}: {{item.documentDeletedBy}},<br> {{'HOME.DOCUMENTID' | translate}}:{{item.documentId}}</p>
+                        </div>
+                        <div class="" *ngIf="item.documentFileName == ' ' && item.documentFileId == 0 && item.fileName != null">
+                            <p class="description">{{"HOME.DELETEDFLAG" | translate}}: {{item.documentDeletedBy}},<br> {{'HOME.DOCUMENTID' | translate}}:{{item.documentId}}</p>
+                        </div>
+                       
+                    </span>
+                    <span *ngIf="item.type == 'SingleDelete'">
+                       
+                        <!-- <div class="" *ngIf="item.fileName != null"> -->
+                            <!-- <p class="description">{{"HOME.DELETEDFLAG" | translate}} &nbsp; {{item.racfId}}-&nbsp; {{item.docDeletedName}} {{"HOME.FILENAME" | translate}} <br> {{item.fileName}}</p> -->
+                            <p class="description">{{"HOME.DELETEDFLAG" | translate}}: {{item.documentDeletedBy}}, <br>{{'HOME.FILENAME' | translate}}:{{item.documentFileName}}</p>
+                        
+                        <!-- </div> -->
+                       
+                    </span>
+                    <span *ngIf="item.type == 'Download'">
+                        <p class="description">{{"HOME.ORDERMSG" | translate}}:{{item.orderNumber}} {{"HOME.ORDERMSG1" | translate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Feedback'">
+                        <p class="description">{{"HOME.FEEDBACKSUBMIT" | translate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Expired'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.EXPIRYDOCID1" | translate}} {{item?.documentExpiryDate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Expire'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.EXPIRYDOCID2" | translate}} {{item?.documentExpiryDate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'activated'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.ACTIVATED" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'deactivated'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.DEACTIVATED" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Approved'">
+                        <p class="description">{{"HOME.APPROVEDATAUPLOAD" | translate}}:{{item.documentId}} {{"HOME.APPROVEDATAUPLOAD2" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Rejected'">
+                        <p class="description">{{"HOME.APPROVEDATAUPLOAD" | translate}}:{{item.documentId}} {{"HOME.REJECTEDDATAUPLOAD" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'submitted'">
+                        <p class="description">{{"HOME.DOCUMENTID" | translate}}:{{item.documentId}} {{"HOME.REVIEWDATADOWNLOAD" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'resubmitted'">
+                        <p class="description">{{"HOME.DOCUMENTID" | translate}}:{{item.documentId}} {{"HOME.REVIEWDATADOWNLOAD2" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <div class="" *ngIf="item.feedBack == null">
+                        <div *ngIf="(dashBoardAccess == 'Dashboard View Access')&& (!dealerView)">
+                            <p>
+                                <a class="card-link 4" style="font-size :smaller;" (click)="dashboardViewOrderList()">
+                                    {{"HOME.CLICKHEREORDER" | translate}}   </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="" *ngIf="item.feedBack == null">
+                        <div *ngIf="dashBoardAccess == 'Dealer View Access' || dealerView">
+                            <p>
+                                <a class="card-link 3" style="font-size :smaller;" (click)="dealerViewOrderList()">
+                                    {{"HOME.CLICKHEREORDER" | translate}} </a>
+                            </p>
+                         </div>
+                    </div>
+                    <p *ngIf="item.createdDate != null">
+                        <span class="timericon"><img src="../../../../assets/icons/history.svg" class="img-fluid"></span>
+                        <span class="hours ml-3">{{item.createdDate}}</span>
+                    </p>
+                    <p *ngIf="item.approveDate != null">
+                        <span class="timericon"><img src="../../../../assets/icons/history.svg" class="img-fluid"></span>
+                        <span class="hours ml-3">{{item.approveDate}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-24 col-md-12">
+            <div class="notificationParent">
+                <p class="documentname" *ngIf="modelReadlList?.length">{{"HOME.READ" | translate}}</p>
+                <div *ngFor="let item of modelReadlList" class="notificationSection">
+                    <!-- <p class="documentcategory">Template</p> -->
+                    <!-- <p class="description">{{"HOME.ORDERMSG" | translate}}{{item.orderNumber}} &nbsp; {{"HOME.ORDERMSG1" | translate}}</p> -->
+                    <p class="description">{{item.type | json}}</p>
+                    <span *ngIf="item.type == 'Delete' && item.documentId != null">
+                       
+                        <div class="" *ngIf="item.documentFileName == ' ' && item.documentFileId == 0 && item.fileName == null">
+                            <p class="description">{{"HOME.DOCDELETENO" | translate}}: {{item.documentDeletedBy}},<br> {{'HOME.DOCUMENTID' | translate}}:{{item.documentId}}</p>
+                        </div>
+                        <div class="" *ngIf="item.documentFileName == ' ' && item.documentFileId == 0 && item.fileName != null">
+                            <p class="description">{{"HOME.DELETEDFLAG" | translate}}: {{item.documentDeletedBy}},<br> {{'HOME.DOCUMENTID' | translate}}:{{item.documentId}}</p>
+                        </div>
+                       
+                    </span>
+                    <span *ngIf="item.type == 'SingleDelete'">
+                       
+                        <!-- <div class="" *ngIf="item.fileName != null"> -->
+                            <!-- <p class="description">{{"HOME.DELETEDFLAG" | translate}} &nbsp; {{item.racfId}}-&nbsp; {{item.docDeletedName}} {{"HOME.FILENAME" | translate}} <br> {{item.fileName}}</p> -->
+                            <p class="description">{{"HOME.DOCDELETENO" | translate}}: {{item.documentDeletedBy}},<br> {{'HOME.FILENAME' | translate}}:{{item.documentFileName}}</p>
+                        
+                        <!-- </div> -->
+                       
+                    </span>
+                    <span *ngIf="item.type == 'Download'">
+                        <p class="description">{{"HOME.ORDERMSG" | translate}}:{{item.orderNumber}} {{"HOME.ORDERMSG1" | translate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Feedback'">
+                        <p class="description">{{"HOME.FEEDBACKSUBMIT" | translate}} </p>
+                    </span>
+                    <span *ngIf="item.type == 'Expired'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.EXPIRYDOCID1" | translate}} {{item?.documentExpiryDate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Expire'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.EXPIRYDOCID2" | translate}} {{item?.documentExpiryDate}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'activated'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.ACTIVATED" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'deactivated'">
+                        <p class="description">{{"HOME.EXPIRYDOCID" | translate}}:{{item.documentId}} {{"HOME.DEACTIVATED" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Approved'">
+                        <p class="description">{{"HOME.APPROVEDATAUPLOAD" | translate}}:{{item.documentId}} {{"HOME.APPROVEDATAUPLOAD2" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'Rejected'">
+                        <p class="description">{{"HOME.APPROVEDATAUPLOAD" | translate}}:{{item.documentId}} {{"HOME.REJECTEDDATAUPLOAD" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'submitted'">
+                        <p class="description">{{"HOME.DOCUMENTID" | translate}}:{{item.documentId}} {{"HOME.REVIEWDATADOWNLOAD" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <span *ngIf="item.type == 'resubmitted'">
+                        <p class="description">{{"HOME.DOCUMENTID" | translate}}:{{item.documentId}} {{"HOME.REVIEWDATADOWNLOAD2" | translate}} {{item.racfId}}</p>
+                    </span>
+                    <div class="" *ngIf="item.feedBack == null">
+                        <div *ngIf="(dashBoardAccess == 'Dashboard View Access')&& (!dealerView)">
+                            <p>
+                                <a class="card-link 2" style="font-size :smaller;" (click)="viewOrderDashboard()">
+                                    {{"HOME.CLICKHEREORDER" | translate}} </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="" *ngIf="item.feedBack == null">
+                        <div *ngIf="dashBoardAccess == 'Dealer View Access' || dealerView">
+                            <p>
+                                <a class="card-link 1" style="font-size :smaller;" (click)="dealerViewOrderList()">
+                                    {{"HOME.CLICKHEREORDER" | translate}} </a>
+                            </p>
+                        </div>     
+                    </div>               
+                    <p *ngIf="item.createdDate != null">
+                        <span class="timericon"><img src="../../../../assets/icons/history.svg" class="img-fluid"></span>
+                        <span class="hours ml-3">{{item.createdDate}}</span>
+                    </p>
+                    <p *ngIf="item.approveDate != null">
+                        <span class="timericon"><img src="../../../../assets/icons/history.svg" class="img-fluid"></span>
+                        <span class="hours ml-3">{{item.approveDate}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row float-right" *ngIf="modelList?.length">
+        <ul style="display: none;">
+            <li *ngFor="let item of modelList | paginate: config"></li>
+        </ul>
+        <pagination-controls id="test" 
+        [previousLabel]="'HOME.PREVIOUS' | translate"
+        [nextLabel]="'HOME.NEXT' | translate"
+        (pageChange)="pageChanged($event)" class="my-pagination "></pagination-controls>
+    </div>
+</div>
+
+

@@ -1,0 +1,115 @@
+
+<div class="w-100  mt-1 p-2">
+    <div class="back-section mt-3">
+        <div class="pointer" (click)="onClose()">
+            <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+            </svg>
+        </div>
+        <h5 class="modal-title ml-3 mt-1"><strong>Back to my order</strong></h5>
+        <!-- <h1 class="text-green"><strong>{{title}}</strong></h1> -->
+    </div>
+    <div class="row viewOrderHeader m-0">
+        <div class="col-6">
+            <h1 class="text-green mt-3"><strong>View Order</strong></h1>
+        </div>
+        <!-- <div class="col-18 d-flex justify-content-end">
+            <jd-select-list [displayProperty]="'name'" [valueProperty]="'id'">
+              </jd-select-list>
+              <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg>
+        </div> -->
+    </div>
+    <div class="row mt-3 m-0">
+        <div class="col-6 pl-0">
+            <img class="width-custom card-img-top" [src]="model.thumbnailUrl" height="140px" alt="Document Image">
+        </div>
+        <div class="col-6 orderDesc">
+            <div class="row">
+                <div class="col-12 textDesc">Order Number:</div>
+                <div class="col-12 textValue">{{model.orderNumber}}</div>
+                <!-- <table>
+                    <tr>
+                        <td>Order Number:</td>
+                        <td>{{model.orderNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td>Product Name:</td>
+                        <td class="clipText" title="{{model.documentName}}">{{model.documentName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Quantity:</td>
+                        <td>{{model.quantity}}</td>
+                    </tr>
+                    
+                </table> -->
+                
+            </div>
+            <div class="row">
+                <div class="col-12 textDesc">Product Name:</div>
+                <div class="col-12 clipText textValue" title="{{model.documentName}}">{{model.documentName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-12 textDesc">Quantity:</div>
+                <div class="col-12 textValue">{{model.quantity}}</div>
+            </div>
+        </div>
+        <div class="col-6 orderDesc">
+            <div class="row">
+                <div class="col-12 textDesc">Order Date:</div>
+                <div class="col-12 textValue">{{model.orderOn}}</div>
+            </div>
+            <div class="row">
+                <div class="col-12 textDesc">Price Per Unit:</div>
+                <div class="col-12 textValue">{{model.orderAmount}}</div>
+            </div>
+            <div class="row">
+                <div class="col-12 textDesc">Shipping Address:</div>
+                <div class="col-12 clipTextAddress textValue" title="{{model.address}}">{{model.spaceAddress}}</div>
+            </div>
+            <!-- <table>
+                <tr>
+                    <td>Order Date:</td>
+                    <td>{{model.orderOn}}</td>
+                </tr>
+                <tr>
+                    <td>Price Per Unit:</td>
+                    <td>{{model.orderAmount}}</td>
+                </tr>
+                <tr>
+                    <td>Shipping Address:</td>
+                    <td title="{{model.address}}" class="clipTextAddress">{{model.spaceAddress}}</td>
+                </tr>
+            </table> -->
+        </div>
+        <div class="col-6 orderDesc">
+            <!-- <table>
+                <tr>
+                    <td>Product Description:</td>
+                    <td title="{{model.productDescription}}">{{model.productDescription}}</td>
+                </tr>
+                <tr>
+                    <td>Total Price:</td>
+                    <td>{{model.total}}</td>
+                </tr>
+                <tr>
+                    <td>Delivery Status:</td>
+                    <td>{{model.orderStatus}}</td>
+                </tr>
+            </table> -->
+            <div class="row">
+                <div class="col-12 textDesc">Product Description:</div>
+                <div class="col-12 textValue" title="{{model.productDescription}}">{{model.productDescription}}</div>
+            </div>
+            <div class="row">
+                <div class="col-12 textDesc">Total Price:</div>
+                <div class="col-12 textValue">{{model.total}}</div>
+            </div>
+            <div class="row">
+                <div class="col-12 textDesc">Delivery Status:</div>
+                <div class="col-12 textValue">{{model.orderStatus}}</div>
+            </div>
+        </div>
+    </div>
+</div>

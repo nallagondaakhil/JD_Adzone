@@ -1,0 +1,44 @@
+<div class="jd-toast alert alert-dismissible fade show" role="alert" aria-atomic="true" [ngClass]="{
+    'alert-success': alertModel.alertType === alertType.Success,
+    'alert-warning': alertModel.alertType === alertType.Warning,
+    'alert-danger': alertModel.alertType === alertType.Critical,
+    'alert-info': alertModel.alertType === alertType.Info
+  }" *ngIf="alertModel">
+  <svg focusable="false" aria-hidden="true" class="uxf-alert-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewbox="0 0 24 24" *ngIf="alertModel.alertType === alertType.Success">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+  </svg>
+
+  <svg focusable="false" aria-hidden="true" class="uxf-alert-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewbox="0 0 24 24" *ngIf="alertModel.alertType === alertType.Warning">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path>
+  </svg>
+
+  <svg focusable="false" aria-hidden="true" class="uxf-alert-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewbox="0 0 24 24" *ngIf="alertModel.alertType === alertType.Critical">
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path>
+  </svg>
+
+  <svg focusable="false" aria-hidden="true" class="uxf-alert-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24" viewbox="0 0 24 24" *ngIf="alertModel.alertType === alertType.Info">
+    <path fill="none" d="M0 0h24v24H0V0z"></path>
+    <path d="M11 7h2v2h-2zM11 11h2v6h-2z"></path>
+    <path
+      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+    </path>
+  </svg>
+
+  <div class="uxf-alert-content">
+    <h5 class="uxf-alert-title">{{ alertModel.title | translate }}</h5>
+    <p class="uxf-alert-description">
+      {{ alertModel?.description | translate }}
+      <a href="javascript:void(0);" *ngIf="alertModel.downloadText" (click)="onDownloadClick()">{{alertModel.downloadText}}</a>
+    </p>
+  </div>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="onDismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

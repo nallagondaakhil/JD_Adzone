@@ -1,0 +1,31 @@
+export interface CategoryCountReportMasterModel {
+    createdDate?: string;
+    documentCategoryName?: string;
+    documentCount?: number;
+    documentFileSizeCount?: number;
+    documentFileSizeFormatted?:number;
+    documentFileType?: string;
+    dealerName?:string;
+    dealerAccountId?:number;
+    userRole?:string;
+    userName?:string;
+    userId?:string;
+    documentDownloadCount?:number;
+    subCategoryName?:string;
+    categoryName?:string;
+    month?:string;
+    year?:number;
+    roleName?:string;
+    dealerCode?:string;
+    countOfLogin?:string;
+    documentUploadBy?: string;
+    documentUploadCount?: number;
+    racfId?:string;
+    dealerId?:string;
+    orderCounts?:number;
+    supplierName?:string;
+    activeDuration?:string;
+    logOutTime?:string;
+    loginTime?:string;
+    logInTime?:string;
+}

@@ -1,0 +1,119 @@
+<div class="w-100  mt-1">
+    <div class="row">
+        <div class="back-section mt-3">
+            <div class="pointer" (click)="onClear()">
+                <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </svg>
+            </div>
+            <h5 class="modal-title ml-3 mt-1"><strong>Back to Role Management</strong></h5>
+            <!-- <h1 class="text-green"><strong>{{title}}</strong></h1> -->
+        </div>
+        <!-- <div class="col-24 ml-4">
+            
+        </div> -->
+    </div>
+    <form novalidate="novalidate" #roleForm="ngForm">
+        <div *ngIf="model">
+            <div class="row ml-3 pt-2" >
+                <div class="col-12" *ngIf="isEdit">
+                    <jd-text-box [label]="'Role ID'" [disabled]="true" #roleId="ngModel" name="roleId" [(ngModel)]="model.roleId" [control]="roleId.control" [markAsRequired]="true" required>
+                    </jd-text-box>
+                </div>
+                <div class="col-12">
+                    <jd-text-box [label]="'Role Name'" [disabled]="editValue" [label]="'Role Name'"  #roleName="ngModel" name="roleName" [(ngModel)]="model.roleName" jdName [control]="roleName.control"  [markAsRequired]="true" required pattern="^(?!\s*$).+">
+                    </jd-text-box>
+                </div>
+                <div class="col-12" *ngIf="model">
+                    <jd-select-list #roleType="ngModel" name="roleTypeValues" [control]="roleType.control" [label]="'Role Type'" [markAsRequired]="true" required [itemSource]="roleTypeValues" (ngModelChange)="rolePermission($event)" [(ngModel)]="model.roleType"
+                        [multiple]="false" [displayProperty]="'name'" [valueProperty]="'roleTypeId'">
+                    </jd-select-list>
+                </div>
+                <div class="col-12 role-section">
+                    <label class="uxf-label">Role Permissions
+                        <!-- <span class="uxf-is-required">*</span> -->
+                    </label>
+                    <div class="role-parent">
+                        <div class="uxf-accordion" id="accordion">
+                            <div class="mt-2" *ngFor="let item of model?.permission;let i = index">
+                                <div class="card-header header" [id]="'headingOne-'+i">
+                                    <h5 class="uxf-accordion-item">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                            [attr.data-target]="'#collapseOne-'+i" aria-expanded="false"
+                                            [attr.aria-controls]="'collapseOne-1'+i">
+                                            <svg focusable="false" aria-hidden="true" fill="#666666"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 24 24">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z">
+                                                </path>
+                                            </svg>
+                                            <span class="uxf-label">{{item.modulesName}}</span>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div [id]="'collapseOne-'+i" class="collapse" [attr.aria-labelledby]="'headingOne-'+i"
+                                *ngFor="let itemNew of item.subModules;let j = index">
+                                    <div class="body">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" (change)="updateSubModule(itemNew.isCheckedFlag, j , i)"   [checked]="itemNew.isCheckedFlag" class="custom-control-input" id="{{itemNew.subModulesId}}" (click)="disableDealer(itemNew.isCheckedFlag, j , i)">
+                                            <!-- <input type="checkbox" (change)="updateSubModule(itemNew.isCheckedFlag, j , i)"   [checked]="itemNew.isCheckedFlag" class="custom-control-input" id="{{itemNew.subModulesId}}"> -->
+                                            <label class="custom-control-label pt-1" for="{{itemNew.subModulesId}}">{{itemNew.subModulesName}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="mt-2">
+                                <div class="card-header header" id="headingOne-2">
+                                    <h5 class="uxf-accordion-item">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                            data-target="#collapseOne-2" aria-expanded="false"
+                                            aria-controls="collapseOne-2">
+                                            <svg focusable="false" aria-hidden="true" fill="#666666"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 24 24">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z">
+                                                </path>
+                                            </svg>
+                                            <span class="uxf-label">Role Management</span>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne-2" class="collapse" aria-labelledby="headingOne-2"
+                                    >
+                                    <div class="body">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked class="custom-control-input" id="add">
+                                            <label class="custom-control-label pt-1" for="add">Add Role</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked class="custom-control-input" id="View">
+                                            <label class="custom-control-label pt-1" for="View">View Role</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked class="custom-control-input" id="bulk">
+                                            <label class="custom-control-label pt-1" for="bulk">Bulk Upload</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" checked class="custom-control-input" id="Edit">
+                                            <label class="custom-control-label pt-1" for="Edit">Edit Role</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center mt-3 mb-3">
+            <button type="button" class="btn btn-primary mr-5 extend" (click)="onsave()">{{buttonText}}</button>
+            <button type="button" class="btn btn-secondary extend" (click)="onClear()">Cancel</button>
+        </div>
+    </form>
+</div>

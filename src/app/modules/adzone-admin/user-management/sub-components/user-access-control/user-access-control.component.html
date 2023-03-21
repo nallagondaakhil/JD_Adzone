@@ -1,0 +1,106 @@
+<div class="user-access-contorl">
+    <div class="user-access-contorl-tab-section row mx-0 mt-3 px-2">
+        <div *ngFor="let steps of pageContent?.stepsMenu;let i = index" 
+            class="btn p-3 d-flex {{ steps?.active === activeIndex ? 'active' : '' }}" 
+            (click)="navigateTab(steps, i)">
+            <div class="w-100 pl-2">
+                {{steps?.head}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mx-0 py-3" *ngIf="uploadStepForm">
+        <ng-container *ngIf="activeIndex === 1">
+            <form class="w-100" [formGroup]="uploadStepForm">
+                <ng-container *ngFor="let formInput of uploadStepContent.formInputs;let i = index" >
+                    <div class="col-50 mb-3">
+                        <div class="form-group">
+                            <label>{{formInput.label}} <span *ngIf="formInput?.markAsRequired" aria-label="required field" class="uxf-is-required">*</span></label>
+                            <angular2-multiselect 
+                                [formControlName]="formInput?.model"
+                                [data]="options[formInput.options]" 
+                                [(ngModel)]="options[formInput.selectedOptions]" 
+                                [settings]="formInput.dropdownSettings" 
+                                (onSelect)="onItemSelect(formInput, $event, uploadStepContent, i)" 
+                                (onDeSelect)="OnItemDeSelect(formInput, $event, uploadStepContent, i)"
+                                (onSelectAll)="onSelectAll(formInput, $event, uploadStepContent, i)"
+                                (onDeSelectAll)="onDeSelectAll(formInput, $event, uploadStepContent, i)" 
+                                >
+                            </angular2-multiselect>
+
+                            <jd-form-error type="2" [formControlName]="formInput?.model" [errors]="formInput['errors']">
+                            </jd-form-error>
+                        </div>
+                    </div>
+                </ng-container>            
+            
+                <div class="button_container text-center pr-5 mt-3 mb-3">
+                    <button type="button" class="btn btn-primary mr-5 extend" (click)="tabSubmitCall(uploadStepForm, uploadStepContent.subModuleSlug)">{{uploadStepContent.submitButtonLabel}}</button>
+                    <button type="button" class="btn btn-secondary extend" (click)="onClose(uploadStepForm)">{{uploadStepContent.cancelButtonLabel}}</button>
+                </div>
+            </form>
+        </ng-container>
+
+        <ng-container *ngIf="activeIndex === 2">
+            <form [formGroup]="downloadStepForm">
+                <ng-container *ngFor="let formInput of downloadStepContent.formInputs;let i = index" >
+                    <div class="col-50 mb-3">
+                        <div class="form-group">
+                            <label>{{formInput.label}} <span *ngIf="formInput?.markAsRequired" aria-label="required field" class="uxf-is-required">*</span></label>
+                            <angular2-multiselect 
+                                [formControlName]="formInput?.model"
+                                [data]="options[formInput.options]" 
+                                [(ngModel)]="options[formInput.selectedOptions]" 
+                                [settings]="formInput.dropdownSettings" 
+                                (onSelect)="onItemSelect(formInput, $event, downloadStepContent, i)" 
+                                (onDeSelect)="OnItemDeSelect(formInput, $event, downloadStepContent, i)"
+                                (onSelectAll)="onSelectAll(formInput, $event, downloadStepContent, i)"
+                                (onDeSelectAll)="onDeSelectAll(formInput, $event, downloadStepContent, i)" 
+                                >
+                            </angular2-multiselect>
+    
+                            <jd-form-error type="2" [formControlName]="formInput?.model" [errors]="formInput['errors']">
+                            </jd-form-error>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div class="button_container text-center pr-5 mt-3 mb-3">
+                    <button type="button" class="btn btn-primary mr-5 extend" (click)="tabSubmitCall(downloadStepForm, downloadStepContent.subModuleSlug)">{{downloadStepContent.submitButtonLabel}}</button>
+                    <button type="button" class="btn btn-secondary extend" (click)="onClose(uploadStepForm)">{{downloadStepContent.cancelButtonLabel}}</button>
+                </div>
+            </form>
+        </ng-container>
+
+        <ng-container *ngIf="activeIndex === 3">
+            <form [formGroup]="viewStepForm">
+                <ng-container *ngFor="let formInput of viewStepContent.formInputs;let i = index" >
+                    <div class="col-50 mb-3">
+                        <div class="form-group">
+                            <label>{{formInput.label}} <span *ngIf="formInput?.markAsRequired" aria-label="required field" class="uxf-is-required">*</span></label>
+                            <angular2-multiselect 
+                                [formControlName]="formInput?.model"
+                                [data]="options[formInput.options]" 
+                                [(ngModel)]="options[formInput.selectedOptions]" 
+                                [settings]="formInput.dropdownSettings" 
+                                (onSelect)="onItemSelect(formInput, $event, viewStepContent, i)" 
+                                (onDeSelect)="OnItemDeSelect(formInput, $event, viewStepContent, i)"
+                                (onSelectAll)="onSelectAll(formInput, $event, viewStepContent, i)"
+                                (onDeSelectAll)="onDeSelectAll(formInput, $event, viewStepContent, i)" 
+                                >
+                            </angular2-multiselect>
+    
+                            <jd-form-error type="2" [formControlName]="formInput?.model" [errors]="formInput['errors']">
+                            </jd-form-error>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div class="button_container text-center pr-5 mt-3 mb-3">
+                    <button type="button" class="btn btn-primary mr-5 extend" (click)="tabSubmitCall(viewStepForm, viewStepContent.subModuleSlug)">{{viewStepContent.submitButtonLabel}}</button>
+                    <button type="button" class="btn btn-secondary extend" (click)="onClose(uploadStepForm)">{{viewStepContent.cancelButtonLabel}}</button>
+                </div>
+            </form>            
+        </ng-container>
+    </div>
+</div>

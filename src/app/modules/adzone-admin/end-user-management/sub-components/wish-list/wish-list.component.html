@@ -1,0 +1,103 @@
+<div class="container pb-5">
+  <div class="row">
+    <div class="col-0 col-md-1"></div>
+    <div class="col-24 col-md-23">
+      <div class="row mt-4">
+        <div class="col-24 col-md-17">
+          <p class="text-green wishlist-title"><strong>{{"HOME.MYWISHLIST" | translate}}</strong></p>
+        </div>
+        <div class="col-md-1 col-8">
+          <div class="select-unselect-section select_all_chck">
+            <div class="select-all">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" [(ngModel)]='selectAllBox' id="customCheckAll"
+                  [checked]='isCheckAll ? true : false' (change)="selectAllFields($event)">
+                <label class="custom-control-label pt-1" for="customCheckAll">{{"HOME.SELECTALL" | translate}}</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-9 col-md-3">
+          <button type="button" class="btn btn-primary title_btn float-right" (click)="moveToCart()">{{"HOME.MOVETOCART" | translate}}</button>
+        </div>
+        <div class="col-7 col-md-2">
+          <button type="button" class="btn btn-secondary title_btn_remove float-left"
+            (click)="removeFromWishlist()">{{"HOME.REMOVE" | translate}}</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-24 col-md-8 mt-3" *ngFor="let item of listModel;let i = index">
+          <div class="card card-hover">
+            <div class="endImg">
+              <div style="width: 50px; height:100px ;position:absolute;" class="pt-4 "
+                *ngIf="item.isLoaded==false && item.extensionType === 'image'"><span class="loader"></span></div>
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'image'" [src]="item.thumbnailUrl"
+                title="Click to view" (click)="showLightbox(i)" height="140px" alt="Card image cap"
+                (error)="imageLoded(item)" (load)="imageLoded(item)">
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'audio'"
+                src="../../../../assets/icons/audio.svg" height="140px" alt="Document Image">
+              <!-- <img class="width-custom card-img-top" *ngIf="item.extensionType === 'ai'"
+                src="../../../../assets/icons/ai.png" height="140px" alt="Document Image">
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'psd'"
+                src="../../../../assets/icons/ps.png" height="140px" alt="Document Image">
+              <img class="width-custom card-img-top" *ngIf="item.extensionType === 'cdr'"
+                src="../../../../assets/icons/cdr.png" height="140px" alt="Document Image"> -->
+              <video controls *ngIf="item.extensionType === 'video'" height="140px">
+                <source [src]="item.thumbnailUrl" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+            </div>
+            <div class="endImg1"
+              *ngIf="item.extensionType != 'video' && item.extensionType != 'image' && item.extensionType != 'audio'">
+              <!-- <p class="text-center align-middle editable-text">Editable File - <b>{{item.extensionType}}</b> </p> -->
+              <p class="text-center align-middle editable-text">{{"HOME.EDITABLEFILE" | translate}} - <b >{{item.extensionType}}</b> </p>
+
+            </div>
+            <div class="card-body">
+              <!-- <h5 class="card-title">{{item.documentId}}
+              </h5>-->
+              <div class="custom-control custom-checkbox mt-2 check-item">
+                <input type="checkbox" [checked]='item.isChecked ? true : false' class="custom-control-input"
+                  (change)="onSelectChange(item.documentFileId,item.wishlistId,$event)" id="{{i}}">
+                <label class="custom-control-label pt-1" for="{{i}}"></label>
+              </div>
+
+              <p class="card-text text-green document-title ml-4 pl-1" (click)="goToDetailedScreen(item)"
+                title="{{item.documentFileName}}">{{item.documentFileName}}</p>
+              <p [ngClass]="item.productFlag == 1 ? 'printable' : 'invisible'">{{"HOME.PRINTABLE" | translate}}</p>
+              <p class="doc-description">{{item.extension}} , {{item.documentFileSize}}</p>
+              <p class="doc-description">{{'HOME.RELEADEDDATE' | translate}}:{{item.documentCreatedDate}} </p>
+              <div class="row">
+                <div class="col-24 text-center mt-4">
+                  <button type="button" class="btn btn-primary extend_btn "
+                    (click)="singleMovetoCart(item)"><strong>{{"HOME.MOVETOCART" | translate}}</strong></button>
+                  <button type="button" class="btn btn-secondary  extend"
+                    (click)="singleRemovefromWish(item)"><strong>{{"HOME.REMOVE" | translate}}</strong></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-24  text-center mt-5" *ngIf="listModel.length == 0">
+          <img src="../../../../assets/icons/tractor_ag.svg" class="img-fluid">
+          <p class="nodata_found mt-4">{{"HOME.NODATAFOUND" | translate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-image-fullscreen-view [images]="listImageSelect" [imageIndex]=0 [show]="showFlag" (close)="closeEventHandler()">
+</ng-image-fullscreen-view>
+<div class="row float-right mt-5" *ngIf="listModel?.length">
+  <ul style="display: none;">
+     <li *ngFor="let item of listModel | paginate: config"></li>
+ </ul>
+ <pagination-controls 
+ [previousLabel]="'HOME.PREVIOUS' | translate"
+ [nextLabel]="'HOME.NEXT' | translate"
+ id="test" (pageChange)="pageChanged($event)" class="my-pagination "></pagination-controls>
+</div>
+<jd-loader *ngIf="loading"></jd-loader>

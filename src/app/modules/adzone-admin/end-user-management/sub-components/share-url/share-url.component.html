@@ -1,0 +1,56 @@
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="share">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="share">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>{{"HOME.SHAREDOC" | translate}}</b></h5>
+                <button type="button" data-dismiss="modal" class="btn uxf-btn-icon" aria-label="Close"
+                    (click)="onClose()">
+                    <svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewbox="0 0 24 24">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                        </path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <form action="" novalidate="novalidate" #shareform="ngForm">
+                <div class="modal-body" *ngIf="model">
+                    <div class="row">
+                        <div class="col-22">
+                            <jd-text-box [disabled]="true" #share="ngModel" name="share" [(ngModel)]="model.shareUrl">
+                            </jd-text-box>
+                        </div>
+                        <div class="col-2 p-0 d-flex align-items-center mt-2">  
+                            <div title="Click to copy link">   
+                            <span (click)="copyToClipboard(model.shareUrl)" ><img src="../../../../assets/icons/copy_icon.svg" class="img-fluid"> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="text-center row">
+                        <div class="col-24">
+                            Or
+                        </div>
+                    </div>
+                    <div class="row socialMediaSection">
+                        <div class="col-24">
+                            <p>Share or social media:</p>
+                        </div>
+                        <div class="col-24">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+                                <svg height="30" width="30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve"><g><circle fill="#3b549a" cx="15" cy="15" r="15"></circle><path fill="#FFFFFF" d="M16.3,23.5v-7.8h2.6l0.4-3h-3v-1.9c0-0.9,0.2-1.5,1.5-1.5l1.6,0V6.6c-0.3,0-1.2-0.1-2.3-0.1c-2.3,0-3.9,1.4-3.9,4v2.2h-2.6v3h2.6v7.8H16.3L16.3,23.5z"></path></g></svg>
+                              </a>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="modal-footer d-flex justify-content-end ">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary ml-3" (click)="onClose()">Cancel</button>
+                        <button class="btn btn-primary ml-3" (click)="onsave()">{{buttonText}}</button>
+                    </div>
+                </div> -->
+            </form>
+        </div>
+    </div>
+</div>

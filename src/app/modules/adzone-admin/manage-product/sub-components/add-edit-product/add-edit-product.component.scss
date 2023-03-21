@@ -1,0 +1,19 @@
+button.extend{
+    width: 150px;
+  }
+  .back-section{
+    display: flex;
+    margin-left: 35px;
+    margin-bottom: 15px;
+    .pointer{
+        margin-top: 7px;
+        margin-right: 15px;
+    }
+}
+::ng-deep.form-control,::ng-deep.dropdown-container{
+    width: 85% !important;
+}
+::ng-deep .form-group{
+    margin-top: 1rem;
+    margin-bottom: 0;
+}

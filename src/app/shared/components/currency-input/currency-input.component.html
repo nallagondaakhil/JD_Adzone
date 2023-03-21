@@ -1,0 +1,34 @@
+<div class="form-group">
+  <label *ngIf="!disableLable" class="uxf-label">{{label}}
+    <span *ngIf="markAsRequired" aria-label="required field" class="uxf-is-required">*</span>
+  </label>
+  <div class="input-group mb-n3 ">
+    <!-- <div *ngIf="!hideCurrencySymbol"class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon3">{{type}}</span>
+    </div> -->
+    <input #currencyInput *ngIf="(hideCurrencySymbol && !showPercentSymbol)|| writeCurency " [value]="value" (focusout)="focusoutinput()" (input)="changeValue($event)" type="number" class="form-control" (blur)="markAsTouched()"
+    data-toggle="tooltip" data-placement="right" data-original-title="Enter your amount" [disabled]="disabled" [min]="1"  placeholder="{{Placeholder}}"
+    [ngClass]="{ error: control.invalid && (control.dirty || control.touched) }" (keypress)="onKeyPress($event)" (keydown)="onKeyDown($event)" />
+    <input  *ngIf="!hideCurrencySymbol && !writeCurency" [disabled]="disabled" (focus)="OnCurrencyClick()"  class="form-control" value="{{control.value|currency:'INR':'symbol-narrow'}}" />
+    <input *ngIf="showPercentSymbol && !writeCurency" [disabled]="disabled" (focus)="OnCurrencyClick()"  class="form-control" value="{{control.value||control.value==0 ?control.value+'%':''}}" />
+      <!-- <div *ngIf="showPercentSymbol"class="input-group-append">
+        <span class="input-group-text" id="basic-addon3">%</span>
+      </div> -->
+      <div *ngIf="control.invalid && (control.dirty || control.touched)" class="mt-0 mb-0 pb-0 col-24">
+        <label class="error" *ngIf="control.errors.required">
+          {{label}} {{this.requiredData}}.
+        </label>
+        <label class="error" *ngIf="control.errors.maxlength">
+          {{label}} should not be {{control.errors.maxlength.requiredLength}} characters long.
+        </label>
+        <label class="error" *ngIf="control.errors.minlength">
+          {{label}} should contain atleast {{control.errors.minlength.requiredLength}} characters.
+        </label>
+        <label class="error" *ngIf="control.errors.max">Maximum allowed value is {{control.errors.max.max}}.</label>
+        <label class="error" *ngIf="control.errors.min">Minimum allowed value is {{control.errors.min.min}}.</label>
+        <label class="error" *ngIf="control.errors.customErrMsg">{{control.errors.customErrMsg}}.</label>
+
+      </div>
+  </div>
+
+</div>

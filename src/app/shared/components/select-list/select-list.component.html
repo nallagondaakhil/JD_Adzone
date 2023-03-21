@@ -1,0 +1,44 @@
+<div class="form-group">
+  <label *ngIf="label!==''&& !disabledLabel" for="inputGroupSelect01" class="uxf-label" [ngClass]="{ 'uxf-label-disabled': disabled }">{{ label }}
+    <span *ngIf="markAsRequired" aria-label="required field" class="uxf-is-required">*</span>
+  </label>
+  <div class="dropdown-container" (click)="markAsTouched()">
+    <!-- <ng-multiselect-dropdown [settings]="dropdownSettings" [disabled]="disabled" [data]="itemSource" [ngModel]="value" placeholder="{{placeholder}}"
+    (ngModelChange)="onValueChange($event)" (onDropDownClose)="dropdownClose()" (keydown)="onKeyDown($event)">
+      <ng-template #optionsTemplate let-item let-option="option" let-id="id" let-isSelected="isSelected">
+
+
+        <div style="padding: 1px 10px;">
+
+          <svg *ngIf="isSelected" focusable="false" aria-hidden="true" fill="#367C2B" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+          </svg>
+          <span  [ngStyle]="{ 'color': isSelected ? '#367C2B': '', 'margin-left': isSelected ? '': '28px'}">
+          <span>{{option}}</span>
+          </span>
+        </div>
+      </ng-template>
+
+    </ng-multiselect-dropdown> -->
+
+    <angular2-multiselect [data]="itemSource" [ngModel]="value" [title]="(tooltip?.length)?tooltip:''"
+    (ngModelChange)="onValueChange($event,value)"
+    [settings]="dropdownSettings"
+    (onSelect)="onItemSelect($event)"
+    (onDeSelect)="OnItemDeSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+    (onDeSelectAll)="onDeSelectAll($event)">
+
+</angular2-multiselect>
+
+
+  </div>
+
+  <ng-container *ngIf="control && control?.invalid && (control?.dirty || control?.touched)">
+    <label class="error" *ngIf="control.errors?.required">
+      {{label}} is required.
+    </label>
+  </ng-container>
+</div>

@@ -1,0 +1,150 @@
+.jd-Canvas-Container{
+  background-color: #fff;
+   //border: 2px solid rgb(148, 147, 147);
+  padding: 0px;
+}
+.button {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.button div {
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  top: 10%;
+  left: 10%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 10%;
+  background: #eeeeee;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: ease .3s;
+}
+
+.button div:hover {
+  padding: 10px;
+}
+
+.John-Deere-Green .button div {
+  background: #367c2b;
+}
+
+.John-Deere-Yellow .button div {
+  background: #ffde00;
+}
+
+.Coriander .button div {
+  background: #bab994;
+}
+
+.Night-Rider .button div {
+  background: #f2a900;
+}
+
+.Yellow-Sea .button div {
+  background: #2196F3;
+}
+
+.Athens-Gray .button div {
+  background: #3F51B5;
+}
+
+.Rolling-Stone .button div {
+  background: #3F51B5;
+}
+.Canary-Yellow .button div {
+  background: #3F51B5;
+}
+
+.layer {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  /*transition: ease .3s;*/
+  z-index: -1;
+}
+
+.orange input:checked ~ .layer {
+  background: #F4511E;
+}
+
+.amber input:checked ~ .layer {
+  background: #FFB300;
+}
+
+.lime input:checked ~ .layer {
+  background: #7CB342;
+}
+
+.teal input:checked ~ .layer {
+  background: #00897B;
+}
+
+.blue input:checked ~ .layer {
+  background: #1E88E5;
+}
+
+.indigo input:checked ~ .layer {
+  background: #3949AB;
+}
+input {
+  display: none;
+}
+.activeColor
+{
+  padding:10px !important ;
+}
+
+fieldset {
+  background-color: #eeeeee;
+  align-items: center;
+}
+
+legend {
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.875em; /* 14px/16=0.875em */
+}
+::ng-deep .jd-Canvas-Container .upper-canvas  {
+  //border: 2px solid rgb(148, 147, 147) !important;
+}
+
+::ng-deep  jd-edit-image .uxf-label{
+  font-size: 0.8rem !important;
+
+}
+.group-contianter{
+  background-color: #FAFAFA;
+}
+.lower-canvas{
+  background-color: #FAFAFA;
+}
+.corner-border{
+  border-radius: 10px ;
+}
+.card-body {
+
+  padding: 0.25rem;
+}
+
+::ng-deep jd-edit-image  .uxf-label  {
+  font-size: 0.8rem !important;
+
+}
+::ng-deep label{
+  font-size: 0.8rem !important;
+}

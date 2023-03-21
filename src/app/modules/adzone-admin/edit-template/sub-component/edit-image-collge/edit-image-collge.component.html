@@ -1,0 +1,117 @@
+<jd-image-galary *ngIf="showImageGalary" (selected)="selectedImage($event)"></jd-image-galary>
+<div [ngStyle]="{'display':showImageGalary?'none':'block'}">
+  <div class="row pt-5 ">
+    <div class="col-15 ">
+      <div id="canvasContainer" class="jd-Canvas-Container">
+        <canvas #canvas id="canvasEditTemplate" width="800" height="550"></canvas>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-auto">
+          <button id="zoomIn" class="btn btn-outline-primary" (click)="zoomInCanvas()"><!-- Material Design icons by Google (https://material.io/tools/icons) licensed under the Apache License, Version 2.0 (the 'License'); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 --><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"></path></svg></button>
+          <button id="zoomOut" class="btn btn-outline-primary"  (click)="zoomOutCanVas()"><!-- Material Design icons by Google (https://material.io/tools/icons) licensed under the Apache License, Version 2.0 (the 'License'); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 --><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM7 9h5v1H7z"></path></svg></button>
+          <button id="goLeft" class="btn btn-outline-primary"  (click)="moveToLeftCanvas()"> <!-- Material Design icons by Google (https://material.io/tools/icons) licensed under the Apache License, Version 2.0 (the 'License'); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 --><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg> </button>
+          <button id="goRight"  class="btn btn-outline-primary"  (click)="moveToRigthCanvas()" ><!-- Material Design icons by Google (https://material.io/tools/icons) licensed under the Apache License, Version 2.0 (the 'License'); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 --><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg> </button>
+          <button id="goUp" class="btn btn-outline-primary"  (click)="moveToUpCanvas()"><!-- Material Design icons by Google (https://material.io/tools/icons) licensed under the Apache License, Version 2.0 (the 'License'); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 --><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg> </button>
+          <button id="goDown" class="btn btn-outline-primary"  (click)="moveToDownCanvas()"><!-- Material Design icons by Google (https://material.io/tools/icons) licensed under the Apache License, Version 2.0 (the 'License'); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 --><svg focusable="false" aria-hidden="true" fill="#666666" xmlns="http://www.w3.org/2000/svg" transform="rotate(270)" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg> </button>
+
+        </div>
+
+
+      </div>
+         </div>
+    <div class="col-6">
+      <div class="card" >
+        <div class="card-header">Layer</div>
+        <div class="card-body" >
+          <div class="custom-item">
+            <div class="uxf-accordion" id="accordion" >
+              <form #layerForm ="ngForm">
+              <div class="card"  (focusout)="selectAll()" (focusin)="selectImage(i)" *ngFor="let item of ObjectInstanceArray; let i=index;">
+                  <div class="card-header" id="headingOne" >
+                      <h5 class="uxf-accordion-item" >
+                          <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i" aria-expanded="false"  aria-controls="collapseOne0" style="font-size: 0.8rem;">
+                              <svg focusable="false" aria-hidden="true" class="uxf-accordion-icon" fill="#666666" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path><path fill="none" d="M0 0h24v24H0V0z"></path></svg><span class="uxf-accordion-title">{{item?.displayName}}</span>
+                          </button>
+                      </h5>
+                  </div>
+
+                  <div [id]="'collapseOne'+i" class="collapse  " aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body"  style="padding: 0px !important;">
+                        <button *ngIf="item?.type == 'image'" type="button" class="btn uxf-btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off" [disabled]="item?.lock" (click)="chooseImage(i)" style="font-size: .75rem;"  >Pick  gallery</button>
+                        <fieldset *ngIf="item?.type == 'text'">
+                          <legend>color:</legend>
+
+                        <div  style="    padding-left: 24px;" >
+                          <label class="John-Deere-Green"  *ngFor="let item  of textAllowColor ; let indexid=index "  >
+                            <input type="radio" name="color" value=item  (change)="handleColorChange($event,item ,i)">
+                            <div class="layer" ></div>
+                            <div class="button"><div style="disply:inline-block" [style.background]="item"  [ngClass]="{ activeColor:( colorText1==item && i==3) ||( colorText2==item && i==4)  }"></div></div>
+                          </label>
+
+                          <!-- <label class="John-Deere-Yellow">
+                            <input type="radio" name="color" value="#ffde00" (change)="handleColorChange($event,'#ffde00',i)">
+                            <div class="layer"></div>
+                            <div class="button"><div style="disply:inline-block"  [ngClass]="{ activeColor:( colorText1=='#ffde00' && i==3) ||( colorText2=='#ffde00' && i==4)    }" ></div></div>
+                          </label>
+
+                          <label class="Construction-Charcoal">
+                            <input type="radio" name="color" value="#54585a" (change)="handleColorChange($event,'#54585a',i)">
+                            <div class="layer"></div>
+                            <div class="button"><div style="disply:inline-block"  [ngClass]="{ activeColor:( colorText1=='#54585a' && i==3)  ||( colorText2=='#54585a' && i==4)    }"  ></div></div>
+                          </label>
+
+                          <label class="teal">
+                            <input type="radio" name="color" value="teal" (change)="handleColorChange($event,'teal',i)">
+                            <div class="layer"></div>
+                            <div class="button"><div style="disply:inline-block"  [ngClass]="{ activeColor:( colorText1=='teal' && i==3)  ||( colorText2=='teal' && i==4)   }"  ></div></div>
+                          </label>
+
+                          <label class="blue">
+                            <input type="radio" name="color" value="blue" (change)="handleColorChange($event,'blue',i)">
+                            <div class="layer"></div>
+                            <div class="button"><div style="disply:inline-block" [ngClass]="{ activeColor:( colorText1=='blue' && i==3) ||( colorText2=='blue' && i==4)   }"  ></div></div>
+                          </label>
+
+                          <label class="indigo">
+                            <input type="radio" name="color" value="indigo" (change)="handleColorChange($event,'indigo',i)">
+                            <div class="layer"></div>
+                            <div class="button"><div style="disply:inline-block"  [ngClass]="{ activeColor:( colorText1=='indigo' && i==3) ||( colorText2=='indigo' && i==4)  }"></div></div>
+                          </label> -->
+                        </div>
+                      </fieldset>
+                      <fieldset *ngIf="item?.type == 'background'">
+                        <legend>color:</legend>
+
+                      <div  style="    padding-left: 24px;" >
+                        <label class="John-Deere-Green"  *ngFor="let item  of textAllowColor ; let indexid=index "  >
+                          <input type="radio" name="color" value=item  (change)="bgColorChange($event,item ,i)">
+                          <div class="layer" ></div>
+                          <div class="button"><div style="disply:inline-block" [style.background]="item"  [ngClass]="{ activeColor:( colorText1==item && i==3) ||( colorText2==item && i==4)  }"></div></div>
+                        </label>
+
+                      </div>
+                    </fieldset>
+                      <div  *ngIf="item?.type == 'text'">
+                        <jd-select-list #font="ngModel" [label]="'Font Type'"  name="font" [itemSource]="fontOptions" [(ngModel)]="font_type[i]"
+                        [multiple]="false" [displayProperty]="'name'" (ngModelChange)="fontChange($event,i)" [valueProperty]="'id'" [control]="font.control" [markAsRequired]="true" required>
+                        </jd-select-list>
+                       </div>
+                       <div *ngIf="item?.type == 'text'">
+                        <jd-text-box
+                        [label]="'Font Size'"  (input)="setFontSize($event.target.value,i)"   name="fontTextSize"  #fontTextSize="ngModel" [(ngModel)]="fontSize[i]"  [control]="fontTextSize.control" [markAsRequired]="true" required></jd-text-box>
+                       </div>
+                      </div>
+                  </div>
+              </div>
+            </form>
+          </div>
+          </div>
+
+        </div>
+      </div>
+      <button id="goDown" type="button" class="btn btn-primary mt-3" (click)="close()" >Close</button>  <button id="goDown" type="button" class="btn btn-primary mt-3 ml-3" (click)="saveImage()" >Download</button>
+    </div>
+
+  </div>
+
+</div>
